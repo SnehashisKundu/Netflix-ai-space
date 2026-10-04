@@ -1,7 +1,9 @@
 import crypto from "node:crypto";
+
 import { prisma } from "../../lib/prisma.js";
+
 import type {
-  CreateWatchSpaceInput
+  CreateWatchSpaceInput,
 } from "./ws.validation.js";
 
 const MAX_PARTICIPANTS = 5;
@@ -416,39 +418,66 @@ export const castVariationVote = async (
     throw new Error("VARIATION_TITLE_MISMATCH");
   }
 
-  const vote = await prisma.variationVote.upsert({
-    where: {
-      watchSpaceId_userId: {
+  // One vote per user per variation point.
+  const existingVote =
+    await prisma.variationVote.findFirst({
+      where: {
         watchSpaceId,
+        timelineEventId: variation.timelineEventId,
         userId,
       },
-    },
-    create: {
-      watchSpaceId,
-      variationOptionId: variation.id,
-      userId,
-    },
-    update: {
-      variationOptionId: variation.id,
-    },
-    include: {
-      variationOption: {
-        select: {
-          id: true,
-          label: true,
-          content: true,
-          locale: true,
-          isDefault: true,
-        },
+      select: {
+        id: true,
       },
-    },
-  });
+    });
 
+  const vote = existingVote
+    ? await prisma.variationVote.update({
+        where: {
+          id: existingVote.id,
+        },
+        data: {
+          variationOptionId: variation.id,
+        },
+        include: {
+          variationOption: {
+            select: {
+              id: true,
+              label: true,
+              content: true,
+              locale: true,
+              isDefault: true,
+            },
+          },
+        },
+      })
+    : await prisma.variationVote.create({
+        data: {
+          watchSpaceId,
+          timelineEventId: variation.timelineEventId,
+          variationOptionId: variation.id,
+          userId,
+        },
+        include: {
+          variationOption: {
+            select: {
+              id: true,
+              label: true,
+              content: true,
+              locale: true,
+              isDefault: true,
+            },
+          },
+        },
+      });
+
+  // Count only votes belonging to this variation point.
   const voteCounts =
     await prisma.variationVote.groupBy({
       by: ["variationOptionId"],
       where: {
         watchSpaceId,
+        timelineEventId: variation.timelineEventId,
       },
       _count: {
         variationOptionId: true,
