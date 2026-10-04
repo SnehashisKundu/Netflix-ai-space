@@ -1,6 +1,7 @@
 import type { Server } from "socket.io";
 import type { AuthenticatedSocket } from "./socket.auth.js";
-
+import { prisma } from "../lib/prisma.js";
+import { getVariations } from "../modules/variation/vr.service.js";
 import { validateWatchSpaceMembership } from "../modules/watch-space/ws.service.js";
 
 import {
@@ -64,6 +65,60 @@ const ensureSocketInRoom = async (
   });
 
   return room;
+};
+
+const getVariationVoteData = async (
+  watchSpaceId: string,
+  timelineEventId: string,
+) => {
+  const watchSpace = await prisma.watchSpace.findUnique({
+    where: {
+      id: watchSpaceId,
+    },
+    select: {
+      id: true,
+      titleId: true,
+    },
+  });
+
+  if (!watchSpace) {
+    throw new Error("WATCH_SPACE_NOT_FOUND");
+  }
+
+  const timelineEvent =
+    await prisma.timelineEvent.findUnique({
+      where: {
+        id: timelineEventId,
+      },
+      select: {
+        id: true,
+        titleId: true,
+      },
+    });
+
+  if (!timelineEvent) {
+    throw new Error("TIMELINE_EVENT_NOT_FOUND");
+  }
+
+  if (timelineEvent.titleId !== watchSpace.titleId) {
+    throw new Error("TIMELINE_TITLE_MISMATCH");
+  }
+
+  const options = await getVariations(
+    timelineEventId,
+  );
+
+  if (options.length < 2) {
+    throw new Error(
+      "INSUFFICIENT_VARIATION_OPTIONS",
+    );
+  }
+
+  return {
+    watchSpace,
+    timelineEvent,
+    options,
+  };
 };
 
 export const registerSocketEvents = (
