@@ -6,6 +6,7 @@ import {
   getById,
   join,
   leave,
+  voteVariation,
 } from "./ws.controller.js";
 
 const router = Router();
@@ -17,5 +18,6 @@ router.post("/join", join);
 router.post("/:id/leave", leave);
 router.patch("/:id/end", end);
 router.get("/:id", getById);
+router.post("/:id/variations/:variationId/vote", voteVariation);
 
 export default router;

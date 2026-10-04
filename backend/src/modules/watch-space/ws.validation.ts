@@ -20,3 +20,12 @@ export const watchSpaceIdParamSchema = z.object({
 export type CreateWatchSpaceInput = z.infer<
   typeof createWatchSpaceSchema
 >;
+
+export const variationVoteParamSchema = z.object({
+  id: z.string().uuid(),
+  variationId: z.string().uuid(),
+});
+
+export type VariationVoteParam = z.infer<
+  typeof variationVoteParamSchema
+>;

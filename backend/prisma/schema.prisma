@@ -7,6 +7,198 @@ datasource db {
   provider = "postgresql"
 }
 
+model User {
+  id                 String                  @id @default(uuid())
+  name               String
+  email              String                  @unique
+  passwordHash       String
+  role               UserRole                @default(VIEWER)
+  createdAt          DateTime                @default(now())
+  updatedAt          DateTime                @updatedAt
+  chatMessages       ChatMessage[]
+  interactions       Interaction[]
+  refreshTokens      RefreshToken[]
+  variationVotes     VariationVote[]
+  createdWatchSpaces WatchSpace[]            @relation("WatchSpaceHost")
+  participations     WatchSpaceParticipant[]
+
+  @@index([email])
+  @@index([role])
+}
+
+model RefreshToken {
+  id        String    @id @default(uuid())
+  userId    String
+  tokenHash String    @unique
+  expiresAt DateTime
+  revokedAt DateTime?
+  createdAt DateTime  @default(now())
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([expiresAt])
+}
+
+model Title {
+  id             String          @id @default(uuid())
+  name           String
+  description    String?
+  thumbnailUrl   String?
+  videoUrl       String?
+  genre          String?
+  duration       Int?
+  isActive       Boolean         @default(true)
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  interactions   Interaction[]
+  timelineEvents TimelineEvent[]
+  watchSpaces    WatchSpace[]
+
+  @@index([name])
+  @@index([genre])
+  @@index([isActive])
+}
+
+model TimelineEvent {
+  id             String            @id @default(uuid())
+  titleId        String
+  type           TimelineEventType
+  startTime      Float
+  endTime        Float?
+  eventTitle     String?
+  description    String?
+  payload        Json?
+  createdAt      DateTime          @default(now())
+  updatedAt      DateTime          @updatedAt
+  title          Title             @relation(fields: [titleId], references: [id], onDelete: Cascade)
+  variations     VariationOption[]
+  variationVotes VariationVote[]
+
+  @@index([titleId])
+  @@index([titleId, startTime])
+  @@index([type])
+}
+
+model VariationOption {
+  id              String          @id @default(uuid())
+  timelineEventId String
+  label           String
+  content         String
+  locale          String?
+  isDefault       Boolean         @default(false)
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+  timelineEvent   TimelineEvent   @relation(fields: [timelineEventId], references: [id], onDelete: Cascade)
+  votes           VariationVote[]
+
+  @@index([timelineEventId])
+  @@index([locale])
+}
+
+model WatchSpace {
+  id              String                  @id @default(uuid())
+  titleId         String
+  hostId          String
+  name            String?
+  status          WatchSpaceStatus        @default(ACTIVE)
+  createdAt       DateTime                @default(now())
+  updatedAt       DateTime                @updatedAt
+  endedAt         DateTime?
+  joinCode        String                  @unique
+  maxParticipants Int                     @default(5)
+  chatMessages    ChatMessage[]
+  playback        PlaybackState?
+  variationVotes  VariationVote[]
+  host            User                    @relation("WatchSpaceHost", fields: [hostId], references: [id])
+  title           Title                   @relation(fields: [titleId], references: [id])
+  participants    WatchSpaceParticipant[]
+
+  @@index([titleId])
+  @@index([hostId])
+  @@index([status])
+  @@index([createdAt])
+}
+
+model WatchSpaceParticipant {
+  id           String          @id @default(uuid())
+  watchSpaceId String
+  userId       String
+  role         ParticipantRole @default(PARTICIPANT)
+  joinedAt     DateTime        @default(now())
+  leftAt       DateTime?
+  user         User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  watchSpace   WatchSpace      @relation(fields: [watchSpaceId], references: [id], onDelete: Cascade)
+
+  @@unique([watchSpaceId, userId])
+  @@index([watchSpaceId])
+  @@index([userId])
+}
+
+model PlaybackState {
+  id           String     @id @default(uuid())
+  watchSpaceId String     @unique
+  position     Float      @default(0)
+  isPlaying    Boolean    @default(false)
+  playbackRate Float      @default(1.0)
+  version      Int        @default(0)
+  updatedAt    DateTime   @updatedAt
+  syncedAt     DateTime   @default(now())
+  watchSpace   WatchSpace @relation(fields: [watchSpaceId], references: [id], onDelete: Cascade)
+}
+
+model ChatMessage {
+  id           String     @id @default(uuid())
+  watchSpaceId String
+  userId       String
+  message      String
+  videoTime    Float?
+  createdAt    DateTime   @default(now())
+  user         User       @relation(fields: [userId], references: [id])
+  watchSpace   WatchSpace @relation(fields: [watchSpaceId], references: [id], onDelete: Cascade)
+
+  @@index([watchSpaceId, createdAt])
+  @@index([userId])
+}
+
+model Interaction {
+  id        String          @id @default(uuid())
+  userId    String
+  titleId   String
+  type      InteractionType
+  position  Float?
+  value     Int?
+  createdAt DateTime        @default(now())
+  title     Title           @relation(fields: [titleId], references: [id], onDelete: Cascade)
+  user      User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([titleId])
+  @@index([userId, titleId])
+  @@index([type])
+}
+
+model VariationVote {
+  id                String @id @default(uuid())
+  watchSpaceId      String
+  timelineEventId   String
+  variationOptionId String
+  userId            String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user            User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  watchSpace      WatchSpace      @relation(fields: [watchSpaceId], references: [id], onDelete: Cascade)
+  timelineEvent   TimelineEvent   @relation(fields: [timelineEventId], references: [id], onDelete: Cascade)
+  variationOption VariationOption @relation(fields: [variationOptionId], references: [id], onDelete: Cascade)
+
+  @@unique([watchSpaceId, timelineEventId, userId])
+  @@index([watchSpaceId])
+  @@index([timelineEventId])
+  @@index([variationOptionId])
+  @@index([userId])
+}
+
 enum UserRole {
   VIEWER
   HOST
@@ -40,192 +232,4 @@ enum InteractionType {
   COMPLETE
   SKIP
   WATCH
-}
-
-model User {
-  id           String   @id @default(uuid())
-  name         String
-  email        String   @unique
-  passwordHash String
-  role         UserRole @default(VIEWER)
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  createdWatchSpaces WatchSpace[]            @relation("WatchSpaceHost")
-  participations     WatchSpaceParticipant[]
-  interactions       Interaction[]
-  chatMessages       ChatMessage[]
-  refreshTokens      RefreshToken[]
-
-  @@index([email])
-  @@index([role])
-}
-
-model RefreshToken {
-  id        String    @id @default(uuid())
-  userId    String
-  tokenHash String    @unique
-  expiresAt DateTime
-  revokedAt DateTime?
-  createdAt DateTime  @default(now())
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@index([userId])
-  @@index([expiresAt])
-}
-
-model Title {
-  id           String  @id @default(uuid())
-  name         String
-  description  String?
-  thumbnailUrl String?
-  videoUrl     String?
-  genre        String?
-  duration     Int?
-  isActive     Boolean @default(true)
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  timelineEvents TimelineEvent[]
-  watchSpaces    WatchSpace[]
-  interactions   Interaction[]
-
-  @@index([name])
-  @@index([genre])
-  @@index([isActive])
-}
-
-model TimelineEvent {
-  id          String            @id @default(uuid())
-  titleId     String
-  type        TimelineEventType
-  startTime   Float
-  endTime     Float?
-  eventTitle  String?
-  description String?
-  payload     Json?
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  title      Title             @relation(fields: [titleId], references: [id], onDelete: Cascade)
-  variations VariationOption[]
-
-  @@index([titleId])
-  @@index([titleId, startTime])
-  @@index([type])
-}
-
-model VariationOption {
-  id              String  @id @default(uuid())
-  timelineEventId String
-  label           String
-  content         String
-  locale          String?
-  isDefault       Boolean @default(false)
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  timelineEvent TimelineEvent @relation(fields: [timelineEventId], references: [id], onDelete: Cascade)
-
-  @@index([timelineEventId])
-  @@index([locale])
-}
-
-model WatchSpace {
-  id      String           @id @default(uuid())
-  titleId String
-  hostId  String
-  name    String?
-  status  WatchSpaceStatus @default(ACTIVE)
-
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  endedAt   DateTime?
-
-  title           Title                   @relation(fields: [titleId], references: [id], onDelete: Restrict)
-  host            User                    @relation("WatchSpaceHost", fields: [hostId], references: [id], onDelete: Restrict)
-  participants    WatchSpaceParticipant[]
-  playback        PlaybackState?
-  chatMessages    ChatMessage[]
-  joinCode        String                  @unique
-  maxParticipants Int                     @default(5)
-
-  @@index([titleId])
-  @@index([hostId])
-  @@index([status])
-  @@index([createdAt])
-}
-
-model WatchSpaceParticipant {
-  id           String          @id @default(uuid())
-  watchSpaceId String
-  userId       String
-  role         ParticipantRole @default(PARTICIPANT)
-
-  joinedAt DateTime  @default(now())
-  leftAt   DateTime?
-
-  watchSpace WatchSpace @relation(fields: [watchSpaceId], references: [id], onDelete: Cascade)
-  user       User       @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@unique([watchSpaceId, userId])
-  @@index([watchSpaceId])
-  @@index([userId])
-}
-
-model PlaybackState {
-  id           String @id @default(uuid())
-  watchSpaceId String @unique
-
-  position     Float   @default(0)
-  isPlaying    Boolean @default(false)
-  playbackRate Float   @default(1.0)
-  version      Int     @default(0)
-
-  syncedAt  DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  watchSpace WatchSpace @relation(fields: [watchSpaceId], references: [id], onDelete: Cascade)
-}
-
-model ChatMessage {
-  id           String @id @default(uuid())
-  watchSpaceId String
-  userId       String
-
-  message   String
-  videoTime Float?
-
-  createdAt DateTime @default(now())
-
-  watchSpace WatchSpace @relation(fields: [watchSpaceId], references: [id], onDelete: Cascade)
-  user       User       @relation(fields: [userId], references: [id], onDelete: Restrict)
-
-  @@index([watchSpaceId, createdAt])
-  @@index([userId])
-}
-
-model Interaction {
-  id      String          @id @default(uuid())
-  userId  String
-  titleId String
-  type    InteractionType
-
-  position Float?
-  value    Int?
-
-  createdAt DateTime @default(now())
-
-  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
-  title Title @relation(fields: [titleId], references: [id], onDelete: Cascade)
-
-  @@index([userId])
-  @@index([titleId])
-  @@index([userId, titleId])
-  @@index([type])
 }

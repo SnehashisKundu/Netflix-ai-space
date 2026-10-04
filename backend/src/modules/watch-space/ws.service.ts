@@ -1,6 +1,8 @@
 import crypto from "node:crypto";
 import { prisma } from "../../lib/prisma.js";
-import type { CreateWatchSpaceInput } from "./ws.validation.js";
+import type {
+  CreateWatchSpaceInput
+} from "./ws.validation.js";
 
 const MAX_PARTICIPANTS = 5;
 
@@ -338,6 +340,7 @@ export const validateWatchSpaceMembership = async (
       id: true,
       status: true,
       hostId: true,
+      titleId: true,
     },
   });
 
@@ -369,5 +372,102 @@ export const validateWatchSpaceMembership = async (
   return {
     watchSpace,
     participant,
+  };
+};
+
+export const castVariationVote = async (
+  userId: string,
+  watchSpaceId: string,
+  variationId: string,
+) => {
+  const { watchSpace } =
+    await validateWatchSpaceMembership(
+      userId,
+      watchSpaceId,
+    );
+
+  const variation = await prisma.variationOption.findUnique({
+    where: {
+      id: variationId,
+    },
+    select: {
+      id: true,
+      timelineEventId: true,
+      label: true,
+      content: true,
+      locale: true,
+      isDefault: true,
+      timelineEvent: {
+        select: {
+          titleId: true,
+        },
+      },
+    },
+  });
+
+  if (!variation) {
+    throw new Error("VARIATION_NOT_FOUND");
+  }
+
+  if (
+    variation.timelineEvent.titleId !==
+    watchSpace.titleId
+  ) {
+    throw new Error("VARIATION_TITLE_MISMATCH");
+  }
+
+  const vote = await prisma.variationVote.upsert({
+    where: {
+      watchSpaceId_userId: {
+        watchSpaceId,
+        userId,
+      },
+    },
+    create: {
+      watchSpaceId,
+      variationOptionId: variation.id,
+      userId,
+    },
+    update: {
+      variationOptionId: variation.id,
+    },
+    include: {
+      variationOption: {
+        select: {
+          id: true,
+          label: true,
+          content: true,
+          locale: true,
+          isDefault: true,
+        },
+      },
+    },
+  });
+
+  const voteCounts =
+    await prisma.variationVote.groupBy({
+      by: ["variationOptionId"],
+      where: {
+        watchSpaceId,
+      },
+      _count: {
+        variationOptionId: true,
+      },
+    });
+
+  const totalVotes = voteCounts.reduce(
+    (total, item) =>
+      total + item._count.variationOptionId,
+    0,
+  );
+
+  return {
+    watchSpaceId: watchSpace.id,
+    variation: vote.variationOption,
+    totalVotes,
+    results: voteCounts.map((item) => ({
+      variationId: item.variationOptionId,
+      votes: item._count.variationOptionId,
+    })),
   };
 };
