@@ -1,72 +1,86 @@
 import { z } from "zod";
 
-export const createVariationSchema = z.object({
-  label: z
-    .string()
-    .trim()
-    .min(1)
-    .max(200),
+export const timelineEventIdParamSchema =
+  z.object({
+    timelineEventId: z.string().uuid(),
+  });
 
-  content: z
-    .string()
-    .trim()
-    .min(1)
-    .max(5000),
+export const variationParamSchema =
+  z.object({
+    timelineEventId: z.string().uuid(),
+    variationId: z.string().uuid(),
+  });
 
-  locale: z
-    .string()
-    .trim()
-    .min(2)
-    .max(20)
-    .optional()
-    .nullable(),
+export const localeParamSchema =
+  z.object({
+    timelineEventId: z.string().uuid(),
+    locale: z
+      .string()
+      .trim()
+      .min(2)
+      .max(20),
+  });
 
-  isDefault: z
-    .boolean()
-    .optional(),
-});
+export const createVariationSchema =
+  z.object({
+    label: z
+      .string()
+      .trim()
+      .min(1)
+      .max(200),
 
-export const updateVariationSchema = z.object({
-  label: z
-    .string()
-    .trim()
-    .min(1)
-    .max(200)
-    .optional(),
+    content: z
+      .string()
+      .trim()
+      .min(1),
 
-  content: z
-    .string()
-    .trim()
-    .min(1)
-    .max(5000)
-    .optional(),
+    locale: z
+      .string()
+      .trim()
+      .min(2)
+      .max(20)
+      .nullable()
+      .optional(),
 
-  locale: z
-    .string()
-    .trim()
-    .min(2)
-    .max(20)
-    .optional()
-    .nullable(),
+    isDefault: z
+      .boolean()
+      .optional(),
+  });
 
-  isDefault: z
-    .boolean()
-    .optional(),
-});
+export const updateVariationSchema =
+  z.object({
+    label: z
+      .string()
+      .trim()
+      .min(1)
+      .max(200)
+      .optional(),
 
-export const timelineEventIdParamSchema = z.object({
-  timelineEventId: z.string().uuid(),
-});
+    content: z
+      .string()
+      .trim()
+      .min(1)
+      .optional(),
 
-export const variationParamSchema = z.object({
-  timelineEventId: z.string().uuid(),
-  variationId: z.string().uuid(),
-});
+    locale: z
+      .string()
+      .trim()
+      .min(2)
+      .max(20)
+      .nullable()
+      .optional(),
 
-export type CreateVariationInput = z.infer<
-  typeof createVariationSchema
->;
+    isDefault: z
+      .boolean()
+      .optional(),
+  });
 
-export type UpdateVariationInput = z.infer<
-  typeof updateVariationSchema
->;
+export type CreateVariationInput =
+  z.infer<
+    typeof createVariationSchema
+  >;
+
+export type UpdateVariationInput =
+  z.infer<
+    typeof updateVariationSchema
+  >;

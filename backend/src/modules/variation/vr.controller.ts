@@ -5,6 +5,7 @@ import type { AuthRequest } from "../../middleware/auth.middleware.js";
 import {
   createVariation,
   deleteVariation,
+  getLocalizedVariation,
   getVariationById,
   getVariations,
   updateVariation,
@@ -12,246 +13,409 @@ import {
 
 import {
   createVariationSchema,
+  localeParamSchema,
   timelineEventIdParamSchema,
   updateVariationSchema,
   variationParamSchema,
 } from "./vr.validation.js";
 
-export const createVariationController = async (
-  req: AuthRequest,
-  res: Response,
-) => {
-  try {
-    const { timelineEventId } =
-      timelineEventIdParamSchema.parse(req.params);
+// ==========================================
+// CREATE
+// ==========================================
 
-    const input = createVariationSchema.parse(req.body);
+export const createVariationController =
+  async (
+    req: AuthRequest,
+    res: Response,
+  ) => {
+    try {
+      const { timelineEventId } =
+        timelineEventIdParamSchema.parse(
+          req.params,
+        );
 
-    const variation = await createVariation(
-      timelineEventId,
-      input,
-    );
+      const input =
+        createVariationSchema.parse(
+          req.body,
+        );
 
-    return res.status(201).json({
-      success: true,
-      message: "Variation created successfully",
-      data: variation,
-    });
-  } catch (error) {
-    if (error instanceof Error) {
-      if (error.name === "ZodError") {
-        return res.status(400).json({
-          success: false,
-          message: "Invalid request data",
-          error: error.message,
-        });
+      const variation =
+        await createVariation(
+          timelineEventId,
+          input,
+        );
+
+      return res.status(201).json({
+        success: true,
+        message:
+          "Variation created successfully",
+        data: variation,
+      });
+    } catch (error) {
+      if (error instanceof Error) {
+        if (error.name === "ZodError") {
+          return res.status(400).json({
+            success: false,
+            message:
+              "Invalid request data",
+            error: error.message,
+          });
+        }
+
+        if (
+          error.message ===
+          "TIMELINE_EVENT_NOT_FOUND"
+        ) {
+          return res.status(404).json({
+            success: false,
+            message:
+              "Timeline event not found",
+          });
+        }
       }
 
-      if (
-        error.message === "TIMELINE_EVENT_NOT_FOUND"
-      ) {
-        return res.status(404).json({
-          success: false,
-          message: "Timeline event not found",
-        });
-      }
+      console.error(
+        "Create variation error:",
+        error,
+      );
+
+      return res.status(500).json({
+        success: false,
+        message:
+          "Failed to create variation",
+      });
     }
+  };
 
-    console.error("Create variation error:", error);
+// ==========================================
+// GET ALL
+// ==========================================
 
-    return res.status(500).json({
-      success: false,
-      message: "Failed to create variation",
-    });
-  }
-};
+export const getVariationsController =
+  async (
+    req: AuthRequest,
+    res: Response,
+  ) => {
+    try {
+      const { timelineEventId } =
+        timelineEventIdParamSchema.parse(
+          req.params,
+        );
 
-export const getVariationsController = async (
-  req: AuthRequest,
-  res: Response,
-) => {
-  try {
-    const { timelineEventId } =
-      timelineEventIdParamSchema.parse(req.params);
+      const variations =
+        await getVariations(
+          timelineEventId,
+        );
 
-    const variations =
-      await getVariations(timelineEventId);
+      return res.status(200).json({
+        success: true,
+        message:
+          "Variations fetched successfully",
+        data: variations,
+      });
+    } catch (error) {
+      if (error instanceof Error) {
+        if (error.name === "ZodError") {
+          return res.status(400).json({
+            success: false,
+            message:
+              "Invalid timeline event id",
+          });
+        }
 
-    return res.status(200).json({
-      success: true,
-      message: "Variations fetched successfully",
-      data: variations,
-    });
-  } catch (error) {
-    if (error instanceof Error) {
-      if (error.name === "ZodError") {
-        return res.status(400).json({
-          success: false,
-          message: "Invalid timeline event id",
-        });
+        if (
+          error.message ===
+          "TIMELINE_EVENT_NOT_FOUND"
+        ) {
+          return res.status(404).json({
+            success: false,
+            message:
+              "Timeline event not found",
+          });
+        }
       }
 
-      if (
-        error.message === "TIMELINE_EVENT_NOT_FOUND"
-      ) {
-        return res.status(404).json({
-          success: false,
-          message: "Timeline event not found",
-        });
-      }
+      console.error(
+        "Get variations error:",
+        error,
+      );
+
+      return res.status(500).json({
+        success: false,
+        message:
+          "Failed to fetch variations",
+      });
     }
+  };
 
-    console.error("Get variations error:", error);
+// ==========================================
+// GET LOCALIZED
+// ==========================================
 
-    return res.status(500).json({
-      success: false,
-      message: "Failed to fetch variations",
-    });
-  }
-};
+export const getLocalizedVariationController =
+  async (
+    req: AuthRequest,
+    res: Response,
+  ) => {
+    try {
+      const {
+        timelineEventId,
+        locale,
+      } = localeParamSchema.parse(
+        req.params,
+      );
 
-export const getVariationByIdController = async (
-  req: AuthRequest,
-  res: Response,
-) => {
-  try {
-    const { timelineEventId, variationId } =
-      variationParamSchema.parse(req.params);
+      const variation =
+        await getLocalizedVariation(
+          timelineEventId,
+          locale,
+        );
 
-    const variation = await getVariationById(
-      timelineEventId,
-      variationId,
-    );
+      return res.status(200).json({
+        success: true,
+        message:
+          "Localized variation fetched successfully",
+        data: variation,
+      });
+    } catch (error) {
+      if (error instanceof Error) {
+        if (error.name === "ZodError") {
+          return res.status(400).json({
+            success: false,
+            message:
+              "Invalid localization parameters",
+          });
+        }
 
-    return res.status(200).json({
-      success: true,
-      message: "Variation fetched successfully",
-      data: variation,
-    });
-  } catch (error) {
-    if (error instanceof Error) {
-      if (error.name === "ZodError") {
-        return res.status(400).json({
-          success: false,
-          message: "Invalid parameters",
-        });
+        if (
+          error.message ===
+          "TIMELINE_EVENT_NOT_FOUND"
+        ) {
+          return res.status(404).json({
+            success: false,
+            message:
+              "Timeline event not found",
+          });
+        }
+
+        if (
+          error.message ===
+          "LOCALIZED_VARIATION_NOT_FOUND"
+        ) {
+          return res.status(404).json({
+            success: false,
+            message:
+              "Localized variation not found",
+          });
+        }
       }
 
-      if (error.message === "VARIATION_NOT_FOUND") {
-        return res.status(404).json({
-          success: false,
-          message: "Variation not found",
-        });
-      }
+      console.error(
+        "Get localized variation error:",
+        error,
+      );
+
+      return res.status(500).json({
+        success: false,
+        message:
+          "Failed to fetch localized variation",
+      });
     }
+  };
 
-    console.error(
-      "Get variation error:",
-      error,
-    );
+// ==========================================
+// GET BY ID
+// ==========================================
 
-    return res.status(500).json({
-      success: false,
-      message: "Failed to fetch variation",
-    });
-  }
-};
+export const getVariationByIdController =
+  async (
+    req: AuthRequest,
+    res: Response,
+  ) => {
+    try {
+      const {
+        timelineEventId,
+        variationId,
+      } = variationParamSchema.parse(
+        req.params,
+      );
 
-export const updateVariationController = async (
-  req: AuthRequest,
-  res: Response,
-) => {
-  try {
-    const { timelineEventId, variationId } =
-      variationParamSchema.parse(req.params);
+      const variation =
+        await getVariationById(
+          timelineEventId,
+          variationId,
+        );
 
-    const input = updateVariationSchema.parse(
-      req.body,
-    );
+      return res.status(200).json({
+        success: true,
+        message:
+          "Variation fetched successfully",
+        data: variation,
+      });
+    } catch (error) {
+      if (error instanceof Error) {
+        if (error.name === "ZodError") {
+          return res.status(400).json({
+            success: false,
+            message:
+              "Invalid parameters",
+          });
+        }
 
-    const variation = await updateVariation(
-      timelineEventId,
-      variationId,
-      input,
-    );
-
-    return res.status(200).json({
-      success: true,
-      message: "Variation updated successfully",
-      data: variation,
-    });
-  } catch (error) {
-    if (error instanceof Error) {
-      if (error.name === "ZodError") {
-        return res.status(400).json({
-          success: false,
-          message: "Invalid request data",
-          error: error.message,
-        });
+        if (
+          error.message ===
+          "VARIATION_NOT_FOUND"
+        ) {
+          return res.status(404).json({
+            success: false,
+            message:
+              "Variation not found",
+          });
+        }
       }
 
-      if (error.message === "VARIATION_NOT_FOUND") {
-        return res.status(404).json({
-          success: false,
-          message: "Variation not found",
-        });
-      }
+      console.error(
+        "Get variation error:",
+        error,
+      );
+
+      return res.status(500).json({
+        success: false,
+        message:
+          "Failed to fetch variation",
+      });
     }
+  };
 
-    console.error(
-      "Update variation error:",
-      error,
-    );
+// ==========================================
+// UPDATE
+// ==========================================
 
-    return res.status(500).json({
-      success: false,
-      message: "Failed to update variation",
-    });
-  }
-};
+export const updateVariationController =
+  async (
+    req: AuthRequest,
+    res: Response,
+  ) => {
+    try {
+      const {
+        timelineEventId,
+        variationId,
+      } = variationParamSchema.parse(
+        req.params,
+      );
 
-export const deleteVariationController = async (
-  req: AuthRequest,
-  res: Response,
-) => {
-  try {
-    const { timelineEventId, variationId } =
-      variationParamSchema.parse(req.params);
+      const input =
+        updateVariationSchema.parse(
+          req.body,
+        );
 
-    await deleteVariation(
-      timelineEventId,
-      variationId,
-    );
+      const variation =
+        await updateVariation(
+          timelineEventId,
+          variationId,
+          input,
+        );
 
-    return res.status(200).json({
-      success: true,
-      message: "Variation deleted successfully",
-    });
-  } catch (error) {
-    if (error instanceof Error) {
-      if (error.name === "ZodError") {
-        return res.status(400).json({
-          success: false,
-          message: "Invalid parameters",
-        });
+      return res.status(200).json({
+        success: true,
+        message:
+          "Variation updated successfully",
+        data: variation,
+      });
+    } catch (error) {
+      if (error instanceof Error) {
+        if (error.name === "ZodError") {
+          return res.status(400).json({
+            success: false,
+            message:
+              "Invalid request data",
+            error: error.message,
+          });
+        }
+
+        if (
+          error.message ===
+          "VARIATION_NOT_FOUND"
+        ) {
+          return res.status(404).json({
+            success: false,
+            message:
+              "Variation not found",
+          });
+        }
       }
 
-      if (error.message === "VARIATION_NOT_FOUND") {
-        return res.status(404).json({
-          success: false,
-          message: "Variation not found",
-        });
-      }
+      console.error(
+        "Update variation error:",
+        error,
+      );
+
+      return res.status(500).json({
+        success: false,
+        message:
+          "Failed to update variation",
+      });
     }
+  };
 
-    console.error(
-      "Delete variation error:",
-      error,
-    );
+// ==========================================
+// DELETE
+// ==========================================
 
-    return res.status(500).json({
-      success: false,
-      message: "Failed to delete variation",
-    });
-  }
-};
+export const deleteVariationController =
+  async (
+    req: AuthRequest,
+    res: Response,
+  ) => {
+    try {
+      const {
+        timelineEventId,
+        variationId,
+      } = variationParamSchema.parse(
+        req.params,
+      );
+
+      await deleteVariation(
+        timelineEventId,
+        variationId,
+      );
+
+      return res.status(200).json({
+        success: true,
+        message:
+          "Variation deleted successfully",
+      });
+    } catch (error) {
+      if (error instanceof Error) {
+        if (error.name === "ZodError") {
+          return res.status(400).json({
+            success: false,
+            message:
+              "Invalid parameters",
+          });
+        }
+
+        if (
+          error.message ===
+          "VARIATION_NOT_FOUND"
+        ) {
+          return res.status(404).json({
+            success: false,
+            message:
+              "Variation not found",
+          });
+        }
+      }
+
+      console.error(
+        "Delete variation error:",
+        error,
+      );
+
+      return res.status(500).json({
+        success: false,
+        message:
+          "Failed to delete variation",
+      });
+    }
+  };

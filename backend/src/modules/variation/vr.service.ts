@@ -5,6 +5,10 @@ import type {
   UpdateVariationInput,
 } from "./vr.validation.js";
 
+// ==========================================
+// CREATE VARIATION
+// ==========================================
+
 export const createVariation = async (
   timelineEventId: string,
   input: CreateVariationInput,
@@ -20,7 +24,9 @@ export const createVariation = async (
     });
 
   if (!timelineEvent) {
-    throw new Error("TIMELINE_EVENT_NOT_FOUND");
+    throw new Error(
+      "TIMELINE_EVENT_NOT_FOUND",
+    );
   }
 
   if (input.isDefault === true) {
@@ -41,10 +47,15 @@ export const createVariation = async (
       label: input.label,
       content: input.content,
       locale: input.locale ?? null,
-      isDefault: input.isDefault ?? false,
+      isDefault:
+        input.isDefault ?? false,
     },
   });
 };
+
+// ==========================================
+// GET ALL VARIATIONS
+// ==========================================
 
 export const getVariations = async (
   timelineEventId: string,
@@ -60,7 +71,9 @@ export const getVariations = async (
     });
 
   if (!timelineEvent) {
-    throw new Error("TIMELINE_EVENT_NOT_FOUND");
+    throw new Error(
+      "TIMELINE_EVENT_NOT_FOUND",
+    );
   }
 
   return prisma.variationOption.findMany({
@@ -78,6 +91,10 @@ export const getVariations = async (
   });
 };
 
+// ==========================================
+// GET VARIATION BY ID
+// ==========================================
+
 export const getVariationById = async (
   timelineEventId: string,
   variationId: string,
@@ -91,11 +108,73 @@ export const getVariationById = async (
     });
 
   if (!variation) {
-    throw new Error("VARIATION_NOT_FOUND");
+    throw new Error(
+      "VARIATION_NOT_FOUND",
+    );
   }
 
   return variation;
 };
+
+// ==========================================
+// GET LOCALIZED VARIATION
+// ==========================================
+
+export const getLocalizedVariation =
+  async (
+    timelineEventId: string,
+    locale: string,
+  ) => {
+    const timelineEvent =
+      await prisma.timelineEvent.findUnique({
+        where: {
+          id: timelineEventId,
+        },
+        select: {
+          id: true,
+        },
+      });
+
+    if (!timelineEvent) {
+      throw new Error(
+        "TIMELINE_EVENT_NOT_FOUND",
+      );
+    }
+
+    const normalizedLocale =
+      locale.trim();
+
+    const variation =
+      await prisma.variationOption.findFirst({
+        where: {
+          timelineEventId,
+          locale: {
+            equals: normalizedLocale,
+            mode: "insensitive",
+          },
+        },
+        orderBy: [
+          {
+            isDefault: "desc",
+          },
+          {
+            createdAt: "asc",
+          },
+        ],
+      });
+
+    if (!variation) {
+      throw new Error(
+        "LOCALIZED_VARIATION_NOT_FOUND",
+      );
+    }
+
+    return variation;
+  };
+
+// ==========================================
+// UPDATE VARIATION
+// ==========================================
 
 export const updateVariation = async (
   timelineEventId: string,
@@ -114,7 +193,9 @@ export const updateVariation = async (
     });
 
   if (!existingVariation) {
-    throw new Error("VARIATION_NOT_FOUND");
+    throw new Error(
+      "VARIATION_NOT_FOUND",
+    );
   }
 
   if (input.isDefault === true) {
@@ -156,6 +237,10 @@ export const updateVariation = async (
   });
 };
 
+// ==========================================
+// DELETE VARIATION
+// ==========================================
+
 export const deleteVariation = async (
   timelineEventId: string,
   variationId: string,
@@ -172,7 +257,9 @@ export const deleteVariation = async (
     });
 
   if (!existingVariation) {
-    throw new Error("VARIATION_NOT_FOUND");
+    throw new Error(
+      "VARIATION_NOT_FOUND",
+    );
   }
 
   await prisma.variationOption.delete({
