@@ -208,9 +208,10 @@ export type TitleWhereInput = {
     isActive?: Prisma.BoolFilter<"Title"> | boolean;
     createdAt?: Prisma.DateTimeFilter<"Title"> | Date | string;
     updatedAt?: Prisma.DateTimeFilter<"Title"> | Date | string;
+    interactions?: Prisma.InteractionListRelationFilter;
     timelineEvents?: Prisma.TimelineEventListRelationFilter;
     watchSpaces?: Prisma.WatchSpaceListRelationFilter;
-    interactions?: Prisma.InteractionListRelationFilter;
+    aiQuestionLogs?: Prisma.AiQuestionLogListRelationFilter;
 };
 export type TitleOrderByWithRelationInput = {
     id?: Prisma.SortOrder;
@@ -223,9 +224,10 @@ export type TitleOrderByWithRelationInput = {
     isActive?: Prisma.SortOrder;
     createdAt?: Prisma.SortOrder;
     updatedAt?: Prisma.SortOrder;
+    interactions?: Prisma.InteractionOrderByRelationAggregateInput;
     timelineEvents?: Prisma.TimelineEventOrderByRelationAggregateInput;
     watchSpaces?: Prisma.WatchSpaceOrderByRelationAggregateInput;
-    interactions?: Prisma.InteractionOrderByRelationAggregateInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogOrderByRelationAggregateInput;
 };
 export type TitleWhereUniqueInput = Prisma.AtLeast<{
     id?: string;
@@ -241,9 +243,10 @@ export type TitleWhereUniqueInput = Prisma.AtLeast<{
     isActive?: Prisma.BoolFilter<"Title"> | boolean;
     createdAt?: Prisma.DateTimeFilter<"Title"> | Date | string;
     updatedAt?: Prisma.DateTimeFilter<"Title"> | Date | string;
+    interactions?: Prisma.InteractionListRelationFilter;
     timelineEvents?: Prisma.TimelineEventListRelationFilter;
     watchSpaces?: Prisma.WatchSpaceListRelationFilter;
-    interactions?: Prisma.InteractionListRelationFilter;
+    aiQuestionLogs?: Prisma.AiQuestionLogListRelationFilter;
 }, "id">;
 export type TitleOrderByWithAggregationInput = {
     id?: Prisma.SortOrder;
@@ -288,9 +291,10 @@ export type TitleCreateInput = {
     isActive?: boolean;
     createdAt?: Date | string;
     updatedAt?: Date | string;
+    interactions?: Prisma.InteractionCreateNestedManyWithoutTitleInput;
     timelineEvents?: Prisma.TimelineEventCreateNestedManyWithoutTitleInput;
     watchSpaces?: Prisma.WatchSpaceCreateNestedManyWithoutTitleInput;
-    interactions?: Prisma.InteractionCreateNestedManyWithoutTitleInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogCreateNestedManyWithoutTitleInput;
 };
 export type TitleUncheckedCreateInput = {
     id?: string;
@@ -303,9 +307,10 @@ export type TitleUncheckedCreateInput = {
     isActive?: boolean;
     createdAt?: Date | string;
     updatedAt?: Date | string;
+    interactions?: Prisma.InteractionUncheckedCreateNestedManyWithoutTitleInput;
     timelineEvents?: Prisma.TimelineEventUncheckedCreateNestedManyWithoutTitleInput;
     watchSpaces?: Prisma.WatchSpaceUncheckedCreateNestedManyWithoutTitleInput;
-    interactions?: Prisma.InteractionUncheckedCreateNestedManyWithoutTitleInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogUncheckedCreateNestedManyWithoutTitleInput;
 };
 export type TitleUpdateInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -318,9 +323,10 @@ export type TitleUpdateInput = {
     isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    interactions?: Prisma.InteractionUpdateManyWithoutTitleNestedInput;
     timelineEvents?: Prisma.TimelineEventUpdateManyWithoutTitleNestedInput;
     watchSpaces?: Prisma.WatchSpaceUpdateManyWithoutTitleNestedInput;
-    interactions?: Prisma.InteractionUpdateManyWithoutTitleNestedInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogUpdateManyWithoutTitleNestedInput;
 };
 export type TitleUncheckedUpdateInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -333,9 +339,10 @@ export type TitleUncheckedUpdateInput = {
     isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    interactions?: Prisma.InteractionUncheckedUpdateManyWithoutTitleNestedInput;
     timelineEvents?: Prisma.TimelineEventUncheckedUpdateManyWithoutTitleNestedInput;
     watchSpaces?: Prisma.WatchSpaceUncheckedUpdateManyWithoutTitleNestedInput;
-    interactions?: Prisma.InteractionUncheckedUpdateManyWithoutTitleNestedInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogUncheckedUpdateManyWithoutTitleNestedInput;
 };
 export type TitleCreateManyInput = {
     id?: string;
@@ -468,6 +475,18 @@ export type TitleUpdateOneRequiredWithoutInteractionsNestedInput = {
     connect?: Prisma.TitleWhereUniqueInput;
     update?: Prisma.XOR<Prisma.XOR<Prisma.TitleUpdateToOneWithWhereWithoutInteractionsInput, Prisma.TitleUpdateWithoutInteractionsInput>, Prisma.TitleUncheckedUpdateWithoutInteractionsInput>;
 };
+export type TitleCreateNestedOneWithoutAiQuestionLogsInput = {
+    create?: Prisma.XOR<Prisma.TitleCreateWithoutAiQuestionLogsInput, Prisma.TitleUncheckedCreateWithoutAiQuestionLogsInput>;
+    connectOrCreate?: Prisma.TitleCreateOrConnectWithoutAiQuestionLogsInput;
+    connect?: Prisma.TitleWhereUniqueInput;
+};
+export type TitleUpdateOneRequiredWithoutAiQuestionLogsNestedInput = {
+    create?: Prisma.XOR<Prisma.TitleCreateWithoutAiQuestionLogsInput, Prisma.TitleUncheckedCreateWithoutAiQuestionLogsInput>;
+    connectOrCreate?: Prisma.TitleCreateOrConnectWithoutAiQuestionLogsInput;
+    upsert?: Prisma.TitleUpsertWithoutAiQuestionLogsInput;
+    connect?: Prisma.TitleWhereUniqueInput;
+    update?: Prisma.XOR<Prisma.XOR<Prisma.TitleUpdateToOneWithWhereWithoutAiQuestionLogsInput, Prisma.TitleUpdateWithoutAiQuestionLogsInput>, Prisma.TitleUncheckedUpdateWithoutAiQuestionLogsInput>;
+};
 export type TitleCreateWithoutTimelineEventsInput = {
     id?: string;
     name: string;
@@ -479,8 +498,9 @@ export type TitleCreateWithoutTimelineEventsInput = {
     isActive?: boolean;
     createdAt?: Date | string;
     updatedAt?: Date | string;
-    watchSpaces?: Prisma.WatchSpaceCreateNestedManyWithoutTitleInput;
     interactions?: Prisma.InteractionCreateNestedManyWithoutTitleInput;
+    watchSpaces?: Prisma.WatchSpaceCreateNestedManyWithoutTitleInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogCreateNestedManyWithoutTitleInput;
 };
 export type TitleUncheckedCreateWithoutTimelineEventsInput = {
     id?: string;
@@ -493,8 +513,9 @@ export type TitleUncheckedCreateWithoutTimelineEventsInput = {
     isActive?: boolean;
     createdAt?: Date | string;
     updatedAt?: Date | string;
-    watchSpaces?: Prisma.WatchSpaceUncheckedCreateNestedManyWithoutTitleInput;
     interactions?: Prisma.InteractionUncheckedCreateNestedManyWithoutTitleInput;
+    watchSpaces?: Prisma.WatchSpaceUncheckedCreateNestedManyWithoutTitleInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogUncheckedCreateNestedManyWithoutTitleInput;
 };
 export type TitleCreateOrConnectWithoutTimelineEventsInput = {
     where: Prisma.TitleWhereUniqueInput;
@@ -520,8 +541,9 @@ export type TitleUpdateWithoutTimelineEventsInput = {
     isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-    watchSpaces?: Prisma.WatchSpaceUpdateManyWithoutTitleNestedInput;
     interactions?: Prisma.InteractionUpdateManyWithoutTitleNestedInput;
+    watchSpaces?: Prisma.WatchSpaceUpdateManyWithoutTitleNestedInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogUpdateManyWithoutTitleNestedInput;
 };
 export type TitleUncheckedUpdateWithoutTimelineEventsInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -534,8 +556,9 @@ export type TitleUncheckedUpdateWithoutTimelineEventsInput = {
     isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-    watchSpaces?: Prisma.WatchSpaceUncheckedUpdateManyWithoutTitleNestedInput;
     interactions?: Prisma.InteractionUncheckedUpdateManyWithoutTitleNestedInput;
+    watchSpaces?: Prisma.WatchSpaceUncheckedUpdateManyWithoutTitleNestedInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogUncheckedUpdateManyWithoutTitleNestedInput;
 };
 export type TitleCreateWithoutWatchSpacesInput = {
     id?: string;
@@ -548,8 +571,9 @@ export type TitleCreateWithoutWatchSpacesInput = {
     isActive?: boolean;
     createdAt?: Date | string;
     updatedAt?: Date | string;
-    timelineEvents?: Prisma.TimelineEventCreateNestedManyWithoutTitleInput;
     interactions?: Prisma.InteractionCreateNestedManyWithoutTitleInput;
+    timelineEvents?: Prisma.TimelineEventCreateNestedManyWithoutTitleInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogCreateNestedManyWithoutTitleInput;
 };
 export type TitleUncheckedCreateWithoutWatchSpacesInput = {
     id?: string;
@@ -562,8 +586,9 @@ export type TitleUncheckedCreateWithoutWatchSpacesInput = {
     isActive?: boolean;
     createdAt?: Date | string;
     updatedAt?: Date | string;
-    timelineEvents?: Prisma.TimelineEventUncheckedCreateNestedManyWithoutTitleInput;
     interactions?: Prisma.InteractionUncheckedCreateNestedManyWithoutTitleInput;
+    timelineEvents?: Prisma.TimelineEventUncheckedCreateNestedManyWithoutTitleInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogUncheckedCreateNestedManyWithoutTitleInput;
 };
 export type TitleCreateOrConnectWithoutWatchSpacesInput = {
     where: Prisma.TitleWhereUniqueInput;
@@ -589,8 +614,9 @@ export type TitleUpdateWithoutWatchSpacesInput = {
     isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-    timelineEvents?: Prisma.TimelineEventUpdateManyWithoutTitleNestedInput;
     interactions?: Prisma.InteractionUpdateManyWithoutTitleNestedInput;
+    timelineEvents?: Prisma.TimelineEventUpdateManyWithoutTitleNestedInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogUpdateManyWithoutTitleNestedInput;
 };
 export type TitleUncheckedUpdateWithoutWatchSpacesInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -603,8 +629,9 @@ export type TitleUncheckedUpdateWithoutWatchSpacesInput = {
     isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-    timelineEvents?: Prisma.TimelineEventUncheckedUpdateManyWithoutTitleNestedInput;
     interactions?: Prisma.InteractionUncheckedUpdateManyWithoutTitleNestedInput;
+    timelineEvents?: Prisma.TimelineEventUncheckedUpdateManyWithoutTitleNestedInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogUncheckedUpdateManyWithoutTitleNestedInput;
 };
 export type TitleCreateWithoutInteractionsInput = {
     id?: string;
@@ -619,6 +646,7 @@ export type TitleCreateWithoutInteractionsInput = {
     updatedAt?: Date | string;
     timelineEvents?: Prisma.TimelineEventCreateNestedManyWithoutTitleInput;
     watchSpaces?: Prisma.WatchSpaceCreateNestedManyWithoutTitleInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogCreateNestedManyWithoutTitleInput;
 };
 export type TitleUncheckedCreateWithoutInteractionsInput = {
     id?: string;
@@ -633,6 +661,7 @@ export type TitleUncheckedCreateWithoutInteractionsInput = {
     updatedAt?: Date | string;
     timelineEvents?: Prisma.TimelineEventUncheckedCreateNestedManyWithoutTitleInput;
     watchSpaces?: Prisma.WatchSpaceUncheckedCreateNestedManyWithoutTitleInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogUncheckedCreateNestedManyWithoutTitleInput;
 };
 export type TitleCreateOrConnectWithoutInteractionsInput = {
     where: Prisma.TitleWhereUniqueInput;
@@ -660,6 +689,7 @@ export type TitleUpdateWithoutInteractionsInput = {
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     timelineEvents?: Prisma.TimelineEventUpdateManyWithoutTitleNestedInput;
     watchSpaces?: Prisma.WatchSpaceUpdateManyWithoutTitleNestedInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogUpdateManyWithoutTitleNestedInput;
 };
 export type TitleUncheckedUpdateWithoutInteractionsInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -674,19 +704,95 @@ export type TitleUncheckedUpdateWithoutInteractionsInput = {
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     timelineEvents?: Prisma.TimelineEventUncheckedUpdateManyWithoutTitleNestedInput;
     watchSpaces?: Prisma.WatchSpaceUncheckedUpdateManyWithoutTitleNestedInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogUncheckedUpdateManyWithoutTitleNestedInput;
+};
+export type TitleCreateWithoutAiQuestionLogsInput = {
+    id?: string;
+    name: string;
+    description?: string | null;
+    thumbnailUrl?: string | null;
+    videoUrl?: string | null;
+    genre?: string | null;
+    duration?: number | null;
+    isActive?: boolean;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    interactions?: Prisma.InteractionCreateNestedManyWithoutTitleInput;
+    timelineEvents?: Prisma.TimelineEventCreateNestedManyWithoutTitleInput;
+    watchSpaces?: Prisma.WatchSpaceCreateNestedManyWithoutTitleInput;
+};
+export type TitleUncheckedCreateWithoutAiQuestionLogsInput = {
+    id?: string;
+    name: string;
+    description?: string | null;
+    thumbnailUrl?: string | null;
+    videoUrl?: string | null;
+    genre?: string | null;
+    duration?: number | null;
+    isActive?: boolean;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    interactions?: Prisma.InteractionUncheckedCreateNestedManyWithoutTitleInput;
+    timelineEvents?: Prisma.TimelineEventUncheckedCreateNestedManyWithoutTitleInput;
+    watchSpaces?: Prisma.WatchSpaceUncheckedCreateNestedManyWithoutTitleInput;
+};
+export type TitleCreateOrConnectWithoutAiQuestionLogsInput = {
+    where: Prisma.TitleWhereUniqueInput;
+    create: Prisma.XOR<Prisma.TitleCreateWithoutAiQuestionLogsInput, Prisma.TitleUncheckedCreateWithoutAiQuestionLogsInput>;
+};
+export type TitleUpsertWithoutAiQuestionLogsInput = {
+    update: Prisma.XOR<Prisma.TitleUpdateWithoutAiQuestionLogsInput, Prisma.TitleUncheckedUpdateWithoutAiQuestionLogsInput>;
+    create: Prisma.XOR<Prisma.TitleCreateWithoutAiQuestionLogsInput, Prisma.TitleUncheckedCreateWithoutAiQuestionLogsInput>;
+    where?: Prisma.TitleWhereInput;
+};
+export type TitleUpdateToOneWithWhereWithoutAiQuestionLogsInput = {
+    where?: Prisma.TitleWhereInput;
+    data: Prisma.XOR<Prisma.TitleUpdateWithoutAiQuestionLogsInput, Prisma.TitleUncheckedUpdateWithoutAiQuestionLogsInput>;
+};
+export type TitleUpdateWithoutAiQuestionLogsInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    name?: Prisma.StringFieldUpdateOperationsInput | string;
+    description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    thumbnailUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    videoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    genre?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    duration?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+    isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    interactions?: Prisma.InteractionUpdateManyWithoutTitleNestedInput;
+    timelineEvents?: Prisma.TimelineEventUpdateManyWithoutTitleNestedInput;
+    watchSpaces?: Prisma.WatchSpaceUpdateManyWithoutTitleNestedInput;
+};
+export type TitleUncheckedUpdateWithoutAiQuestionLogsInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    name?: Prisma.StringFieldUpdateOperationsInput | string;
+    description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    thumbnailUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    videoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    genre?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    duration?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+    isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    interactions?: Prisma.InteractionUncheckedUpdateManyWithoutTitleNestedInput;
+    timelineEvents?: Prisma.TimelineEventUncheckedUpdateManyWithoutTitleNestedInput;
+    watchSpaces?: Prisma.WatchSpaceUncheckedUpdateManyWithoutTitleNestedInput;
 };
 /**
  * Count Type TitleCountOutputType
  */
 export type TitleCountOutputType = {
+    interactions: number;
     timelineEvents: number;
     watchSpaces: number;
-    interactions: number;
+    aiQuestionLogs: number;
 };
 export type TitleCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    interactions?: boolean | TitleCountOutputTypeCountInteractionsArgs;
     timelineEvents?: boolean | TitleCountOutputTypeCountTimelineEventsArgs;
     watchSpaces?: boolean | TitleCountOutputTypeCountWatchSpacesArgs;
-    interactions?: boolean | TitleCountOutputTypeCountInteractionsArgs;
+    aiQuestionLogs?: boolean | TitleCountOutputTypeCountAiQuestionLogsArgs;
 };
 /**
  * TitleCountOutputType without action
@@ -696,6 +802,12 @@ export type TitleCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extens
      * Select specific fields to fetch from the TitleCountOutputType
      */
     select?: Prisma.TitleCountOutputTypeSelect<ExtArgs> | null;
+};
+/**
+ * TitleCountOutputType without action
+ */
+export type TitleCountOutputTypeCountInteractionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.InteractionWhereInput;
 };
 /**
  * TitleCountOutputType without action
@@ -712,8 +824,8 @@ export type TitleCountOutputTypeCountWatchSpacesArgs<ExtArgs extends runtime.Typ
 /**
  * TitleCountOutputType without action
  */
-export type TitleCountOutputTypeCountInteractionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-    where?: Prisma.InteractionWhereInput;
+export type TitleCountOutputTypeCountAiQuestionLogsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.AiQuestionLogWhereInput;
 };
 export type TitleSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
     id?: boolean;
@@ -726,9 +838,10 @@ export type TitleSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
     isActive?: boolean;
     createdAt?: boolean;
     updatedAt?: boolean;
+    interactions?: boolean | Prisma.Title$interactionsArgs<ExtArgs>;
     timelineEvents?: boolean | Prisma.Title$timelineEventsArgs<ExtArgs>;
     watchSpaces?: boolean | Prisma.Title$watchSpacesArgs<ExtArgs>;
-    interactions?: boolean | Prisma.Title$interactionsArgs<ExtArgs>;
+    aiQuestionLogs?: boolean | Prisma.Title$aiQuestionLogsArgs<ExtArgs>;
     _count?: boolean | Prisma.TitleCountOutputTypeDefaultArgs<ExtArgs>;
 }, ExtArgs["result"]["title"]>;
 export type TitleSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -769,9 +882,10 @@ export type TitleSelectScalar = {
 };
 export type TitleOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "description" | "thumbnailUrl" | "videoUrl" | "genre" | "duration" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["title"]>;
 export type TitleInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    interactions?: boolean | Prisma.Title$interactionsArgs<ExtArgs>;
     timelineEvents?: boolean | Prisma.Title$timelineEventsArgs<ExtArgs>;
     watchSpaces?: boolean | Prisma.Title$watchSpacesArgs<ExtArgs>;
-    interactions?: boolean | Prisma.Title$interactionsArgs<ExtArgs>;
+    aiQuestionLogs?: boolean | Prisma.Title$aiQuestionLogsArgs<ExtArgs>;
     _count?: boolean | Prisma.TitleCountOutputTypeDefaultArgs<ExtArgs>;
 };
 export type TitleIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {};
@@ -779,9 +893,10 @@ export type TitleIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
 export type $TitlePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     name: "Title";
     objects: {
+        interactions: Prisma.$InteractionPayload<ExtArgs>[];
         timelineEvents: Prisma.$TimelineEventPayload<ExtArgs>[];
         watchSpaces: Prisma.$WatchSpacePayload<ExtArgs>[];
-        interactions: Prisma.$InteractionPayload<ExtArgs>[];
+        aiQuestionLogs: Prisma.$AiQuestionLogPayload<ExtArgs>[];
     };
     scalars: runtime.Types.Extensions.GetPayloadResult<{
         id: string;
@@ -1123,9 +1238,10 @@ export interface TitleDelegate<ExtArgs extends runtime.Types.Extensions.Internal
  */
 export interface Prisma__TitleClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise";
+    interactions<T extends Prisma.Title$interactionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Title$interactionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$InteractionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
     timelineEvents<T extends Prisma.Title$timelineEventsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Title$timelineEventsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TimelineEventPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
     watchSpaces<T extends Prisma.Title$watchSpacesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Title$watchSpacesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$WatchSpacePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
-    interactions<T extends Prisma.Title$interactionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Title$interactionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$InteractionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
+    aiQuestionLogs<T extends Prisma.Title$aiQuestionLogsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Title$aiQuestionLogsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AiQuestionLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1537,6 +1653,29 @@ export type TitleDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Interna
     limit?: number;
 };
 /**
+ * Title.interactions
+ */
+export type Title$interactionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Interaction
+     */
+    select?: Prisma.InteractionSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the Interaction
+     */
+    omit?: Prisma.InteractionOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.InteractionInclude<ExtArgs> | null;
+    where?: Prisma.InteractionWhereInput;
+    orderBy?: Prisma.InteractionOrderByWithRelationInput | Prisma.InteractionOrderByWithRelationInput[];
+    cursor?: Prisma.InteractionWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.InteractionScalarFieldEnum | Prisma.InteractionScalarFieldEnum[];
+};
+/**
  * Title.timelineEvents
  */
 export type Title$timelineEventsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1583,27 +1722,27 @@ export type Title$watchSpacesArgs<ExtArgs extends runtime.Types.Extensions.Inter
     distinct?: Prisma.WatchSpaceScalarFieldEnum | Prisma.WatchSpaceScalarFieldEnum[];
 };
 /**
- * Title.interactions
+ * Title.aiQuestionLogs
  */
-export type Title$interactionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Title$aiQuestionLogsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Interaction
+     * Select specific fields to fetch from the AiQuestionLog
      */
-    select?: Prisma.InteractionSelect<ExtArgs> | null;
+    select?: Prisma.AiQuestionLogSelect<ExtArgs> | null;
     /**
-     * Omit specific fields from the Interaction
+     * Omit specific fields from the AiQuestionLog
      */
-    omit?: Prisma.InteractionOmit<ExtArgs> | null;
+    omit?: Prisma.AiQuestionLogOmit<ExtArgs> | null;
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: Prisma.InteractionInclude<ExtArgs> | null;
-    where?: Prisma.InteractionWhereInput;
-    orderBy?: Prisma.InteractionOrderByWithRelationInput | Prisma.InteractionOrderByWithRelationInput[];
-    cursor?: Prisma.InteractionWhereUniqueInput;
+    include?: Prisma.AiQuestionLogInclude<ExtArgs> | null;
+    where?: Prisma.AiQuestionLogWhereInput;
+    orderBy?: Prisma.AiQuestionLogOrderByWithRelationInput | Prisma.AiQuestionLogOrderByWithRelationInput[];
+    cursor?: Prisma.AiQuestionLogWhereUniqueInput;
     take?: number;
     skip?: number;
-    distinct?: Prisma.InteractionScalarFieldEnum | Prisma.InteractionScalarFieldEnum[];
+    distinct?: Prisma.AiQuestionLogScalarFieldEnum | Prisma.AiQuestionLogScalarFieldEnum[];
 };
 /**
  * Title without action

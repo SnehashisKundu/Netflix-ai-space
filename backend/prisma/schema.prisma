@@ -21,6 +21,7 @@ model User {
   variationVotes     VariationVote[]
   createdWatchSpaces WatchSpace[]            @relation("WatchSpaceHost")
   participations     WatchSpaceParticipant[]
+  aiQuestionLogs     AiQuestionLog[]
 
   @@index([email])
   @@index([role])
@@ -53,6 +54,7 @@ model Title {
   interactions   Interaction[]
   timelineEvents TimelineEvent[]
   watchSpaces    WatchSpace[]
+  aiQuestionLogs AiQuestionLog[]
 
   @@index([name])
   @@index([genre])
@@ -112,6 +114,7 @@ model WatchSpace {
   host            User                    @relation("WatchSpaceHost", fields: [hostId], references: [id])
   title           Title                   @relation(fields: [titleId], references: [id])
   participants    WatchSpaceParticipant[]
+  aiQuestionLogs  AiQuestionLog[]
 
   @@index([titleId])
   @@index([hostId])
@@ -197,6 +200,25 @@ model VariationVote {
   @@index([timelineEventId])
   @@index([variationOptionId])
   @@index([userId])
+}
+
+model AiQuestionLog {
+  id           String     @id @default(uuid())
+  userId       String
+  titleId      String
+  watchSpaceId String
+  question     String
+  at           Float
+  createdAt    DateTime   @default(now())
+
+  user       User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title      Title      @relation(fields: [titleId], references: [id], onDelete: Cascade)
+  watchSpace WatchSpace @relation(fields: [watchSpaceId], references: [id], onDelete: Cascade)
+
+  @@index([watchSpaceId])
+  @@index([userId])
+  @@index([titleId])
+  @@index([watchSpaceId, createdAt])
 }
 
 enum UserRole {

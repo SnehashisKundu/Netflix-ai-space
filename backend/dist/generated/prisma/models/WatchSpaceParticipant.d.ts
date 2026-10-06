@@ -147,8 +147,8 @@ export type WatchSpaceParticipantWhereInput = {
     role?: Prisma.EnumParticipantRoleFilter<"WatchSpaceParticipant"> | $Enums.ParticipantRole;
     joinedAt?: Prisma.DateTimeFilter<"WatchSpaceParticipant"> | Date | string;
     leftAt?: Prisma.DateTimeNullableFilter<"WatchSpaceParticipant"> | Date | string | null;
-    watchSpace?: Prisma.XOR<Prisma.WatchSpaceScalarRelationFilter, Prisma.WatchSpaceWhereInput>;
     user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
+    watchSpace?: Prisma.XOR<Prisma.WatchSpaceScalarRelationFilter, Prisma.WatchSpaceWhereInput>;
 };
 export type WatchSpaceParticipantOrderByWithRelationInput = {
     id?: Prisma.SortOrder;
@@ -157,8 +157,8 @@ export type WatchSpaceParticipantOrderByWithRelationInput = {
     role?: Prisma.SortOrder;
     joinedAt?: Prisma.SortOrder;
     leftAt?: Prisma.SortOrderInput | Prisma.SortOrder;
-    watchSpace?: Prisma.WatchSpaceOrderByWithRelationInput;
     user?: Prisma.UserOrderByWithRelationInput;
+    watchSpace?: Prisma.WatchSpaceOrderByWithRelationInput;
 };
 export type WatchSpaceParticipantWhereUniqueInput = Prisma.AtLeast<{
     id?: string;
@@ -171,8 +171,8 @@ export type WatchSpaceParticipantWhereUniqueInput = Prisma.AtLeast<{
     role?: Prisma.EnumParticipantRoleFilter<"WatchSpaceParticipant"> | $Enums.ParticipantRole;
     joinedAt?: Prisma.DateTimeFilter<"WatchSpaceParticipant"> | Date | string;
     leftAt?: Prisma.DateTimeNullableFilter<"WatchSpaceParticipant"> | Date | string | null;
-    watchSpace?: Prisma.XOR<Prisma.WatchSpaceScalarRelationFilter, Prisma.WatchSpaceWhereInput>;
     user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
+    watchSpace?: Prisma.XOR<Prisma.WatchSpaceScalarRelationFilter, Prisma.WatchSpaceWhereInput>;
 }, "id" | "watchSpaceId_userId">;
 export type WatchSpaceParticipantOrderByWithAggregationInput = {
     id?: Prisma.SortOrder;
@@ -201,8 +201,8 @@ export type WatchSpaceParticipantCreateInput = {
     role?: $Enums.ParticipantRole;
     joinedAt?: Date | string;
     leftAt?: Date | string | null;
-    watchSpace: Prisma.WatchSpaceCreateNestedOneWithoutParticipantsInput;
     user: Prisma.UserCreateNestedOneWithoutParticipationsInput;
+    watchSpace: Prisma.WatchSpaceCreateNestedOneWithoutParticipantsInput;
 };
 export type WatchSpaceParticipantUncheckedCreateInput = {
     id?: string;
@@ -217,8 +217,8 @@ export type WatchSpaceParticipantUpdateInput = {
     role?: Prisma.EnumParticipantRoleFieldUpdateOperationsInput | $Enums.ParticipantRole;
     joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     leftAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
-    watchSpace?: Prisma.WatchSpaceUpdateOneRequiredWithoutParticipantsNestedInput;
     user?: Prisma.UserUpdateOneRequiredWithoutParticipationsNestedInput;
+    watchSpace?: Prisma.WatchSpaceUpdateOneRequiredWithoutParticipantsNestedInput;
 };
 export type WatchSpaceParticipantUncheckedUpdateInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -509,8 +509,8 @@ export type WatchSpaceParticipantSelect<ExtArgs extends runtime.Types.Extensions
     role?: boolean;
     joinedAt?: boolean;
     leftAt?: boolean;
-    watchSpace?: boolean | Prisma.WatchSpaceDefaultArgs<ExtArgs>;
     user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+    watchSpace?: boolean | Prisma.WatchSpaceDefaultArgs<ExtArgs>;
 }, ExtArgs["result"]["watchSpaceParticipant"]>;
 export type WatchSpaceParticipantSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
     id?: boolean;
@@ -519,8 +519,8 @@ export type WatchSpaceParticipantSelectCreateManyAndReturn<ExtArgs extends runti
     role?: boolean;
     joinedAt?: boolean;
     leftAt?: boolean;
-    watchSpace?: boolean | Prisma.WatchSpaceDefaultArgs<ExtArgs>;
     user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+    watchSpace?: boolean | Prisma.WatchSpaceDefaultArgs<ExtArgs>;
 }, ExtArgs["result"]["watchSpaceParticipant"]>;
 export type WatchSpaceParticipantSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
     id?: boolean;
@@ -529,8 +529,8 @@ export type WatchSpaceParticipantSelectUpdateManyAndReturn<ExtArgs extends runti
     role?: boolean;
     joinedAt?: boolean;
     leftAt?: boolean;
-    watchSpace?: boolean | Prisma.WatchSpaceDefaultArgs<ExtArgs>;
     user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+    watchSpace?: boolean | Prisma.WatchSpaceDefaultArgs<ExtArgs>;
 }, ExtArgs["result"]["watchSpaceParticipant"]>;
 export type WatchSpaceParticipantSelectScalar = {
     id?: boolean;
@@ -542,22 +542,22 @@ export type WatchSpaceParticipantSelectScalar = {
 };
 export type WatchSpaceParticipantOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "watchSpaceId" | "userId" | "role" | "joinedAt" | "leftAt", ExtArgs["result"]["watchSpaceParticipant"]>;
 export type WatchSpaceParticipantInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-    watchSpace?: boolean | Prisma.WatchSpaceDefaultArgs<ExtArgs>;
     user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+    watchSpace?: boolean | Prisma.WatchSpaceDefaultArgs<ExtArgs>;
 };
 export type WatchSpaceParticipantIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-    watchSpace?: boolean | Prisma.WatchSpaceDefaultArgs<ExtArgs>;
     user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+    watchSpace?: boolean | Prisma.WatchSpaceDefaultArgs<ExtArgs>;
 };
 export type WatchSpaceParticipantIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-    watchSpace?: boolean | Prisma.WatchSpaceDefaultArgs<ExtArgs>;
     user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+    watchSpace?: boolean | Prisma.WatchSpaceDefaultArgs<ExtArgs>;
 };
 export type $WatchSpaceParticipantPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     name: "WatchSpaceParticipant";
     objects: {
-        watchSpace: Prisma.$WatchSpacePayload<ExtArgs>;
         user: Prisma.$UserPayload<ExtArgs>;
+        watchSpace: Prisma.$WatchSpacePayload<ExtArgs>;
     };
     scalars: runtime.Types.Extensions.GetPayloadResult<{
         id: string;
@@ -895,8 +895,8 @@ export interface WatchSpaceParticipantDelegate<ExtArgs extends runtime.Types.Ext
  */
 export interface Prisma__WatchSpaceParticipantClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise";
-    watchSpace<T extends Prisma.WatchSpaceDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.WatchSpaceDefaultArgs<ExtArgs>>): Prisma.Prisma__WatchSpaceClient<runtime.Types.Result.GetResult<Prisma.$WatchSpacePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>;
     user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>;
+    watchSpace<T extends Prisma.WatchSpaceDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.WatchSpaceDefaultArgs<ExtArgs>>): Prisma.Prisma__WatchSpaceClient<runtime.Types.Result.GetResult<Prisma.$WatchSpacePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>;
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.

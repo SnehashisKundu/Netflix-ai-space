@@ -1,17 +1,52 @@
 import { ZodError } from "zod";
-import { titleIdParamSchema, qaQuerySchema } from "../timeline/tl.validation.js";
+import { prisma } from "../../lib/prisma.js";
+import { titleIdParamSchema, qaQuerySchema, } from "../timeline/tl.validation.js";
 import { getQaContext } from "../timeline/tl.service.js";
 import { generateQaAnswer } from "./qa.service.js";
 export const askQuestionController = async (req, res) => {
     try {
         const { titleId } = titleIdParamSchema.parse(req.params);
         const query = qaQuerySchema.parse(req.query);
+        const userId = req.user.userId;
+        if (query.watchSpaceId) {
+            const participant = await prisma.watchSpaceParticipant.findFirst({
+                where: {
+                    watchSpaceId: query.watchSpaceId,
+                    userId,
+                    leftAt: null,
+                    watchSpace: {
+                        status: "ACTIVE",
+                        titleId,
+                    },
+                },
+                select: {
+                    id: true,
+                },
+            });
+            if (!participant) {
+                return res.status(403).json({
+                    success: false,
+                    message: "You are not an active participant of this watch space",
+                });
+            }
+        }
         const context = await getQaContext(titleId, query);
         const result = await generateQaAnswer({
             question: context.question,
             at: context.at,
             sources: context.sources,
         });
+        if (query.watchSpaceId) {
+            await prisma.aiQuestionLog.create({
+                data: {
+                    userId,
+                    titleId,
+                    watchSpaceId: query.watchSpaceId,
+                    question: context.question,
+                    at: context.at,
+                },
+            });
+        }
         return res.status(200).json({
             success: true,
             message: "Question answered successfully",

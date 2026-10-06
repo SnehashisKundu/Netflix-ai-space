@@ -6,8 +6,8 @@ export declare const getPlaybackState: (watchSpaceId: string) => Promise<{
     isPlaying: boolean;
     playbackRate: number;
     version: number;
-    syncedAt: Date;
     updatedAt: Date;
+    syncedAt: Date;
 } | null>;
 export declare const updatePlaybackState: (watchSpaceId: string, input: PlaybackUpdateInput) => Promise<{
     id: string;
@@ -16,8 +16,8 @@ export declare const updatePlaybackState: (watchSpaceId: string, input: Playback
     isPlaying: boolean;
     playbackRate: number;
     version: number;
-    syncedAt: Date;
     updatedAt: Date;
+    syncedAt: Date;
 }>;
 export declare const seekPlayback: (watchSpaceId: string, input: PlaybackSeekInput) => Promise<{
     id: string;
@@ -26,7 +26,7 @@ export declare const seekPlayback: (watchSpaceId: string, input: PlaybackSeekInp
     isPlaying: boolean;
     playbackRate: number;
     version: number;
-    syncedAt: Date;
     updatedAt: Date;
+    syncedAt: Date;
 }>;
 //# sourceMappingURL=pb.service.d.ts.map

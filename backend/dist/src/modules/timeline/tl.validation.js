@@ -103,8 +103,7 @@ export const timelineContextQuerySchema = z
 export const triviaAtQuerySchema = z.object({
     at: z.coerce.number().min(0),
 });
-export const qaQuerySchema = z
-    .object({
+export const qaQuerySchema = z.object({
     question: z
         .string()
         .trim()
@@ -113,5 +112,8 @@ export const qaQuerySchema = z
     at: z.coerce
         .number()
         .min(0),
+    watchSpaceId: z
+        .uuid()
+        .optional(),
 });
 //# sourceMappingURL=tl.validation.js.map

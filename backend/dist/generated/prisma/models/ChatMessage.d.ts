@@ -176,8 +176,8 @@ export type ChatMessageWhereInput = {
     message?: Prisma.StringFilter<"ChatMessage"> | string;
     videoTime?: Prisma.FloatNullableFilter<"ChatMessage"> | number | null;
     createdAt?: Prisma.DateTimeFilter<"ChatMessage"> | Date | string;
-    watchSpace?: Prisma.XOR<Prisma.WatchSpaceScalarRelationFilter, Prisma.WatchSpaceWhereInput>;
     user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
+    watchSpace?: Prisma.XOR<Prisma.WatchSpaceScalarRelationFilter, Prisma.WatchSpaceWhereInput>;
 };
 export type ChatMessageOrderByWithRelationInput = {
     id?: Prisma.SortOrder;
@@ -186,8 +186,8 @@ export type ChatMessageOrderByWithRelationInput = {
     message?: Prisma.SortOrder;
     videoTime?: Prisma.SortOrderInput | Prisma.SortOrder;
     createdAt?: Prisma.SortOrder;
-    watchSpace?: Prisma.WatchSpaceOrderByWithRelationInput;
     user?: Prisma.UserOrderByWithRelationInput;
+    watchSpace?: Prisma.WatchSpaceOrderByWithRelationInput;
 };
 export type ChatMessageWhereUniqueInput = Prisma.AtLeast<{
     id?: string;
@@ -199,8 +199,8 @@ export type ChatMessageWhereUniqueInput = Prisma.AtLeast<{
     message?: Prisma.StringFilter<"ChatMessage"> | string;
     videoTime?: Prisma.FloatNullableFilter<"ChatMessage"> | number | null;
     createdAt?: Prisma.DateTimeFilter<"ChatMessage"> | Date | string;
-    watchSpace?: Prisma.XOR<Prisma.WatchSpaceScalarRelationFilter, Prisma.WatchSpaceWhereInput>;
     user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
+    watchSpace?: Prisma.XOR<Prisma.WatchSpaceScalarRelationFilter, Prisma.WatchSpaceWhereInput>;
 }, "id">;
 export type ChatMessageOrderByWithAggregationInput = {
     id?: Prisma.SortOrder;
@@ -231,8 +231,8 @@ export type ChatMessageCreateInput = {
     message: string;
     videoTime?: number | null;
     createdAt?: Date | string;
-    watchSpace: Prisma.WatchSpaceCreateNestedOneWithoutChatMessagesInput;
     user: Prisma.UserCreateNestedOneWithoutChatMessagesInput;
+    watchSpace: Prisma.WatchSpaceCreateNestedOneWithoutChatMessagesInput;
 };
 export type ChatMessageUncheckedCreateInput = {
     id?: string;
@@ -247,8 +247,8 @@ export type ChatMessageUpdateInput = {
     message?: Prisma.StringFieldUpdateOperationsInput | string;
     videoTime?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-    watchSpace?: Prisma.WatchSpaceUpdateOneRequiredWithoutChatMessagesNestedInput;
     user?: Prisma.UserUpdateOneRequiredWithoutChatMessagesNestedInput;
+    watchSpace?: Prisma.WatchSpaceUpdateOneRequiredWithoutChatMessagesNestedInput;
 };
 export type ChatMessageUncheckedUpdateInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -538,8 +538,8 @@ export type ChatMessageSelect<ExtArgs extends runtime.Types.Extensions.InternalA
     message?: boolean;
     videoTime?: boolean;
     createdAt?: boolean;
-    watchSpace?: boolean | Prisma.WatchSpaceDefaultArgs<ExtArgs>;
     user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+    watchSpace?: boolean | Prisma.WatchSpaceDefaultArgs<ExtArgs>;
 }, ExtArgs["result"]["chatMessage"]>;
 export type ChatMessageSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
     id?: boolean;
@@ -548,8 +548,8 @@ export type ChatMessageSelectCreateManyAndReturn<ExtArgs extends runtime.Types.E
     message?: boolean;
     videoTime?: boolean;
     createdAt?: boolean;
-    watchSpace?: boolean | Prisma.WatchSpaceDefaultArgs<ExtArgs>;
     user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+    watchSpace?: boolean | Prisma.WatchSpaceDefaultArgs<ExtArgs>;
 }, ExtArgs["result"]["chatMessage"]>;
 export type ChatMessageSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
     id?: boolean;
@@ -558,8 +558,8 @@ export type ChatMessageSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.E
     message?: boolean;
     videoTime?: boolean;
     createdAt?: boolean;
-    watchSpace?: boolean | Prisma.WatchSpaceDefaultArgs<ExtArgs>;
     user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+    watchSpace?: boolean | Prisma.WatchSpaceDefaultArgs<ExtArgs>;
 }, ExtArgs["result"]["chatMessage"]>;
 export type ChatMessageSelectScalar = {
     id?: boolean;
@@ -571,22 +571,22 @@ export type ChatMessageSelectScalar = {
 };
 export type ChatMessageOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "watchSpaceId" | "userId" | "message" | "videoTime" | "createdAt", ExtArgs["result"]["chatMessage"]>;
 export type ChatMessageInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-    watchSpace?: boolean | Prisma.WatchSpaceDefaultArgs<ExtArgs>;
     user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+    watchSpace?: boolean | Prisma.WatchSpaceDefaultArgs<ExtArgs>;
 };
 export type ChatMessageIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-    watchSpace?: boolean | Prisma.WatchSpaceDefaultArgs<ExtArgs>;
     user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+    watchSpace?: boolean | Prisma.WatchSpaceDefaultArgs<ExtArgs>;
 };
 export type ChatMessageIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-    watchSpace?: boolean | Prisma.WatchSpaceDefaultArgs<ExtArgs>;
     user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+    watchSpace?: boolean | Prisma.WatchSpaceDefaultArgs<ExtArgs>;
 };
 export type $ChatMessagePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     name: "ChatMessage";
     objects: {
-        watchSpace: Prisma.$WatchSpacePayload<ExtArgs>;
         user: Prisma.$UserPayload<ExtArgs>;
+        watchSpace: Prisma.$WatchSpacePayload<ExtArgs>;
     };
     scalars: runtime.Types.Extensions.GetPayloadResult<{
         id: string;
@@ -924,8 +924,8 @@ export interface ChatMessageDelegate<ExtArgs extends runtime.Types.Extensions.In
  */
 export interface Prisma__ChatMessageClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise";
-    watchSpace<T extends Prisma.WatchSpaceDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.WatchSpaceDefaultArgs<ExtArgs>>): Prisma.Prisma__WatchSpaceClient<runtime.Types.Result.GetResult<Prisma.$WatchSpacePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>;
     user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>;
+    watchSpace<T extends Prisma.WatchSpaceDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.WatchSpaceDefaultArgs<ExtArgs>>): Prisma.Prisma__WatchSpaceClient<runtime.Types.Result.GetResult<Prisma.$WatchSpacePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>;
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.

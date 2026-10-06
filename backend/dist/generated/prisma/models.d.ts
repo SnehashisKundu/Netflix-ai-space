@@ -8,5 +8,7 @@ export type * from './models/WatchSpaceParticipant.js';
 export type * from './models/PlaybackState.js';
 export type * from './models/ChatMessage.js';
 export type * from './models/Interaction.js';
+export type * from './models/VariationVote.js';
+export type * from './models/AiQuestionLog.js';
 export type * from './commonInputTypes.js';
 //# sourceMappingURL=models.d.ts.map

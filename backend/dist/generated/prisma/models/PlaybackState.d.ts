@@ -29,8 +29,8 @@ export type PlaybackStateMinAggregateOutputType = {
     isPlaying: boolean | null;
     playbackRate: number | null;
     version: number | null;
-    syncedAt: Date | null;
     updatedAt: Date | null;
+    syncedAt: Date | null;
 };
 export type PlaybackStateMaxAggregateOutputType = {
     id: string | null;
@@ -39,8 +39,8 @@ export type PlaybackStateMaxAggregateOutputType = {
     isPlaying: boolean | null;
     playbackRate: number | null;
     version: number | null;
-    syncedAt: Date | null;
     updatedAt: Date | null;
+    syncedAt: Date | null;
 };
 export type PlaybackStateCountAggregateOutputType = {
     id: number;
@@ -49,8 +49,8 @@ export type PlaybackStateCountAggregateOutputType = {
     isPlaying: number;
     playbackRate: number;
     version: number;
-    syncedAt: number;
     updatedAt: number;
+    syncedAt: number;
     _all: number;
 };
 export type PlaybackStateAvgAggregateInputType = {
@@ -70,8 +70,8 @@ export type PlaybackStateMinAggregateInputType = {
     isPlaying?: true;
     playbackRate?: true;
     version?: true;
-    syncedAt?: true;
     updatedAt?: true;
+    syncedAt?: true;
 };
 export type PlaybackStateMaxAggregateInputType = {
     id?: true;
@@ -80,8 +80,8 @@ export type PlaybackStateMaxAggregateInputType = {
     isPlaying?: true;
     playbackRate?: true;
     version?: true;
-    syncedAt?: true;
     updatedAt?: true;
+    syncedAt?: true;
 };
 export type PlaybackStateCountAggregateInputType = {
     id?: true;
@@ -90,8 +90,8 @@ export type PlaybackStateCountAggregateInputType = {
     isPlaying?: true;
     playbackRate?: true;
     version?: true;
-    syncedAt?: true;
     updatedAt?: true;
+    syncedAt?: true;
     _all?: true;
 };
 export type PlaybackStateAggregateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -177,8 +177,8 @@ export type PlaybackStateGroupByOutputType = {
     isPlaying: boolean;
     playbackRate: number;
     version: number;
-    syncedAt: Date;
     updatedAt: Date;
+    syncedAt: Date;
     _count: PlaybackStateCountAggregateOutputType | null;
     _avg: PlaybackStateAvgAggregateOutputType | null;
     _sum: PlaybackStateSumAggregateOutputType | null;
@@ -198,8 +198,8 @@ export type PlaybackStateWhereInput = {
     isPlaying?: Prisma.BoolFilter<"PlaybackState"> | boolean;
     playbackRate?: Prisma.FloatFilter<"PlaybackState"> | number;
     version?: Prisma.IntFilter<"PlaybackState"> | number;
-    syncedAt?: Prisma.DateTimeFilter<"PlaybackState"> | Date | string;
     updatedAt?: Prisma.DateTimeFilter<"PlaybackState"> | Date | string;
+    syncedAt?: Prisma.DateTimeFilter<"PlaybackState"> | Date | string;
     watchSpace?: Prisma.XOR<Prisma.WatchSpaceScalarRelationFilter, Prisma.WatchSpaceWhereInput>;
 };
 export type PlaybackStateOrderByWithRelationInput = {
@@ -209,8 +209,8 @@ export type PlaybackStateOrderByWithRelationInput = {
     isPlaying?: Prisma.SortOrder;
     playbackRate?: Prisma.SortOrder;
     version?: Prisma.SortOrder;
-    syncedAt?: Prisma.SortOrder;
     updatedAt?: Prisma.SortOrder;
+    syncedAt?: Prisma.SortOrder;
     watchSpace?: Prisma.WatchSpaceOrderByWithRelationInput;
 };
 export type PlaybackStateWhereUniqueInput = Prisma.AtLeast<{
@@ -223,8 +223,8 @@ export type PlaybackStateWhereUniqueInput = Prisma.AtLeast<{
     isPlaying?: Prisma.BoolFilter<"PlaybackState"> | boolean;
     playbackRate?: Prisma.FloatFilter<"PlaybackState"> | number;
     version?: Prisma.IntFilter<"PlaybackState"> | number;
-    syncedAt?: Prisma.DateTimeFilter<"PlaybackState"> | Date | string;
     updatedAt?: Prisma.DateTimeFilter<"PlaybackState"> | Date | string;
+    syncedAt?: Prisma.DateTimeFilter<"PlaybackState"> | Date | string;
     watchSpace?: Prisma.XOR<Prisma.WatchSpaceScalarRelationFilter, Prisma.WatchSpaceWhereInput>;
 }, "id" | "watchSpaceId">;
 export type PlaybackStateOrderByWithAggregationInput = {
@@ -234,8 +234,8 @@ export type PlaybackStateOrderByWithAggregationInput = {
     isPlaying?: Prisma.SortOrder;
     playbackRate?: Prisma.SortOrder;
     version?: Prisma.SortOrder;
-    syncedAt?: Prisma.SortOrder;
     updatedAt?: Prisma.SortOrder;
+    syncedAt?: Prisma.SortOrder;
     _count?: Prisma.PlaybackStateCountOrderByAggregateInput;
     _avg?: Prisma.PlaybackStateAvgOrderByAggregateInput;
     _max?: Prisma.PlaybackStateMaxOrderByAggregateInput;
@@ -252,8 +252,8 @@ export type PlaybackStateScalarWhereWithAggregatesInput = {
     isPlaying?: Prisma.BoolWithAggregatesFilter<"PlaybackState"> | boolean;
     playbackRate?: Prisma.FloatWithAggregatesFilter<"PlaybackState"> | number;
     version?: Prisma.IntWithAggregatesFilter<"PlaybackState"> | number;
-    syncedAt?: Prisma.DateTimeWithAggregatesFilter<"PlaybackState"> | Date | string;
     updatedAt?: Prisma.DateTimeWithAggregatesFilter<"PlaybackState"> | Date | string;
+    syncedAt?: Prisma.DateTimeWithAggregatesFilter<"PlaybackState"> | Date | string;
 };
 export type PlaybackStateCreateInput = {
     id?: string;
@@ -261,8 +261,8 @@ export type PlaybackStateCreateInput = {
     isPlaying?: boolean;
     playbackRate?: number;
     version?: number;
-    syncedAt?: Date | string;
     updatedAt?: Date | string;
+    syncedAt?: Date | string;
     watchSpace: Prisma.WatchSpaceCreateNestedOneWithoutPlaybackInput;
 };
 export type PlaybackStateUncheckedCreateInput = {
@@ -272,8 +272,8 @@ export type PlaybackStateUncheckedCreateInput = {
     isPlaying?: boolean;
     playbackRate?: number;
     version?: number;
-    syncedAt?: Date | string;
     updatedAt?: Date | string;
+    syncedAt?: Date | string;
 };
 export type PlaybackStateUpdateInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -281,8 +281,8 @@ export type PlaybackStateUpdateInput = {
     isPlaying?: Prisma.BoolFieldUpdateOperationsInput | boolean;
     playbackRate?: Prisma.FloatFieldUpdateOperationsInput | number;
     version?: Prisma.IntFieldUpdateOperationsInput | number;
-    syncedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    syncedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     watchSpace?: Prisma.WatchSpaceUpdateOneRequiredWithoutPlaybackNestedInput;
 };
 export type PlaybackStateUncheckedUpdateInput = {
@@ -292,8 +292,8 @@ export type PlaybackStateUncheckedUpdateInput = {
     isPlaying?: Prisma.BoolFieldUpdateOperationsInput | boolean;
     playbackRate?: Prisma.FloatFieldUpdateOperationsInput | number;
     version?: Prisma.IntFieldUpdateOperationsInput | number;
-    syncedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    syncedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 export type PlaybackStateCreateManyInput = {
     id?: string;
@@ -302,8 +302,8 @@ export type PlaybackStateCreateManyInput = {
     isPlaying?: boolean;
     playbackRate?: number;
     version?: number;
-    syncedAt?: Date | string;
     updatedAt?: Date | string;
+    syncedAt?: Date | string;
 };
 export type PlaybackStateUpdateManyMutationInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -311,8 +311,8 @@ export type PlaybackStateUpdateManyMutationInput = {
     isPlaying?: Prisma.BoolFieldUpdateOperationsInput | boolean;
     playbackRate?: Prisma.FloatFieldUpdateOperationsInput | number;
     version?: Prisma.IntFieldUpdateOperationsInput | number;
-    syncedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    syncedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 export type PlaybackStateUncheckedUpdateManyInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -321,8 +321,8 @@ export type PlaybackStateUncheckedUpdateManyInput = {
     isPlaying?: Prisma.BoolFieldUpdateOperationsInput | boolean;
     playbackRate?: Prisma.FloatFieldUpdateOperationsInput | number;
     version?: Prisma.IntFieldUpdateOperationsInput | number;
-    syncedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    syncedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 export type PlaybackStateNullableScalarRelationFilter = {
     is?: Prisma.PlaybackStateWhereInput | null;
@@ -335,8 +335,8 @@ export type PlaybackStateCountOrderByAggregateInput = {
     isPlaying?: Prisma.SortOrder;
     playbackRate?: Prisma.SortOrder;
     version?: Prisma.SortOrder;
-    syncedAt?: Prisma.SortOrder;
     updatedAt?: Prisma.SortOrder;
+    syncedAt?: Prisma.SortOrder;
 };
 export type PlaybackStateAvgOrderByAggregateInput = {
     position?: Prisma.SortOrder;
@@ -350,8 +350,8 @@ export type PlaybackStateMaxOrderByAggregateInput = {
     isPlaying?: Prisma.SortOrder;
     playbackRate?: Prisma.SortOrder;
     version?: Prisma.SortOrder;
-    syncedAt?: Prisma.SortOrder;
     updatedAt?: Prisma.SortOrder;
+    syncedAt?: Prisma.SortOrder;
 };
 export type PlaybackStateMinOrderByAggregateInput = {
     id?: Prisma.SortOrder;
@@ -360,8 +360,8 @@ export type PlaybackStateMinOrderByAggregateInput = {
     isPlaying?: Prisma.SortOrder;
     playbackRate?: Prisma.SortOrder;
     version?: Prisma.SortOrder;
-    syncedAt?: Prisma.SortOrder;
     updatedAt?: Prisma.SortOrder;
+    syncedAt?: Prisma.SortOrder;
 };
 export type PlaybackStateSumOrderByAggregateInput = {
     position?: Prisma.SortOrder;
@@ -402,8 +402,8 @@ export type PlaybackStateCreateWithoutWatchSpaceInput = {
     isPlaying?: boolean;
     playbackRate?: number;
     version?: number;
-    syncedAt?: Date | string;
     updatedAt?: Date | string;
+    syncedAt?: Date | string;
 };
 export type PlaybackStateUncheckedCreateWithoutWatchSpaceInput = {
     id?: string;
@@ -411,8 +411,8 @@ export type PlaybackStateUncheckedCreateWithoutWatchSpaceInput = {
     isPlaying?: boolean;
     playbackRate?: number;
     version?: number;
-    syncedAt?: Date | string;
     updatedAt?: Date | string;
+    syncedAt?: Date | string;
 };
 export type PlaybackStateCreateOrConnectWithoutWatchSpaceInput = {
     where: Prisma.PlaybackStateWhereUniqueInput;
@@ -433,8 +433,8 @@ export type PlaybackStateUpdateWithoutWatchSpaceInput = {
     isPlaying?: Prisma.BoolFieldUpdateOperationsInput | boolean;
     playbackRate?: Prisma.FloatFieldUpdateOperationsInput | number;
     version?: Prisma.IntFieldUpdateOperationsInput | number;
-    syncedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    syncedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 export type PlaybackStateUncheckedUpdateWithoutWatchSpaceInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -442,8 +442,8 @@ export type PlaybackStateUncheckedUpdateWithoutWatchSpaceInput = {
     isPlaying?: Prisma.BoolFieldUpdateOperationsInput | boolean;
     playbackRate?: Prisma.FloatFieldUpdateOperationsInput | number;
     version?: Prisma.IntFieldUpdateOperationsInput | number;
-    syncedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    syncedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 export type PlaybackStateSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
     id?: boolean;
@@ -452,8 +452,8 @@ export type PlaybackStateSelect<ExtArgs extends runtime.Types.Extensions.Interna
     isPlaying?: boolean;
     playbackRate?: boolean;
     version?: boolean;
-    syncedAt?: boolean;
     updatedAt?: boolean;
+    syncedAt?: boolean;
     watchSpace?: boolean | Prisma.WatchSpaceDefaultArgs<ExtArgs>;
 }, ExtArgs["result"]["playbackState"]>;
 export type PlaybackStateSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -463,8 +463,8 @@ export type PlaybackStateSelectCreateManyAndReturn<ExtArgs extends runtime.Types
     isPlaying?: boolean;
     playbackRate?: boolean;
     version?: boolean;
-    syncedAt?: boolean;
     updatedAt?: boolean;
+    syncedAt?: boolean;
     watchSpace?: boolean | Prisma.WatchSpaceDefaultArgs<ExtArgs>;
 }, ExtArgs["result"]["playbackState"]>;
 export type PlaybackStateSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -474,8 +474,8 @@ export type PlaybackStateSelectUpdateManyAndReturn<ExtArgs extends runtime.Types
     isPlaying?: boolean;
     playbackRate?: boolean;
     version?: boolean;
-    syncedAt?: boolean;
     updatedAt?: boolean;
+    syncedAt?: boolean;
     watchSpace?: boolean | Prisma.WatchSpaceDefaultArgs<ExtArgs>;
 }, ExtArgs["result"]["playbackState"]>;
 export type PlaybackStateSelectScalar = {
@@ -485,10 +485,10 @@ export type PlaybackStateSelectScalar = {
     isPlaying?: boolean;
     playbackRate?: boolean;
     version?: boolean;
-    syncedAt?: boolean;
     updatedAt?: boolean;
+    syncedAt?: boolean;
 };
-export type PlaybackStateOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "watchSpaceId" | "position" | "isPlaying" | "playbackRate" | "version" | "syncedAt" | "updatedAt", ExtArgs["result"]["playbackState"]>;
+export type PlaybackStateOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "watchSpaceId" | "position" | "isPlaying" | "playbackRate" | "version" | "updatedAt" | "syncedAt", ExtArgs["result"]["playbackState"]>;
 export type PlaybackStateInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     watchSpace?: boolean | Prisma.WatchSpaceDefaultArgs<ExtArgs>;
 };
@@ -510,8 +510,8 @@ export type $PlaybackStatePayload<ExtArgs extends runtime.Types.Extensions.Inter
         isPlaying: boolean;
         playbackRate: number;
         version: number;
-        syncedAt: Date;
         updatedAt: Date;
+        syncedAt: Date;
     }, ExtArgs["result"]["playbackState"]>;
     composites: {};
 };
@@ -873,8 +873,8 @@ export interface PlaybackStateFieldRefs {
     readonly isPlaying: Prisma.FieldRef<"PlaybackState", 'Boolean'>;
     readonly playbackRate: Prisma.FieldRef<"PlaybackState", 'Float'>;
     readonly version: Prisma.FieldRef<"PlaybackState", 'Int'>;
-    readonly syncedAt: Prisma.FieldRef<"PlaybackState", 'DateTime'>;
     readonly updatedAt: Prisma.FieldRef<"PlaybackState", 'DateTime'>;
+    readonly syncedAt: Prisma.FieldRef<"PlaybackState", 'DateTime'>;
 }
 /**
  * PlaybackState findUnique

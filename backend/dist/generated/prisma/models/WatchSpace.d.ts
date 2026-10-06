@@ -209,11 +209,13 @@ export type WatchSpaceWhereInput = {
     endedAt?: Prisma.DateTimeNullableFilter<"WatchSpace"> | Date | string | null;
     joinCode?: Prisma.StringFilter<"WatchSpace"> | string;
     maxParticipants?: Prisma.IntFilter<"WatchSpace"> | number;
-    title?: Prisma.XOR<Prisma.TitleScalarRelationFilter, Prisma.TitleWhereInput>;
-    host?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
-    participants?: Prisma.WatchSpaceParticipantListRelationFilter;
-    playback?: Prisma.XOR<Prisma.PlaybackStateNullableScalarRelationFilter, Prisma.PlaybackStateWhereInput> | null;
     chatMessages?: Prisma.ChatMessageListRelationFilter;
+    playback?: Prisma.XOR<Prisma.PlaybackStateNullableScalarRelationFilter, Prisma.PlaybackStateWhereInput> | null;
+    variationVotes?: Prisma.VariationVoteListRelationFilter;
+    host?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
+    title?: Prisma.XOR<Prisma.TitleScalarRelationFilter, Prisma.TitleWhereInput>;
+    participants?: Prisma.WatchSpaceParticipantListRelationFilter;
+    aiQuestionLogs?: Prisma.AiQuestionLogListRelationFilter;
 };
 export type WatchSpaceOrderByWithRelationInput = {
     id?: Prisma.SortOrder;
@@ -226,11 +228,13 @@ export type WatchSpaceOrderByWithRelationInput = {
     endedAt?: Prisma.SortOrderInput | Prisma.SortOrder;
     joinCode?: Prisma.SortOrder;
     maxParticipants?: Prisma.SortOrder;
-    title?: Prisma.TitleOrderByWithRelationInput;
-    host?: Prisma.UserOrderByWithRelationInput;
-    participants?: Prisma.WatchSpaceParticipantOrderByRelationAggregateInput;
-    playback?: Prisma.PlaybackStateOrderByWithRelationInput;
     chatMessages?: Prisma.ChatMessageOrderByRelationAggregateInput;
+    playback?: Prisma.PlaybackStateOrderByWithRelationInput;
+    variationVotes?: Prisma.VariationVoteOrderByRelationAggregateInput;
+    host?: Prisma.UserOrderByWithRelationInput;
+    title?: Prisma.TitleOrderByWithRelationInput;
+    participants?: Prisma.WatchSpaceParticipantOrderByRelationAggregateInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogOrderByRelationAggregateInput;
 };
 export type WatchSpaceWhereUniqueInput = Prisma.AtLeast<{
     id?: string;
@@ -246,11 +250,13 @@ export type WatchSpaceWhereUniqueInput = Prisma.AtLeast<{
     updatedAt?: Prisma.DateTimeFilter<"WatchSpace"> | Date | string;
     endedAt?: Prisma.DateTimeNullableFilter<"WatchSpace"> | Date | string | null;
     maxParticipants?: Prisma.IntFilter<"WatchSpace"> | number;
-    title?: Prisma.XOR<Prisma.TitleScalarRelationFilter, Prisma.TitleWhereInput>;
-    host?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
-    participants?: Prisma.WatchSpaceParticipantListRelationFilter;
-    playback?: Prisma.XOR<Prisma.PlaybackStateNullableScalarRelationFilter, Prisma.PlaybackStateWhereInput> | null;
     chatMessages?: Prisma.ChatMessageListRelationFilter;
+    playback?: Prisma.XOR<Prisma.PlaybackStateNullableScalarRelationFilter, Prisma.PlaybackStateWhereInput> | null;
+    variationVotes?: Prisma.VariationVoteListRelationFilter;
+    host?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
+    title?: Prisma.XOR<Prisma.TitleScalarRelationFilter, Prisma.TitleWhereInput>;
+    participants?: Prisma.WatchSpaceParticipantListRelationFilter;
+    aiQuestionLogs?: Prisma.AiQuestionLogListRelationFilter;
 }, "id" | "joinCode">;
 export type WatchSpaceOrderByWithAggregationInput = {
     id?: Prisma.SortOrder;
@@ -293,11 +299,13 @@ export type WatchSpaceCreateInput = {
     endedAt?: Date | string | null;
     joinCode: string;
     maxParticipants?: number;
-    title: Prisma.TitleCreateNestedOneWithoutWatchSpacesInput;
-    host: Prisma.UserCreateNestedOneWithoutCreatedWatchSpacesInput;
-    participants?: Prisma.WatchSpaceParticipantCreateNestedManyWithoutWatchSpaceInput;
-    playback?: Prisma.PlaybackStateCreateNestedOneWithoutWatchSpaceInput;
     chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutWatchSpaceInput;
+    playback?: Prisma.PlaybackStateCreateNestedOneWithoutWatchSpaceInput;
+    variationVotes?: Prisma.VariationVoteCreateNestedManyWithoutWatchSpaceInput;
+    host: Prisma.UserCreateNestedOneWithoutCreatedWatchSpacesInput;
+    title: Prisma.TitleCreateNestedOneWithoutWatchSpacesInput;
+    participants?: Prisma.WatchSpaceParticipantCreateNestedManyWithoutWatchSpaceInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogCreateNestedManyWithoutWatchSpaceInput;
 };
 export type WatchSpaceUncheckedCreateInput = {
     id?: string;
@@ -310,9 +318,11 @@ export type WatchSpaceUncheckedCreateInput = {
     endedAt?: Date | string | null;
     joinCode: string;
     maxParticipants?: number;
-    participants?: Prisma.WatchSpaceParticipantUncheckedCreateNestedManyWithoutWatchSpaceInput;
-    playback?: Prisma.PlaybackStateUncheckedCreateNestedOneWithoutWatchSpaceInput;
     chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutWatchSpaceInput;
+    playback?: Prisma.PlaybackStateUncheckedCreateNestedOneWithoutWatchSpaceInput;
+    variationVotes?: Prisma.VariationVoteUncheckedCreateNestedManyWithoutWatchSpaceInput;
+    participants?: Prisma.WatchSpaceParticipantUncheckedCreateNestedManyWithoutWatchSpaceInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogUncheckedCreateNestedManyWithoutWatchSpaceInput;
 };
 export type WatchSpaceUpdateInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -323,11 +333,13 @@ export type WatchSpaceUpdateInput = {
     endedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
     joinCode?: Prisma.StringFieldUpdateOperationsInput | string;
     maxParticipants?: Prisma.IntFieldUpdateOperationsInput | number;
-    title?: Prisma.TitleUpdateOneRequiredWithoutWatchSpacesNestedInput;
-    host?: Prisma.UserUpdateOneRequiredWithoutCreatedWatchSpacesNestedInput;
-    participants?: Prisma.WatchSpaceParticipantUpdateManyWithoutWatchSpaceNestedInput;
-    playback?: Prisma.PlaybackStateUpdateOneWithoutWatchSpaceNestedInput;
     chatMessages?: Prisma.ChatMessageUpdateManyWithoutWatchSpaceNestedInput;
+    playback?: Prisma.PlaybackStateUpdateOneWithoutWatchSpaceNestedInput;
+    variationVotes?: Prisma.VariationVoteUpdateManyWithoutWatchSpaceNestedInput;
+    host?: Prisma.UserUpdateOneRequiredWithoutCreatedWatchSpacesNestedInput;
+    title?: Prisma.TitleUpdateOneRequiredWithoutWatchSpacesNestedInput;
+    participants?: Prisma.WatchSpaceParticipantUpdateManyWithoutWatchSpaceNestedInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogUpdateManyWithoutWatchSpaceNestedInput;
 };
 export type WatchSpaceUncheckedUpdateInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -340,9 +352,11 @@ export type WatchSpaceUncheckedUpdateInput = {
     endedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
     joinCode?: Prisma.StringFieldUpdateOperationsInput | string;
     maxParticipants?: Prisma.IntFieldUpdateOperationsInput | number;
-    participants?: Prisma.WatchSpaceParticipantUncheckedUpdateManyWithoutWatchSpaceNestedInput;
-    playback?: Prisma.PlaybackStateUncheckedUpdateOneWithoutWatchSpaceNestedInput;
     chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutWatchSpaceNestedInput;
+    playback?: Prisma.PlaybackStateUncheckedUpdateOneWithoutWatchSpaceNestedInput;
+    variationVotes?: Prisma.VariationVoteUncheckedUpdateManyWithoutWatchSpaceNestedInput;
+    participants?: Prisma.WatchSpaceParticipantUncheckedUpdateManyWithoutWatchSpaceNestedInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogUncheckedUpdateManyWithoutWatchSpaceNestedInput;
 };
 export type WatchSpaceCreateManyInput = {
     id?: string;
@@ -554,6 +568,30 @@ export type WatchSpaceUpdateOneRequiredWithoutChatMessagesNestedInput = {
     connect?: Prisma.WatchSpaceWhereUniqueInput;
     update?: Prisma.XOR<Prisma.XOR<Prisma.WatchSpaceUpdateToOneWithWhereWithoutChatMessagesInput, Prisma.WatchSpaceUpdateWithoutChatMessagesInput>, Prisma.WatchSpaceUncheckedUpdateWithoutChatMessagesInput>;
 };
+export type WatchSpaceCreateNestedOneWithoutVariationVotesInput = {
+    create?: Prisma.XOR<Prisma.WatchSpaceCreateWithoutVariationVotesInput, Prisma.WatchSpaceUncheckedCreateWithoutVariationVotesInput>;
+    connectOrCreate?: Prisma.WatchSpaceCreateOrConnectWithoutVariationVotesInput;
+    connect?: Prisma.WatchSpaceWhereUniqueInput;
+};
+export type WatchSpaceUpdateOneRequiredWithoutVariationVotesNestedInput = {
+    create?: Prisma.XOR<Prisma.WatchSpaceCreateWithoutVariationVotesInput, Prisma.WatchSpaceUncheckedCreateWithoutVariationVotesInput>;
+    connectOrCreate?: Prisma.WatchSpaceCreateOrConnectWithoutVariationVotesInput;
+    upsert?: Prisma.WatchSpaceUpsertWithoutVariationVotesInput;
+    connect?: Prisma.WatchSpaceWhereUniqueInput;
+    update?: Prisma.XOR<Prisma.XOR<Prisma.WatchSpaceUpdateToOneWithWhereWithoutVariationVotesInput, Prisma.WatchSpaceUpdateWithoutVariationVotesInput>, Prisma.WatchSpaceUncheckedUpdateWithoutVariationVotesInput>;
+};
+export type WatchSpaceCreateNestedOneWithoutAiQuestionLogsInput = {
+    create?: Prisma.XOR<Prisma.WatchSpaceCreateWithoutAiQuestionLogsInput, Prisma.WatchSpaceUncheckedCreateWithoutAiQuestionLogsInput>;
+    connectOrCreate?: Prisma.WatchSpaceCreateOrConnectWithoutAiQuestionLogsInput;
+    connect?: Prisma.WatchSpaceWhereUniqueInput;
+};
+export type WatchSpaceUpdateOneRequiredWithoutAiQuestionLogsNestedInput = {
+    create?: Prisma.XOR<Prisma.WatchSpaceCreateWithoutAiQuestionLogsInput, Prisma.WatchSpaceUncheckedCreateWithoutAiQuestionLogsInput>;
+    connectOrCreate?: Prisma.WatchSpaceCreateOrConnectWithoutAiQuestionLogsInput;
+    upsert?: Prisma.WatchSpaceUpsertWithoutAiQuestionLogsInput;
+    connect?: Prisma.WatchSpaceWhereUniqueInput;
+    update?: Prisma.XOR<Prisma.XOR<Prisma.WatchSpaceUpdateToOneWithWhereWithoutAiQuestionLogsInput, Prisma.WatchSpaceUpdateWithoutAiQuestionLogsInput>, Prisma.WatchSpaceUncheckedUpdateWithoutAiQuestionLogsInput>;
+};
 export type WatchSpaceCreateWithoutHostInput = {
     id?: string;
     name?: string | null;
@@ -563,10 +601,12 @@ export type WatchSpaceCreateWithoutHostInput = {
     endedAt?: Date | string | null;
     joinCode: string;
     maxParticipants?: number;
+    chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutWatchSpaceInput;
+    playback?: Prisma.PlaybackStateCreateNestedOneWithoutWatchSpaceInput;
+    variationVotes?: Prisma.VariationVoteCreateNestedManyWithoutWatchSpaceInput;
     title: Prisma.TitleCreateNestedOneWithoutWatchSpacesInput;
     participants?: Prisma.WatchSpaceParticipantCreateNestedManyWithoutWatchSpaceInput;
-    playback?: Prisma.PlaybackStateCreateNestedOneWithoutWatchSpaceInput;
-    chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutWatchSpaceInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogCreateNestedManyWithoutWatchSpaceInput;
 };
 export type WatchSpaceUncheckedCreateWithoutHostInput = {
     id?: string;
@@ -578,9 +618,11 @@ export type WatchSpaceUncheckedCreateWithoutHostInput = {
     endedAt?: Date | string | null;
     joinCode: string;
     maxParticipants?: number;
-    participants?: Prisma.WatchSpaceParticipantUncheckedCreateNestedManyWithoutWatchSpaceInput;
-    playback?: Prisma.PlaybackStateUncheckedCreateNestedOneWithoutWatchSpaceInput;
     chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutWatchSpaceInput;
+    playback?: Prisma.PlaybackStateUncheckedCreateNestedOneWithoutWatchSpaceInput;
+    variationVotes?: Prisma.VariationVoteUncheckedCreateNestedManyWithoutWatchSpaceInput;
+    participants?: Prisma.WatchSpaceParticipantUncheckedCreateNestedManyWithoutWatchSpaceInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogUncheckedCreateNestedManyWithoutWatchSpaceInput;
 };
 export type WatchSpaceCreateOrConnectWithoutHostInput = {
     where: Prisma.WatchSpaceWhereUniqueInput;
@@ -627,10 +669,12 @@ export type WatchSpaceCreateWithoutTitleInput = {
     endedAt?: Date | string | null;
     joinCode: string;
     maxParticipants?: number;
+    chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutWatchSpaceInput;
+    playback?: Prisma.PlaybackStateCreateNestedOneWithoutWatchSpaceInput;
+    variationVotes?: Prisma.VariationVoteCreateNestedManyWithoutWatchSpaceInput;
     host: Prisma.UserCreateNestedOneWithoutCreatedWatchSpacesInput;
     participants?: Prisma.WatchSpaceParticipantCreateNestedManyWithoutWatchSpaceInput;
-    playback?: Prisma.PlaybackStateCreateNestedOneWithoutWatchSpaceInput;
-    chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutWatchSpaceInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogCreateNestedManyWithoutWatchSpaceInput;
 };
 export type WatchSpaceUncheckedCreateWithoutTitleInput = {
     id?: string;
@@ -642,9 +686,11 @@ export type WatchSpaceUncheckedCreateWithoutTitleInput = {
     endedAt?: Date | string | null;
     joinCode: string;
     maxParticipants?: number;
-    participants?: Prisma.WatchSpaceParticipantUncheckedCreateNestedManyWithoutWatchSpaceInput;
-    playback?: Prisma.PlaybackStateUncheckedCreateNestedOneWithoutWatchSpaceInput;
     chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutWatchSpaceInput;
+    playback?: Prisma.PlaybackStateUncheckedCreateNestedOneWithoutWatchSpaceInput;
+    variationVotes?: Prisma.VariationVoteUncheckedCreateNestedManyWithoutWatchSpaceInput;
+    participants?: Prisma.WatchSpaceParticipantUncheckedCreateNestedManyWithoutWatchSpaceInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogUncheckedCreateNestedManyWithoutWatchSpaceInput;
 };
 export type WatchSpaceCreateOrConnectWithoutTitleInput = {
     where: Prisma.WatchSpaceWhereUniqueInput;
@@ -676,10 +722,12 @@ export type WatchSpaceCreateWithoutParticipantsInput = {
     endedAt?: Date | string | null;
     joinCode: string;
     maxParticipants?: number;
-    title: Prisma.TitleCreateNestedOneWithoutWatchSpacesInput;
-    host: Prisma.UserCreateNestedOneWithoutCreatedWatchSpacesInput;
-    playback?: Prisma.PlaybackStateCreateNestedOneWithoutWatchSpaceInput;
     chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutWatchSpaceInput;
+    playback?: Prisma.PlaybackStateCreateNestedOneWithoutWatchSpaceInput;
+    variationVotes?: Prisma.VariationVoteCreateNestedManyWithoutWatchSpaceInput;
+    host: Prisma.UserCreateNestedOneWithoutCreatedWatchSpacesInput;
+    title: Prisma.TitleCreateNestedOneWithoutWatchSpacesInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogCreateNestedManyWithoutWatchSpaceInput;
 };
 export type WatchSpaceUncheckedCreateWithoutParticipantsInput = {
     id?: string;
@@ -692,8 +740,10 @@ export type WatchSpaceUncheckedCreateWithoutParticipantsInput = {
     endedAt?: Date | string | null;
     joinCode: string;
     maxParticipants?: number;
-    playback?: Prisma.PlaybackStateUncheckedCreateNestedOneWithoutWatchSpaceInput;
     chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutWatchSpaceInput;
+    playback?: Prisma.PlaybackStateUncheckedCreateNestedOneWithoutWatchSpaceInput;
+    variationVotes?: Prisma.VariationVoteUncheckedCreateNestedManyWithoutWatchSpaceInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogUncheckedCreateNestedManyWithoutWatchSpaceInput;
 };
 export type WatchSpaceCreateOrConnectWithoutParticipantsInput = {
     where: Prisma.WatchSpaceWhereUniqueInput;
@@ -717,10 +767,12 @@ export type WatchSpaceUpdateWithoutParticipantsInput = {
     endedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
     joinCode?: Prisma.StringFieldUpdateOperationsInput | string;
     maxParticipants?: Prisma.IntFieldUpdateOperationsInput | number;
-    title?: Prisma.TitleUpdateOneRequiredWithoutWatchSpacesNestedInput;
-    host?: Prisma.UserUpdateOneRequiredWithoutCreatedWatchSpacesNestedInput;
-    playback?: Prisma.PlaybackStateUpdateOneWithoutWatchSpaceNestedInput;
     chatMessages?: Prisma.ChatMessageUpdateManyWithoutWatchSpaceNestedInput;
+    playback?: Prisma.PlaybackStateUpdateOneWithoutWatchSpaceNestedInput;
+    variationVotes?: Prisma.VariationVoteUpdateManyWithoutWatchSpaceNestedInput;
+    host?: Prisma.UserUpdateOneRequiredWithoutCreatedWatchSpacesNestedInput;
+    title?: Prisma.TitleUpdateOneRequiredWithoutWatchSpacesNestedInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogUpdateManyWithoutWatchSpaceNestedInput;
 };
 export type WatchSpaceUncheckedUpdateWithoutParticipantsInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -733,8 +785,10 @@ export type WatchSpaceUncheckedUpdateWithoutParticipantsInput = {
     endedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
     joinCode?: Prisma.StringFieldUpdateOperationsInput | string;
     maxParticipants?: Prisma.IntFieldUpdateOperationsInput | number;
-    playback?: Prisma.PlaybackStateUncheckedUpdateOneWithoutWatchSpaceNestedInput;
     chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutWatchSpaceNestedInput;
+    playback?: Prisma.PlaybackStateUncheckedUpdateOneWithoutWatchSpaceNestedInput;
+    variationVotes?: Prisma.VariationVoteUncheckedUpdateManyWithoutWatchSpaceNestedInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogUncheckedUpdateManyWithoutWatchSpaceNestedInput;
 };
 export type WatchSpaceCreateWithoutPlaybackInput = {
     id?: string;
@@ -745,10 +799,12 @@ export type WatchSpaceCreateWithoutPlaybackInput = {
     endedAt?: Date | string | null;
     joinCode: string;
     maxParticipants?: number;
-    title: Prisma.TitleCreateNestedOneWithoutWatchSpacesInput;
-    host: Prisma.UserCreateNestedOneWithoutCreatedWatchSpacesInput;
-    participants?: Prisma.WatchSpaceParticipantCreateNestedManyWithoutWatchSpaceInput;
     chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutWatchSpaceInput;
+    variationVotes?: Prisma.VariationVoteCreateNestedManyWithoutWatchSpaceInput;
+    host: Prisma.UserCreateNestedOneWithoutCreatedWatchSpacesInput;
+    title: Prisma.TitleCreateNestedOneWithoutWatchSpacesInput;
+    participants?: Prisma.WatchSpaceParticipantCreateNestedManyWithoutWatchSpaceInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogCreateNestedManyWithoutWatchSpaceInput;
 };
 export type WatchSpaceUncheckedCreateWithoutPlaybackInput = {
     id?: string;
@@ -761,8 +817,10 @@ export type WatchSpaceUncheckedCreateWithoutPlaybackInput = {
     endedAt?: Date | string | null;
     joinCode: string;
     maxParticipants?: number;
-    participants?: Prisma.WatchSpaceParticipantUncheckedCreateNestedManyWithoutWatchSpaceInput;
     chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutWatchSpaceInput;
+    variationVotes?: Prisma.VariationVoteUncheckedCreateNestedManyWithoutWatchSpaceInput;
+    participants?: Prisma.WatchSpaceParticipantUncheckedCreateNestedManyWithoutWatchSpaceInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogUncheckedCreateNestedManyWithoutWatchSpaceInput;
 };
 export type WatchSpaceCreateOrConnectWithoutPlaybackInput = {
     where: Prisma.WatchSpaceWhereUniqueInput;
@@ -786,10 +844,12 @@ export type WatchSpaceUpdateWithoutPlaybackInput = {
     endedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
     joinCode?: Prisma.StringFieldUpdateOperationsInput | string;
     maxParticipants?: Prisma.IntFieldUpdateOperationsInput | number;
-    title?: Prisma.TitleUpdateOneRequiredWithoutWatchSpacesNestedInput;
-    host?: Prisma.UserUpdateOneRequiredWithoutCreatedWatchSpacesNestedInput;
-    participants?: Prisma.WatchSpaceParticipantUpdateManyWithoutWatchSpaceNestedInput;
     chatMessages?: Prisma.ChatMessageUpdateManyWithoutWatchSpaceNestedInput;
+    variationVotes?: Prisma.VariationVoteUpdateManyWithoutWatchSpaceNestedInput;
+    host?: Prisma.UserUpdateOneRequiredWithoutCreatedWatchSpacesNestedInput;
+    title?: Prisma.TitleUpdateOneRequiredWithoutWatchSpacesNestedInput;
+    participants?: Prisma.WatchSpaceParticipantUpdateManyWithoutWatchSpaceNestedInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogUpdateManyWithoutWatchSpaceNestedInput;
 };
 export type WatchSpaceUncheckedUpdateWithoutPlaybackInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -802,8 +862,10 @@ export type WatchSpaceUncheckedUpdateWithoutPlaybackInput = {
     endedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
     joinCode?: Prisma.StringFieldUpdateOperationsInput | string;
     maxParticipants?: Prisma.IntFieldUpdateOperationsInput | number;
-    participants?: Prisma.WatchSpaceParticipantUncheckedUpdateManyWithoutWatchSpaceNestedInput;
     chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutWatchSpaceNestedInput;
+    variationVotes?: Prisma.VariationVoteUncheckedUpdateManyWithoutWatchSpaceNestedInput;
+    participants?: Prisma.WatchSpaceParticipantUncheckedUpdateManyWithoutWatchSpaceNestedInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogUncheckedUpdateManyWithoutWatchSpaceNestedInput;
 };
 export type WatchSpaceCreateWithoutChatMessagesInput = {
     id?: string;
@@ -814,10 +876,12 @@ export type WatchSpaceCreateWithoutChatMessagesInput = {
     endedAt?: Date | string | null;
     joinCode: string;
     maxParticipants?: number;
-    title: Prisma.TitleCreateNestedOneWithoutWatchSpacesInput;
-    host: Prisma.UserCreateNestedOneWithoutCreatedWatchSpacesInput;
-    participants?: Prisma.WatchSpaceParticipantCreateNestedManyWithoutWatchSpaceInput;
     playback?: Prisma.PlaybackStateCreateNestedOneWithoutWatchSpaceInput;
+    variationVotes?: Prisma.VariationVoteCreateNestedManyWithoutWatchSpaceInput;
+    host: Prisma.UserCreateNestedOneWithoutCreatedWatchSpacesInput;
+    title: Prisma.TitleCreateNestedOneWithoutWatchSpacesInput;
+    participants?: Prisma.WatchSpaceParticipantCreateNestedManyWithoutWatchSpaceInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogCreateNestedManyWithoutWatchSpaceInput;
 };
 export type WatchSpaceUncheckedCreateWithoutChatMessagesInput = {
     id?: string;
@@ -830,8 +894,10 @@ export type WatchSpaceUncheckedCreateWithoutChatMessagesInput = {
     endedAt?: Date | string | null;
     joinCode: string;
     maxParticipants?: number;
-    participants?: Prisma.WatchSpaceParticipantUncheckedCreateNestedManyWithoutWatchSpaceInput;
     playback?: Prisma.PlaybackStateUncheckedCreateNestedOneWithoutWatchSpaceInput;
+    variationVotes?: Prisma.VariationVoteUncheckedCreateNestedManyWithoutWatchSpaceInput;
+    participants?: Prisma.WatchSpaceParticipantUncheckedCreateNestedManyWithoutWatchSpaceInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogUncheckedCreateNestedManyWithoutWatchSpaceInput;
 };
 export type WatchSpaceCreateOrConnectWithoutChatMessagesInput = {
     where: Prisma.WatchSpaceWhereUniqueInput;
@@ -855,10 +921,12 @@ export type WatchSpaceUpdateWithoutChatMessagesInput = {
     endedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
     joinCode?: Prisma.StringFieldUpdateOperationsInput | string;
     maxParticipants?: Prisma.IntFieldUpdateOperationsInput | number;
-    title?: Prisma.TitleUpdateOneRequiredWithoutWatchSpacesNestedInput;
-    host?: Prisma.UserUpdateOneRequiredWithoutCreatedWatchSpacesNestedInput;
-    participants?: Prisma.WatchSpaceParticipantUpdateManyWithoutWatchSpaceNestedInput;
     playback?: Prisma.PlaybackStateUpdateOneWithoutWatchSpaceNestedInput;
+    variationVotes?: Prisma.VariationVoteUpdateManyWithoutWatchSpaceNestedInput;
+    host?: Prisma.UserUpdateOneRequiredWithoutCreatedWatchSpacesNestedInput;
+    title?: Prisma.TitleUpdateOneRequiredWithoutWatchSpacesNestedInput;
+    participants?: Prisma.WatchSpaceParticipantUpdateManyWithoutWatchSpaceNestedInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogUpdateManyWithoutWatchSpaceNestedInput;
 };
 export type WatchSpaceUncheckedUpdateWithoutChatMessagesInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -871,8 +939,164 @@ export type WatchSpaceUncheckedUpdateWithoutChatMessagesInput = {
     endedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
     joinCode?: Prisma.StringFieldUpdateOperationsInput | string;
     maxParticipants?: Prisma.IntFieldUpdateOperationsInput | number;
-    participants?: Prisma.WatchSpaceParticipantUncheckedUpdateManyWithoutWatchSpaceNestedInput;
     playback?: Prisma.PlaybackStateUncheckedUpdateOneWithoutWatchSpaceNestedInput;
+    variationVotes?: Prisma.VariationVoteUncheckedUpdateManyWithoutWatchSpaceNestedInput;
+    participants?: Prisma.WatchSpaceParticipantUncheckedUpdateManyWithoutWatchSpaceNestedInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogUncheckedUpdateManyWithoutWatchSpaceNestedInput;
+};
+export type WatchSpaceCreateWithoutVariationVotesInput = {
+    id?: string;
+    name?: string | null;
+    status?: $Enums.WatchSpaceStatus;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    endedAt?: Date | string | null;
+    joinCode: string;
+    maxParticipants?: number;
+    chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutWatchSpaceInput;
+    playback?: Prisma.PlaybackStateCreateNestedOneWithoutWatchSpaceInput;
+    host: Prisma.UserCreateNestedOneWithoutCreatedWatchSpacesInput;
+    title: Prisma.TitleCreateNestedOneWithoutWatchSpacesInput;
+    participants?: Prisma.WatchSpaceParticipantCreateNestedManyWithoutWatchSpaceInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogCreateNestedManyWithoutWatchSpaceInput;
+};
+export type WatchSpaceUncheckedCreateWithoutVariationVotesInput = {
+    id?: string;
+    titleId: string;
+    hostId: string;
+    name?: string | null;
+    status?: $Enums.WatchSpaceStatus;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    endedAt?: Date | string | null;
+    joinCode: string;
+    maxParticipants?: number;
+    chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutWatchSpaceInput;
+    playback?: Prisma.PlaybackStateUncheckedCreateNestedOneWithoutWatchSpaceInput;
+    participants?: Prisma.WatchSpaceParticipantUncheckedCreateNestedManyWithoutWatchSpaceInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogUncheckedCreateNestedManyWithoutWatchSpaceInput;
+};
+export type WatchSpaceCreateOrConnectWithoutVariationVotesInput = {
+    where: Prisma.WatchSpaceWhereUniqueInput;
+    create: Prisma.XOR<Prisma.WatchSpaceCreateWithoutVariationVotesInput, Prisma.WatchSpaceUncheckedCreateWithoutVariationVotesInput>;
+};
+export type WatchSpaceUpsertWithoutVariationVotesInput = {
+    update: Prisma.XOR<Prisma.WatchSpaceUpdateWithoutVariationVotesInput, Prisma.WatchSpaceUncheckedUpdateWithoutVariationVotesInput>;
+    create: Prisma.XOR<Prisma.WatchSpaceCreateWithoutVariationVotesInput, Prisma.WatchSpaceUncheckedCreateWithoutVariationVotesInput>;
+    where?: Prisma.WatchSpaceWhereInput;
+};
+export type WatchSpaceUpdateToOneWithWhereWithoutVariationVotesInput = {
+    where?: Prisma.WatchSpaceWhereInput;
+    data: Prisma.XOR<Prisma.WatchSpaceUpdateWithoutVariationVotesInput, Prisma.WatchSpaceUncheckedUpdateWithoutVariationVotesInput>;
+};
+export type WatchSpaceUpdateWithoutVariationVotesInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    status?: Prisma.EnumWatchSpaceStatusFieldUpdateOperationsInput | $Enums.WatchSpaceStatus;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    endedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    joinCode?: Prisma.StringFieldUpdateOperationsInput | string;
+    maxParticipants?: Prisma.IntFieldUpdateOperationsInput | number;
+    chatMessages?: Prisma.ChatMessageUpdateManyWithoutWatchSpaceNestedInput;
+    playback?: Prisma.PlaybackStateUpdateOneWithoutWatchSpaceNestedInput;
+    host?: Prisma.UserUpdateOneRequiredWithoutCreatedWatchSpacesNestedInput;
+    title?: Prisma.TitleUpdateOneRequiredWithoutWatchSpacesNestedInput;
+    participants?: Prisma.WatchSpaceParticipantUpdateManyWithoutWatchSpaceNestedInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogUpdateManyWithoutWatchSpaceNestedInput;
+};
+export type WatchSpaceUncheckedUpdateWithoutVariationVotesInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    titleId?: Prisma.StringFieldUpdateOperationsInput | string;
+    hostId?: Prisma.StringFieldUpdateOperationsInput | string;
+    name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    status?: Prisma.EnumWatchSpaceStatusFieldUpdateOperationsInput | $Enums.WatchSpaceStatus;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    endedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    joinCode?: Prisma.StringFieldUpdateOperationsInput | string;
+    maxParticipants?: Prisma.IntFieldUpdateOperationsInput | number;
+    chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutWatchSpaceNestedInput;
+    playback?: Prisma.PlaybackStateUncheckedUpdateOneWithoutWatchSpaceNestedInput;
+    participants?: Prisma.WatchSpaceParticipantUncheckedUpdateManyWithoutWatchSpaceNestedInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogUncheckedUpdateManyWithoutWatchSpaceNestedInput;
+};
+export type WatchSpaceCreateWithoutAiQuestionLogsInput = {
+    id?: string;
+    name?: string | null;
+    status?: $Enums.WatchSpaceStatus;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    endedAt?: Date | string | null;
+    joinCode: string;
+    maxParticipants?: number;
+    chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutWatchSpaceInput;
+    playback?: Prisma.PlaybackStateCreateNestedOneWithoutWatchSpaceInput;
+    variationVotes?: Prisma.VariationVoteCreateNestedManyWithoutWatchSpaceInput;
+    host: Prisma.UserCreateNestedOneWithoutCreatedWatchSpacesInput;
+    title: Prisma.TitleCreateNestedOneWithoutWatchSpacesInput;
+    participants?: Prisma.WatchSpaceParticipantCreateNestedManyWithoutWatchSpaceInput;
+};
+export type WatchSpaceUncheckedCreateWithoutAiQuestionLogsInput = {
+    id?: string;
+    titleId: string;
+    hostId: string;
+    name?: string | null;
+    status?: $Enums.WatchSpaceStatus;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    endedAt?: Date | string | null;
+    joinCode: string;
+    maxParticipants?: number;
+    chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutWatchSpaceInput;
+    playback?: Prisma.PlaybackStateUncheckedCreateNestedOneWithoutWatchSpaceInput;
+    variationVotes?: Prisma.VariationVoteUncheckedCreateNestedManyWithoutWatchSpaceInput;
+    participants?: Prisma.WatchSpaceParticipantUncheckedCreateNestedManyWithoutWatchSpaceInput;
+};
+export type WatchSpaceCreateOrConnectWithoutAiQuestionLogsInput = {
+    where: Prisma.WatchSpaceWhereUniqueInput;
+    create: Prisma.XOR<Prisma.WatchSpaceCreateWithoutAiQuestionLogsInput, Prisma.WatchSpaceUncheckedCreateWithoutAiQuestionLogsInput>;
+};
+export type WatchSpaceUpsertWithoutAiQuestionLogsInput = {
+    update: Prisma.XOR<Prisma.WatchSpaceUpdateWithoutAiQuestionLogsInput, Prisma.WatchSpaceUncheckedUpdateWithoutAiQuestionLogsInput>;
+    create: Prisma.XOR<Prisma.WatchSpaceCreateWithoutAiQuestionLogsInput, Prisma.WatchSpaceUncheckedCreateWithoutAiQuestionLogsInput>;
+    where?: Prisma.WatchSpaceWhereInput;
+};
+export type WatchSpaceUpdateToOneWithWhereWithoutAiQuestionLogsInput = {
+    where?: Prisma.WatchSpaceWhereInput;
+    data: Prisma.XOR<Prisma.WatchSpaceUpdateWithoutAiQuestionLogsInput, Prisma.WatchSpaceUncheckedUpdateWithoutAiQuestionLogsInput>;
+};
+export type WatchSpaceUpdateWithoutAiQuestionLogsInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    status?: Prisma.EnumWatchSpaceStatusFieldUpdateOperationsInput | $Enums.WatchSpaceStatus;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    endedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    joinCode?: Prisma.StringFieldUpdateOperationsInput | string;
+    maxParticipants?: Prisma.IntFieldUpdateOperationsInput | number;
+    chatMessages?: Prisma.ChatMessageUpdateManyWithoutWatchSpaceNestedInput;
+    playback?: Prisma.PlaybackStateUpdateOneWithoutWatchSpaceNestedInput;
+    variationVotes?: Prisma.VariationVoteUpdateManyWithoutWatchSpaceNestedInput;
+    host?: Prisma.UserUpdateOneRequiredWithoutCreatedWatchSpacesNestedInput;
+    title?: Prisma.TitleUpdateOneRequiredWithoutWatchSpacesNestedInput;
+    participants?: Prisma.WatchSpaceParticipantUpdateManyWithoutWatchSpaceNestedInput;
+};
+export type WatchSpaceUncheckedUpdateWithoutAiQuestionLogsInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    titleId?: Prisma.StringFieldUpdateOperationsInput | string;
+    hostId?: Prisma.StringFieldUpdateOperationsInput | string;
+    name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    status?: Prisma.EnumWatchSpaceStatusFieldUpdateOperationsInput | $Enums.WatchSpaceStatus;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    endedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    joinCode?: Prisma.StringFieldUpdateOperationsInput | string;
+    maxParticipants?: Prisma.IntFieldUpdateOperationsInput | number;
+    chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutWatchSpaceNestedInput;
+    playback?: Prisma.PlaybackStateUncheckedUpdateOneWithoutWatchSpaceNestedInput;
+    variationVotes?: Prisma.VariationVoteUncheckedUpdateManyWithoutWatchSpaceNestedInput;
+    participants?: Prisma.WatchSpaceParticipantUncheckedUpdateManyWithoutWatchSpaceNestedInput;
 };
 export type WatchSpaceCreateManyHostInput = {
     id?: string;
@@ -894,10 +1118,12 @@ export type WatchSpaceUpdateWithoutHostInput = {
     endedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
     joinCode?: Prisma.StringFieldUpdateOperationsInput | string;
     maxParticipants?: Prisma.IntFieldUpdateOperationsInput | number;
+    chatMessages?: Prisma.ChatMessageUpdateManyWithoutWatchSpaceNestedInput;
+    playback?: Prisma.PlaybackStateUpdateOneWithoutWatchSpaceNestedInput;
+    variationVotes?: Prisma.VariationVoteUpdateManyWithoutWatchSpaceNestedInput;
     title?: Prisma.TitleUpdateOneRequiredWithoutWatchSpacesNestedInput;
     participants?: Prisma.WatchSpaceParticipantUpdateManyWithoutWatchSpaceNestedInput;
-    playback?: Prisma.PlaybackStateUpdateOneWithoutWatchSpaceNestedInput;
-    chatMessages?: Prisma.ChatMessageUpdateManyWithoutWatchSpaceNestedInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogUpdateManyWithoutWatchSpaceNestedInput;
 };
 export type WatchSpaceUncheckedUpdateWithoutHostInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -909,9 +1135,11 @@ export type WatchSpaceUncheckedUpdateWithoutHostInput = {
     endedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
     joinCode?: Prisma.StringFieldUpdateOperationsInput | string;
     maxParticipants?: Prisma.IntFieldUpdateOperationsInput | number;
-    participants?: Prisma.WatchSpaceParticipantUncheckedUpdateManyWithoutWatchSpaceNestedInput;
-    playback?: Prisma.PlaybackStateUncheckedUpdateOneWithoutWatchSpaceNestedInput;
     chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutWatchSpaceNestedInput;
+    playback?: Prisma.PlaybackStateUncheckedUpdateOneWithoutWatchSpaceNestedInput;
+    variationVotes?: Prisma.VariationVoteUncheckedUpdateManyWithoutWatchSpaceNestedInput;
+    participants?: Prisma.WatchSpaceParticipantUncheckedUpdateManyWithoutWatchSpaceNestedInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogUncheckedUpdateManyWithoutWatchSpaceNestedInput;
 };
 export type WatchSpaceUncheckedUpdateManyWithoutHostInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -944,10 +1172,12 @@ export type WatchSpaceUpdateWithoutTitleInput = {
     endedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
     joinCode?: Prisma.StringFieldUpdateOperationsInput | string;
     maxParticipants?: Prisma.IntFieldUpdateOperationsInput | number;
+    chatMessages?: Prisma.ChatMessageUpdateManyWithoutWatchSpaceNestedInput;
+    playback?: Prisma.PlaybackStateUpdateOneWithoutWatchSpaceNestedInput;
+    variationVotes?: Prisma.VariationVoteUpdateManyWithoutWatchSpaceNestedInput;
     host?: Prisma.UserUpdateOneRequiredWithoutCreatedWatchSpacesNestedInput;
     participants?: Prisma.WatchSpaceParticipantUpdateManyWithoutWatchSpaceNestedInput;
-    playback?: Prisma.PlaybackStateUpdateOneWithoutWatchSpaceNestedInput;
-    chatMessages?: Prisma.ChatMessageUpdateManyWithoutWatchSpaceNestedInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogUpdateManyWithoutWatchSpaceNestedInput;
 };
 export type WatchSpaceUncheckedUpdateWithoutTitleInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -959,9 +1189,11 @@ export type WatchSpaceUncheckedUpdateWithoutTitleInput = {
     endedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
     joinCode?: Prisma.StringFieldUpdateOperationsInput | string;
     maxParticipants?: Prisma.IntFieldUpdateOperationsInput | number;
-    participants?: Prisma.WatchSpaceParticipantUncheckedUpdateManyWithoutWatchSpaceNestedInput;
-    playback?: Prisma.PlaybackStateUncheckedUpdateOneWithoutWatchSpaceNestedInput;
     chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutWatchSpaceNestedInput;
+    playback?: Prisma.PlaybackStateUncheckedUpdateOneWithoutWatchSpaceNestedInput;
+    variationVotes?: Prisma.VariationVoteUncheckedUpdateManyWithoutWatchSpaceNestedInput;
+    participants?: Prisma.WatchSpaceParticipantUncheckedUpdateManyWithoutWatchSpaceNestedInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogUncheckedUpdateManyWithoutWatchSpaceNestedInput;
 };
 export type WatchSpaceUncheckedUpdateManyWithoutTitleInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -978,12 +1210,16 @@ export type WatchSpaceUncheckedUpdateManyWithoutTitleInput = {
  * Count Type WatchSpaceCountOutputType
  */
 export type WatchSpaceCountOutputType = {
-    participants: number;
     chatMessages: number;
+    variationVotes: number;
+    participants: number;
+    aiQuestionLogs: number;
 };
 export type WatchSpaceCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-    participants?: boolean | WatchSpaceCountOutputTypeCountParticipantsArgs;
     chatMessages?: boolean | WatchSpaceCountOutputTypeCountChatMessagesArgs;
+    variationVotes?: boolean | WatchSpaceCountOutputTypeCountVariationVotesArgs;
+    participants?: boolean | WatchSpaceCountOutputTypeCountParticipantsArgs;
+    aiQuestionLogs?: boolean | WatchSpaceCountOutputTypeCountAiQuestionLogsArgs;
 };
 /**
  * WatchSpaceCountOutputType without action
@@ -997,14 +1233,26 @@ export type WatchSpaceCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.E
 /**
  * WatchSpaceCountOutputType without action
  */
+export type WatchSpaceCountOutputTypeCountChatMessagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.ChatMessageWhereInput;
+};
+/**
+ * WatchSpaceCountOutputType without action
+ */
+export type WatchSpaceCountOutputTypeCountVariationVotesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.VariationVoteWhereInput;
+};
+/**
+ * WatchSpaceCountOutputType without action
+ */
 export type WatchSpaceCountOutputTypeCountParticipantsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     where?: Prisma.WatchSpaceParticipantWhereInput;
 };
 /**
  * WatchSpaceCountOutputType without action
  */
-export type WatchSpaceCountOutputTypeCountChatMessagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-    where?: Prisma.ChatMessageWhereInput;
+export type WatchSpaceCountOutputTypeCountAiQuestionLogsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.AiQuestionLogWhereInput;
 };
 export type WatchSpaceSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
     id?: boolean;
@@ -1017,11 +1265,13 @@ export type WatchSpaceSelect<ExtArgs extends runtime.Types.Extensions.InternalAr
     endedAt?: boolean;
     joinCode?: boolean;
     maxParticipants?: boolean;
-    title?: boolean | Prisma.TitleDefaultArgs<ExtArgs>;
-    host?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
-    participants?: boolean | Prisma.WatchSpace$participantsArgs<ExtArgs>;
-    playback?: boolean | Prisma.WatchSpace$playbackArgs<ExtArgs>;
     chatMessages?: boolean | Prisma.WatchSpace$chatMessagesArgs<ExtArgs>;
+    playback?: boolean | Prisma.WatchSpace$playbackArgs<ExtArgs>;
+    variationVotes?: boolean | Prisma.WatchSpace$variationVotesArgs<ExtArgs>;
+    host?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+    title?: boolean | Prisma.TitleDefaultArgs<ExtArgs>;
+    participants?: boolean | Prisma.WatchSpace$participantsArgs<ExtArgs>;
+    aiQuestionLogs?: boolean | Prisma.WatchSpace$aiQuestionLogsArgs<ExtArgs>;
     _count?: boolean | Prisma.WatchSpaceCountOutputTypeDefaultArgs<ExtArgs>;
 }, ExtArgs["result"]["watchSpace"]>;
 export type WatchSpaceSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1035,8 +1285,8 @@ export type WatchSpaceSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ex
     endedAt?: boolean;
     joinCode?: boolean;
     maxParticipants?: boolean;
-    title?: boolean | Prisma.TitleDefaultArgs<ExtArgs>;
     host?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+    title?: boolean | Prisma.TitleDefaultArgs<ExtArgs>;
 }, ExtArgs["result"]["watchSpace"]>;
 export type WatchSpaceSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
     id?: boolean;
@@ -1049,8 +1299,8 @@ export type WatchSpaceSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ex
     endedAt?: boolean;
     joinCode?: boolean;
     maxParticipants?: boolean;
-    title?: boolean | Prisma.TitleDefaultArgs<ExtArgs>;
     host?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+    title?: boolean | Prisma.TitleDefaultArgs<ExtArgs>;
 }, ExtArgs["result"]["watchSpace"]>;
 export type WatchSpaceSelectScalar = {
     id?: boolean;
@@ -1066,29 +1316,33 @@ export type WatchSpaceSelectScalar = {
 };
 export type WatchSpaceOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "titleId" | "hostId" | "name" | "status" | "createdAt" | "updatedAt" | "endedAt" | "joinCode" | "maxParticipants", ExtArgs["result"]["watchSpace"]>;
 export type WatchSpaceInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-    title?: boolean | Prisma.TitleDefaultArgs<ExtArgs>;
-    host?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
-    participants?: boolean | Prisma.WatchSpace$participantsArgs<ExtArgs>;
-    playback?: boolean | Prisma.WatchSpace$playbackArgs<ExtArgs>;
     chatMessages?: boolean | Prisma.WatchSpace$chatMessagesArgs<ExtArgs>;
+    playback?: boolean | Prisma.WatchSpace$playbackArgs<ExtArgs>;
+    variationVotes?: boolean | Prisma.WatchSpace$variationVotesArgs<ExtArgs>;
+    host?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+    title?: boolean | Prisma.TitleDefaultArgs<ExtArgs>;
+    participants?: boolean | Prisma.WatchSpace$participantsArgs<ExtArgs>;
+    aiQuestionLogs?: boolean | Prisma.WatchSpace$aiQuestionLogsArgs<ExtArgs>;
     _count?: boolean | Prisma.WatchSpaceCountOutputTypeDefaultArgs<ExtArgs>;
 };
 export type WatchSpaceIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-    title?: boolean | Prisma.TitleDefaultArgs<ExtArgs>;
     host?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+    title?: boolean | Prisma.TitleDefaultArgs<ExtArgs>;
 };
 export type WatchSpaceIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-    title?: boolean | Prisma.TitleDefaultArgs<ExtArgs>;
     host?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+    title?: boolean | Prisma.TitleDefaultArgs<ExtArgs>;
 };
 export type $WatchSpacePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     name: "WatchSpace";
     objects: {
-        title: Prisma.$TitlePayload<ExtArgs>;
-        host: Prisma.$UserPayload<ExtArgs>;
-        participants: Prisma.$WatchSpaceParticipantPayload<ExtArgs>[];
-        playback: Prisma.$PlaybackStatePayload<ExtArgs> | null;
         chatMessages: Prisma.$ChatMessagePayload<ExtArgs>[];
+        playback: Prisma.$PlaybackStatePayload<ExtArgs> | null;
+        variationVotes: Prisma.$VariationVotePayload<ExtArgs>[];
+        host: Prisma.$UserPayload<ExtArgs>;
+        title: Prisma.$TitlePayload<ExtArgs>;
+        participants: Prisma.$WatchSpaceParticipantPayload<ExtArgs>[];
+        aiQuestionLogs: Prisma.$AiQuestionLogPayload<ExtArgs>[];
     };
     scalars: runtime.Types.Extensions.GetPayloadResult<{
         id: string;
@@ -1430,11 +1684,13 @@ export interface WatchSpaceDelegate<ExtArgs extends runtime.Types.Extensions.Int
  */
 export interface Prisma__WatchSpaceClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise";
-    title<T extends Prisma.TitleDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.TitleDefaultArgs<ExtArgs>>): Prisma.Prisma__TitleClient<runtime.Types.Result.GetResult<Prisma.$TitlePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>;
-    host<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>;
-    participants<T extends Prisma.WatchSpace$participantsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.WatchSpace$participantsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$WatchSpaceParticipantPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
-    playback<T extends Prisma.WatchSpace$playbackArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.WatchSpace$playbackArgs<ExtArgs>>): Prisma.Prisma__PlaybackStateClient<runtime.Types.Result.GetResult<Prisma.$PlaybackStatePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>;
     chatMessages<T extends Prisma.WatchSpace$chatMessagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.WatchSpace$chatMessagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ChatMessagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
+    playback<T extends Prisma.WatchSpace$playbackArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.WatchSpace$playbackArgs<ExtArgs>>): Prisma.Prisma__PlaybackStateClient<runtime.Types.Result.GetResult<Prisma.$PlaybackStatePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>;
+    variationVotes<T extends Prisma.WatchSpace$variationVotesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.WatchSpace$variationVotesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$VariationVotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
+    host<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>;
+    title<T extends Prisma.TitleDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.TitleDefaultArgs<ExtArgs>>): Prisma.Prisma__TitleClient<runtime.Types.Result.GetResult<Prisma.$TitlePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>;
+    participants<T extends Prisma.WatchSpace$participantsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.WatchSpace$participantsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$WatchSpaceParticipantPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
+    aiQuestionLogs<T extends Prisma.WatchSpace$aiQuestionLogsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.WatchSpace$aiQuestionLogsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AiQuestionLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1854,6 +2110,70 @@ export type WatchSpaceDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.In
     limit?: number;
 };
 /**
+ * WatchSpace.chatMessages
+ */
+export type WatchSpace$chatMessagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChatMessage
+     */
+    select?: Prisma.ChatMessageSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the ChatMessage
+     */
+    omit?: Prisma.ChatMessageOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.ChatMessageInclude<ExtArgs> | null;
+    where?: Prisma.ChatMessageWhereInput;
+    orderBy?: Prisma.ChatMessageOrderByWithRelationInput | Prisma.ChatMessageOrderByWithRelationInput[];
+    cursor?: Prisma.ChatMessageWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.ChatMessageScalarFieldEnum | Prisma.ChatMessageScalarFieldEnum[];
+};
+/**
+ * WatchSpace.playback
+ */
+export type WatchSpace$playbackArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PlaybackState
+     */
+    select?: Prisma.PlaybackStateSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the PlaybackState
+     */
+    omit?: Prisma.PlaybackStateOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.PlaybackStateInclude<ExtArgs> | null;
+    where?: Prisma.PlaybackStateWhereInput;
+};
+/**
+ * WatchSpace.variationVotes
+ */
+export type WatchSpace$variationVotesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VariationVote
+     */
+    select?: Prisma.VariationVoteSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the VariationVote
+     */
+    omit?: Prisma.VariationVoteOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.VariationVoteInclude<ExtArgs> | null;
+    where?: Prisma.VariationVoteWhereInput;
+    orderBy?: Prisma.VariationVoteOrderByWithRelationInput | Prisma.VariationVoteOrderByWithRelationInput[];
+    cursor?: Prisma.VariationVoteWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.VariationVoteScalarFieldEnum | Prisma.VariationVoteScalarFieldEnum[];
+};
+/**
  * WatchSpace.participants
  */
 export type WatchSpace$participantsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1877,45 +2197,27 @@ export type WatchSpace$participantsArgs<ExtArgs extends runtime.Types.Extensions
     distinct?: Prisma.WatchSpaceParticipantScalarFieldEnum | Prisma.WatchSpaceParticipantScalarFieldEnum[];
 };
 /**
- * WatchSpace.playback
+ * WatchSpace.aiQuestionLogs
  */
-export type WatchSpace$playbackArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type WatchSpace$aiQuestionLogsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the PlaybackState
+     * Select specific fields to fetch from the AiQuestionLog
      */
-    select?: Prisma.PlaybackStateSelect<ExtArgs> | null;
+    select?: Prisma.AiQuestionLogSelect<ExtArgs> | null;
     /**
-     * Omit specific fields from the PlaybackState
+     * Omit specific fields from the AiQuestionLog
      */
-    omit?: Prisma.PlaybackStateOmit<ExtArgs> | null;
+    omit?: Prisma.AiQuestionLogOmit<ExtArgs> | null;
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: Prisma.PlaybackStateInclude<ExtArgs> | null;
-    where?: Prisma.PlaybackStateWhereInput;
-};
-/**
- * WatchSpace.chatMessages
- */
-export type WatchSpace$chatMessagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ChatMessage
-     */
-    select?: Prisma.ChatMessageSelect<ExtArgs> | null;
-    /**
-     * Omit specific fields from the ChatMessage
-     */
-    omit?: Prisma.ChatMessageOmit<ExtArgs> | null;
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: Prisma.ChatMessageInclude<ExtArgs> | null;
-    where?: Prisma.ChatMessageWhereInput;
-    orderBy?: Prisma.ChatMessageOrderByWithRelationInput | Prisma.ChatMessageOrderByWithRelationInput[];
-    cursor?: Prisma.ChatMessageWhereUniqueInput;
+    include?: Prisma.AiQuestionLogInclude<ExtArgs> | null;
+    where?: Prisma.AiQuestionLogWhereInput;
+    orderBy?: Prisma.AiQuestionLogOrderByWithRelationInput | Prisma.AiQuestionLogOrderByWithRelationInput[];
+    cursor?: Prisma.AiQuestionLogWhereUniqueInput;
     take?: number;
     skip?: number;
-    distinct?: Prisma.ChatMessageScalarFieldEnum | Prisma.ChatMessageScalarFieldEnum[];
+    distinct?: Prisma.AiQuestionLogScalarFieldEnum | Prisma.AiQuestionLogScalarFieldEnum[];
 };
 /**
  * WatchSpace without action

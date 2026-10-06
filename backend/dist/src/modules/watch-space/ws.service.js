@@ -277,6 +277,7 @@ export const validateWatchSpaceMembership = async (userId, watchSpaceId) => {
             id: true,
             status: true,
             hostId: true,
+            titleId: true,
         },
     });
     if (!watchSpace) {
@@ -303,6 +304,105 @@ export const validateWatchSpaceMembership = async (userId, watchSpaceId) => {
     return {
         watchSpace,
         participant,
+    };
+};
+export const castVariationVote = async (userId, watchSpaceId, variationId) => {
+    const { watchSpace } = await validateWatchSpaceMembership(userId, watchSpaceId);
+    const variation = await prisma.variationOption.findUnique({
+        where: {
+            id: variationId,
+        },
+        select: {
+            id: true,
+            timelineEventId: true,
+            label: true,
+            content: true,
+            locale: true,
+            isDefault: true,
+            timelineEvent: {
+                select: {
+                    titleId: true,
+                },
+            },
+        },
+    });
+    if (!variation) {
+        throw new Error("VARIATION_NOT_FOUND");
+    }
+    if (variation.timelineEvent.titleId !==
+        watchSpace.titleId) {
+        throw new Error("VARIATION_TITLE_MISMATCH");
+    }
+    // One vote per user per variation point.
+    const existingVote = await prisma.variationVote.findFirst({
+        where: {
+            watchSpaceId,
+            timelineEventId: variation.timelineEventId,
+            userId,
+        },
+        select: {
+            id: true,
+        },
+    });
+    const vote = existingVote
+        ? await prisma.variationVote.update({
+            where: {
+                id: existingVote.id,
+            },
+            data: {
+                variationOptionId: variation.id,
+            },
+            include: {
+                variationOption: {
+                    select: {
+                        id: true,
+                        label: true,
+                        content: true,
+                        locale: true,
+                        isDefault: true,
+                    },
+                },
+            },
+        })
+        : await prisma.variationVote.create({
+            data: {
+                watchSpaceId,
+                timelineEventId: variation.timelineEventId,
+                variationOptionId: variation.id,
+                userId,
+            },
+            include: {
+                variationOption: {
+                    select: {
+                        id: true,
+                        label: true,
+                        content: true,
+                        locale: true,
+                        isDefault: true,
+                    },
+                },
+            },
+        });
+    // Count only votes belonging to this variation point.
+    const voteCounts = await prisma.variationVote.groupBy({
+        by: ["variationOptionId"],
+        where: {
+            watchSpaceId,
+            timelineEventId: variation.timelineEventId,
+        },
+        _count: {
+            variationOptionId: true,
+        },
+    });
+    const totalVotes = voteCounts.reduce((total, item) => total + item._count.variationOptionId, 0);
+    return {
+        watchSpaceId: watchSpace.id,
+        variation: vote.variationOption,
+        totalVotes,
+        results: voteCounts.map((item) => ({
+            variationId: item.variationOptionId,
+            votes: item._count.variationOptionId,
+        })),
     };
 };
 //# sourceMappingURL=ws.service.js.map

@@ -1,4 +1,19 @@
 import { z } from "zod";
+export const timelineEventIdParamSchema = z.object({
+    timelineEventId: z.string().uuid(),
+});
+export const variationParamSchema = z.object({
+    timelineEventId: z.string().uuid(),
+    variationId: z.string().uuid(),
+});
+export const localeParamSchema = z.object({
+    timelineEventId: z.string().uuid(),
+    locale: z
+        .string()
+        .trim()
+        .min(2)
+        .max(20),
+});
 export const createVariationSchema = z.object({
     label: z
         .string()
@@ -8,15 +23,14 @@ export const createVariationSchema = z.object({
     content: z
         .string()
         .trim()
-        .min(1)
-        .max(5000),
+        .min(1),
     locale: z
         .string()
         .trim()
         .min(2)
         .max(20)
-        .optional()
-        .nullable(),
+        .nullable()
+        .optional(),
     isDefault: z
         .boolean()
         .optional(),
@@ -32,24 +46,16 @@ export const updateVariationSchema = z.object({
         .string()
         .trim()
         .min(1)
-        .max(5000)
         .optional(),
     locale: z
         .string()
         .trim()
         .min(2)
         .max(20)
-        .optional()
-        .nullable(),
+        .nullable()
+        .optional(),
     isDefault: z
         .boolean()
         .optional(),
-});
-export const timelineEventIdParamSchema = z.object({
-    timelineEventId: z.string().uuid(),
-});
-export const variationParamSchema = z.object({
-    timelineEventId: z.string().uuid(),
-    variationId: z.string().uuid(),
 });
 //# sourceMappingURL=vr.validation.js.map

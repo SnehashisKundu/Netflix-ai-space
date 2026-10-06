@@ -1,5 +1,5 @@
-import { createWatchSpaceSchema, joinWatchSpaceSchema, watchSpaceIdParamSchema, } from "./ws.validation.js";
-import { createWatchSpace, endWatchSpace, getWatchSpaceById, joinWatchSpace, leaveWatchSpace, } from "./ws.service.js";
+import { createWatchSpaceSchema, joinWatchSpaceSchema, variationVoteParamSchema, watchSpaceIdParamSchema, } from "./ws.validation.js";
+import { castVariationVote, createWatchSpace, endWatchSpace, getWatchSpaceById, joinWatchSpace, leaveWatchSpace, } from "./ws.service.js";
 export const create = async (req, res) => {
     try {
         if (!req.user) {
@@ -218,6 +218,73 @@ export const end = async (req, res) => {
         return res.status(500).json({
             success: false,
             message: "Failed to end watch space",
+        });
+    }
+};
+export const voteVariation = async (req, res) => {
+    try {
+        if (!req.user) {
+            return res.status(401).json({
+                success: false,
+                message: "Authentication required",
+            });
+        }
+        const { id, variationId } = variationVoteParamSchema.parse(req.params);
+        const result = await castVariationVote(req.user.userId, id, variationId);
+        return res.status(200).json({
+            success: true,
+            message: "Variation vote cast successfully",
+            data: result,
+        });
+    }
+    catch (error) {
+        if (error instanceof Error &&
+            error.message === "WATCH_SPACE_NOT_FOUND") {
+            return res.status(404).json({
+                success: false,
+                message: "Watch space not found",
+            });
+        }
+        if (error instanceof Error &&
+            error.message === "WATCH_SPACE_ENDED") {
+            return res.status(409).json({
+                success: false,
+                message: "Watch space has ended",
+            });
+        }
+        if (error instanceof Error &&
+            error.message === "NOT_A_PARTICIPANT") {
+            return res.status(403).json({
+                success: false,
+                message: "You are not an active participant in this watch space",
+            });
+        }
+        if (error instanceof Error &&
+            error.message === "VARIATION_NOT_FOUND") {
+            return res.status(404).json({
+                success: false,
+                message: "Variation not found",
+            });
+        }
+        if (error instanceof Error &&
+            error.message === "VARIATION_TITLE_MISMATCH") {
+            return res.status(400).json({
+                success: false,
+                message: "Variation does not belong to this title",
+            });
+        }
+        if (error instanceof Error &&
+            error.name === "ZodError") {
+            return res.status(400).json({
+                success: false,
+                message: "Invalid variation vote request",
+                errors: error,
+            });
+        }
+        console.error("Vote variation failed:", error);
+        return res.status(500).json({
+            success: false,
+            message: "Failed to cast variation vote",
         });
     }
 };

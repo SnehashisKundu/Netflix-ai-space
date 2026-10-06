@@ -155,11 +155,13 @@ export type UserWhereInput = {
     role?: Prisma.EnumUserRoleFilter<"User"> | $Enums.UserRole;
     createdAt?: Prisma.DateTimeFilter<"User"> | Date | string;
     updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string;
+    chatMessages?: Prisma.ChatMessageListRelationFilter;
+    interactions?: Prisma.InteractionListRelationFilter;
+    refreshTokens?: Prisma.RefreshTokenListRelationFilter;
+    variationVotes?: Prisma.VariationVoteListRelationFilter;
     createdWatchSpaces?: Prisma.WatchSpaceListRelationFilter;
     participations?: Prisma.WatchSpaceParticipantListRelationFilter;
-    interactions?: Prisma.InteractionListRelationFilter;
-    chatMessages?: Prisma.ChatMessageListRelationFilter;
-    refreshTokens?: Prisma.RefreshTokenListRelationFilter;
+    aiQuestionLogs?: Prisma.AiQuestionLogListRelationFilter;
 };
 export type UserOrderByWithRelationInput = {
     id?: Prisma.SortOrder;
@@ -169,11 +171,13 @@ export type UserOrderByWithRelationInput = {
     role?: Prisma.SortOrder;
     createdAt?: Prisma.SortOrder;
     updatedAt?: Prisma.SortOrder;
+    chatMessages?: Prisma.ChatMessageOrderByRelationAggregateInput;
+    interactions?: Prisma.InteractionOrderByRelationAggregateInput;
+    refreshTokens?: Prisma.RefreshTokenOrderByRelationAggregateInput;
+    variationVotes?: Prisma.VariationVoteOrderByRelationAggregateInput;
     createdWatchSpaces?: Prisma.WatchSpaceOrderByRelationAggregateInput;
     participations?: Prisma.WatchSpaceParticipantOrderByRelationAggregateInput;
-    interactions?: Prisma.InteractionOrderByRelationAggregateInput;
-    chatMessages?: Prisma.ChatMessageOrderByRelationAggregateInput;
-    refreshTokens?: Prisma.RefreshTokenOrderByRelationAggregateInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogOrderByRelationAggregateInput;
 };
 export type UserWhereUniqueInput = Prisma.AtLeast<{
     id?: string;
@@ -186,11 +190,13 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
     role?: Prisma.EnumUserRoleFilter<"User"> | $Enums.UserRole;
     createdAt?: Prisma.DateTimeFilter<"User"> | Date | string;
     updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string;
+    chatMessages?: Prisma.ChatMessageListRelationFilter;
+    interactions?: Prisma.InteractionListRelationFilter;
+    refreshTokens?: Prisma.RefreshTokenListRelationFilter;
+    variationVotes?: Prisma.VariationVoteListRelationFilter;
     createdWatchSpaces?: Prisma.WatchSpaceListRelationFilter;
     participations?: Prisma.WatchSpaceParticipantListRelationFilter;
-    interactions?: Prisma.InteractionListRelationFilter;
-    chatMessages?: Prisma.ChatMessageListRelationFilter;
-    refreshTokens?: Prisma.RefreshTokenListRelationFilter;
+    aiQuestionLogs?: Prisma.AiQuestionLogListRelationFilter;
 }, "id" | "email">;
 export type UserOrderByWithAggregationInput = {
     id?: Prisma.SortOrder;
@@ -224,11 +230,13 @@ export type UserCreateInput = {
     role?: $Enums.UserRole;
     createdAt?: Date | string;
     updatedAt?: Date | string;
+    chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutUserInput;
+    interactions?: Prisma.InteractionCreateNestedManyWithoutUserInput;
+    refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput;
+    variationVotes?: Prisma.VariationVoteCreateNestedManyWithoutUserInput;
     createdWatchSpaces?: Prisma.WatchSpaceCreateNestedManyWithoutHostInput;
     participations?: Prisma.WatchSpaceParticipantCreateNestedManyWithoutUserInput;
-    interactions?: Prisma.InteractionCreateNestedManyWithoutUserInput;
-    chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutUserInput;
-    refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogCreateNestedManyWithoutUserInput;
 };
 export type UserUncheckedCreateInput = {
     id?: string;
@@ -238,11 +246,13 @@ export type UserUncheckedCreateInput = {
     role?: $Enums.UserRole;
     createdAt?: Date | string;
     updatedAt?: Date | string;
+    chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutUserInput;
+    interactions?: Prisma.InteractionUncheckedCreateNestedManyWithoutUserInput;
+    refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput;
+    variationVotes?: Prisma.VariationVoteUncheckedCreateNestedManyWithoutUserInput;
     createdWatchSpaces?: Prisma.WatchSpaceUncheckedCreateNestedManyWithoutHostInput;
     participations?: Prisma.WatchSpaceParticipantUncheckedCreateNestedManyWithoutUserInput;
-    interactions?: Prisma.InteractionUncheckedCreateNestedManyWithoutUserInput;
-    chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutUserInput;
-    refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogUncheckedCreateNestedManyWithoutUserInput;
 };
 export type UserUpdateInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -252,11 +262,13 @@ export type UserUpdateInput = {
     role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    chatMessages?: Prisma.ChatMessageUpdateManyWithoutUserNestedInput;
+    interactions?: Prisma.InteractionUpdateManyWithoutUserNestedInput;
+    refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput;
+    variationVotes?: Prisma.VariationVoteUpdateManyWithoutUserNestedInput;
     createdWatchSpaces?: Prisma.WatchSpaceUpdateManyWithoutHostNestedInput;
     participations?: Prisma.WatchSpaceParticipantUpdateManyWithoutUserNestedInput;
-    interactions?: Prisma.InteractionUpdateManyWithoutUserNestedInput;
-    chatMessages?: Prisma.ChatMessageUpdateManyWithoutUserNestedInput;
-    refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogUpdateManyWithoutUserNestedInput;
 };
 export type UserUncheckedUpdateInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -266,11 +278,13 @@ export type UserUncheckedUpdateInput = {
     role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutUserNestedInput;
+    interactions?: Prisma.InteractionUncheckedUpdateManyWithoutUserNestedInput;
+    refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput;
+    variationVotes?: Prisma.VariationVoteUncheckedUpdateManyWithoutUserNestedInput;
     createdWatchSpaces?: Prisma.WatchSpaceUncheckedUpdateManyWithoutHostNestedInput;
     participations?: Prisma.WatchSpaceParticipantUncheckedUpdateManyWithoutUserNestedInput;
-    interactions?: Prisma.InteractionUncheckedUpdateManyWithoutUserNestedInput;
-    chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutUserNestedInput;
-    refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogUncheckedUpdateManyWithoutUserNestedInput;
 };
 export type UserCreateManyInput = {
     id?: string;
@@ -399,6 +413,30 @@ export type UserUpdateOneRequiredWithoutInteractionsNestedInput = {
     connect?: Prisma.UserWhereUniqueInput;
     update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutInteractionsInput, Prisma.UserUpdateWithoutInteractionsInput>, Prisma.UserUncheckedUpdateWithoutInteractionsInput>;
 };
+export type UserCreateNestedOneWithoutVariationVotesInput = {
+    create?: Prisma.XOR<Prisma.UserCreateWithoutVariationVotesInput, Prisma.UserUncheckedCreateWithoutVariationVotesInput>;
+    connectOrCreate?: Prisma.UserCreateOrConnectWithoutVariationVotesInput;
+    connect?: Prisma.UserWhereUniqueInput;
+};
+export type UserUpdateOneRequiredWithoutVariationVotesNestedInput = {
+    create?: Prisma.XOR<Prisma.UserCreateWithoutVariationVotesInput, Prisma.UserUncheckedCreateWithoutVariationVotesInput>;
+    connectOrCreate?: Prisma.UserCreateOrConnectWithoutVariationVotesInput;
+    upsert?: Prisma.UserUpsertWithoutVariationVotesInput;
+    connect?: Prisma.UserWhereUniqueInput;
+    update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutVariationVotesInput, Prisma.UserUpdateWithoutVariationVotesInput>, Prisma.UserUncheckedUpdateWithoutVariationVotesInput>;
+};
+export type UserCreateNestedOneWithoutAiQuestionLogsInput = {
+    create?: Prisma.XOR<Prisma.UserCreateWithoutAiQuestionLogsInput, Prisma.UserUncheckedCreateWithoutAiQuestionLogsInput>;
+    connectOrCreate?: Prisma.UserCreateOrConnectWithoutAiQuestionLogsInput;
+    connect?: Prisma.UserWhereUniqueInput;
+};
+export type UserUpdateOneRequiredWithoutAiQuestionLogsNestedInput = {
+    create?: Prisma.XOR<Prisma.UserCreateWithoutAiQuestionLogsInput, Prisma.UserUncheckedCreateWithoutAiQuestionLogsInput>;
+    connectOrCreate?: Prisma.UserCreateOrConnectWithoutAiQuestionLogsInput;
+    upsert?: Prisma.UserUpsertWithoutAiQuestionLogsInput;
+    connect?: Prisma.UserWhereUniqueInput;
+    update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutAiQuestionLogsInput, Prisma.UserUpdateWithoutAiQuestionLogsInput>, Prisma.UserUncheckedUpdateWithoutAiQuestionLogsInput>;
+};
 export type UserCreateWithoutRefreshTokensInput = {
     id?: string;
     name: string;
@@ -407,10 +445,12 @@ export type UserCreateWithoutRefreshTokensInput = {
     role?: $Enums.UserRole;
     createdAt?: Date | string;
     updatedAt?: Date | string;
+    chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutUserInput;
+    interactions?: Prisma.InteractionCreateNestedManyWithoutUserInput;
+    variationVotes?: Prisma.VariationVoteCreateNestedManyWithoutUserInput;
     createdWatchSpaces?: Prisma.WatchSpaceCreateNestedManyWithoutHostInput;
     participations?: Prisma.WatchSpaceParticipantCreateNestedManyWithoutUserInput;
-    interactions?: Prisma.InteractionCreateNestedManyWithoutUserInput;
-    chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutUserInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogCreateNestedManyWithoutUserInput;
 };
 export type UserUncheckedCreateWithoutRefreshTokensInput = {
     id?: string;
@@ -420,10 +460,12 @@ export type UserUncheckedCreateWithoutRefreshTokensInput = {
     role?: $Enums.UserRole;
     createdAt?: Date | string;
     updatedAt?: Date | string;
+    chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutUserInput;
+    interactions?: Prisma.InteractionUncheckedCreateNestedManyWithoutUserInput;
+    variationVotes?: Prisma.VariationVoteUncheckedCreateNestedManyWithoutUserInput;
     createdWatchSpaces?: Prisma.WatchSpaceUncheckedCreateNestedManyWithoutHostInput;
     participations?: Prisma.WatchSpaceParticipantUncheckedCreateNestedManyWithoutUserInput;
-    interactions?: Prisma.InteractionUncheckedCreateNestedManyWithoutUserInput;
-    chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutUserInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogUncheckedCreateNestedManyWithoutUserInput;
 };
 export type UserCreateOrConnectWithoutRefreshTokensInput = {
     where: Prisma.UserWhereUniqueInput;
@@ -446,10 +488,12 @@ export type UserUpdateWithoutRefreshTokensInput = {
     role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    chatMessages?: Prisma.ChatMessageUpdateManyWithoutUserNestedInput;
+    interactions?: Prisma.InteractionUpdateManyWithoutUserNestedInput;
+    variationVotes?: Prisma.VariationVoteUpdateManyWithoutUserNestedInput;
     createdWatchSpaces?: Prisma.WatchSpaceUpdateManyWithoutHostNestedInput;
     participations?: Prisma.WatchSpaceParticipantUpdateManyWithoutUserNestedInput;
-    interactions?: Prisma.InteractionUpdateManyWithoutUserNestedInput;
-    chatMessages?: Prisma.ChatMessageUpdateManyWithoutUserNestedInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogUpdateManyWithoutUserNestedInput;
 };
 export type UserUncheckedUpdateWithoutRefreshTokensInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -459,10 +503,12 @@ export type UserUncheckedUpdateWithoutRefreshTokensInput = {
     role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutUserNestedInput;
+    interactions?: Prisma.InteractionUncheckedUpdateManyWithoutUserNestedInput;
+    variationVotes?: Prisma.VariationVoteUncheckedUpdateManyWithoutUserNestedInput;
     createdWatchSpaces?: Prisma.WatchSpaceUncheckedUpdateManyWithoutHostNestedInput;
     participations?: Prisma.WatchSpaceParticipantUncheckedUpdateManyWithoutUserNestedInput;
-    interactions?: Prisma.InteractionUncheckedUpdateManyWithoutUserNestedInput;
-    chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutUserNestedInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogUncheckedUpdateManyWithoutUserNestedInput;
 };
 export type UserCreateWithoutCreatedWatchSpacesInput = {
     id?: string;
@@ -472,10 +518,12 @@ export type UserCreateWithoutCreatedWatchSpacesInput = {
     role?: $Enums.UserRole;
     createdAt?: Date | string;
     updatedAt?: Date | string;
-    participations?: Prisma.WatchSpaceParticipantCreateNestedManyWithoutUserInput;
-    interactions?: Prisma.InteractionCreateNestedManyWithoutUserInput;
     chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutUserInput;
+    interactions?: Prisma.InteractionCreateNestedManyWithoutUserInput;
     refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput;
+    variationVotes?: Prisma.VariationVoteCreateNestedManyWithoutUserInput;
+    participations?: Prisma.WatchSpaceParticipantCreateNestedManyWithoutUserInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogCreateNestedManyWithoutUserInput;
 };
 export type UserUncheckedCreateWithoutCreatedWatchSpacesInput = {
     id?: string;
@@ -485,10 +533,12 @@ export type UserUncheckedCreateWithoutCreatedWatchSpacesInput = {
     role?: $Enums.UserRole;
     createdAt?: Date | string;
     updatedAt?: Date | string;
-    participations?: Prisma.WatchSpaceParticipantUncheckedCreateNestedManyWithoutUserInput;
-    interactions?: Prisma.InteractionUncheckedCreateNestedManyWithoutUserInput;
     chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutUserInput;
+    interactions?: Prisma.InteractionUncheckedCreateNestedManyWithoutUserInput;
     refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput;
+    variationVotes?: Prisma.VariationVoteUncheckedCreateNestedManyWithoutUserInput;
+    participations?: Prisma.WatchSpaceParticipantUncheckedCreateNestedManyWithoutUserInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogUncheckedCreateNestedManyWithoutUserInput;
 };
 export type UserCreateOrConnectWithoutCreatedWatchSpacesInput = {
     where: Prisma.UserWhereUniqueInput;
@@ -511,10 +561,12 @@ export type UserUpdateWithoutCreatedWatchSpacesInput = {
     role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-    participations?: Prisma.WatchSpaceParticipantUpdateManyWithoutUserNestedInput;
-    interactions?: Prisma.InteractionUpdateManyWithoutUserNestedInput;
     chatMessages?: Prisma.ChatMessageUpdateManyWithoutUserNestedInput;
+    interactions?: Prisma.InteractionUpdateManyWithoutUserNestedInput;
     refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput;
+    variationVotes?: Prisma.VariationVoteUpdateManyWithoutUserNestedInput;
+    participations?: Prisma.WatchSpaceParticipantUpdateManyWithoutUserNestedInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogUpdateManyWithoutUserNestedInput;
 };
 export type UserUncheckedUpdateWithoutCreatedWatchSpacesInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -524,10 +576,12 @@ export type UserUncheckedUpdateWithoutCreatedWatchSpacesInput = {
     role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-    participations?: Prisma.WatchSpaceParticipantUncheckedUpdateManyWithoutUserNestedInput;
-    interactions?: Prisma.InteractionUncheckedUpdateManyWithoutUserNestedInput;
     chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutUserNestedInput;
+    interactions?: Prisma.InteractionUncheckedUpdateManyWithoutUserNestedInput;
     refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput;
+    variationVotes?: Prisma.VariationVoteUncheckedUpdateManyWithoutUserNestedInput;
+    participations?: Prisma.WatchSpaceParticipantUncheckedUpdateManyWithoutUserNestedInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogUncheckedUpdateManyWithoutUserNestedInput;
 };
 export type UserCreateWithoutParticipationsInput = {
     id?: string;
@@ -537,10 +591,12 @@ export type UserCreateWithoutParticipationsInput = {
     role?: $Enums.UserRole;
     createdAt?: Date | string;
     updatedAt?: Date | string;
-    createdWatchSpaces?: Prisma.WatchSpaceCreateNestedManyWithoutHostInput;
-    interactions?: Prisma.InteractionCreateNestedManyWithoutUserInput;
     chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutUserInput;
+    interactions?: Prisma.InteractionCreateNestedManyWithoutUserInput;
     refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput;
+    variationVotes?: Prisma.VariationVoteCreateNestedManyWithoutUserInput;
+    createdWatchSpaces?: Prisma.WatchSpaceCreateNestedManyWithoutHostInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogCreateNestedManyWithoutUserInput;
 };
 export type UserUncheckedCreateWithoutParticipationsInput = {
     id?: string;
@@ -550,10 +606,12 @@ export type UserUncheckedCreateWithoutParticipationsInput = {
     role?: $Enums.UserRole;
     createdAt?: Date | string;
     updatedAt?: Date | string;
-    createdWatchSpaces?: Prisma.WatchSpaceUncheckedCreateNestedManyWithoutHostInput;
-    interactions?: Prisma.InteractionUncheckedCreateNestedManyWithoutUserInput;
     chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutUserInput;
+    interactions?: Prisma.InteractionUncheckedCreateNestedManyWithoutUserInput;
     refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput;
+    variationVotes?: Prisma.VariationVoteUncheckedCreateNestedManyWithoutUserInput;
+    createdWatchSpaces?: Prisma.WatchSpaceUncheckedCreateNestedManyWithoutHostInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogUncheckedCreateNestedManyWithoutUserInput;
 };
 export type UserCreateOrConnectWithoutParticipationsInput = {
     where: Prisma.UserWhereUniqueInput;
@@ -576,10 +634,12 @@ export type UserUpdateWithoutParticipationsInput = {
     role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-    createdWatchSpaces?: Prisma.WatchSpaceUpdateManyWithoutHostNestedInput;
-    interactions?: Prisma.InteractionUpdateManyWithoutUserNestedInput;
     chatMessages?: Prisma.ChatMessageUpdateManyWithoutUserNestedInput;
+    interactions?: Prisma.InteractionUpdateManyWithoutUserNestedInput;
     refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput;
+    variationVotes?: Prisma.VariationVoteUpdateManyWithoutUserNestedInput;
+    createdWatchSpaces?: Prisma.WatchSpaceUpdateManyWithoutHostNestedInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogUpdateManyWithoutUserNestedInput;
 };
 export type UserUncheckedUpdateWithoutParticipationsInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -589,10 +649,12 @@ export type UserUncheckedUpdateWithoutParticipationsInput = {
     role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-    createdWatchSpaces?: Prisma.WatchSpaceUncheckedUpdateManyWithoutHostNestedInput;
-    interactions?: Prisma.InteractionUncheckedUpdateManyWithoutUserNestedInput;
     chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutUserNestedInput;
+    interactions?: Prisma.InteractionUncheckedUpdateManyWithoutUserNestedInput;
     refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput;
+    variationVotes?: Prisma.VariationVoteUncheckedUpdateManyWithoutUserNestedInput;
+    createdWatchSpaces?: Prisma.WatchSpaceUncheckedUpdateManyWithoutHostNestedInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogUncheckedUpdateManyWithoutUserNestedInput;
 };
 export type UserCreateWithoutChatMessagesInput = {
     id?: string;
@@ -602,10 +664,12 @@ export type UserCreateWithoutChatMessagesInput = {
     role?: $Enums.UserRole;
     createdAt?: Date | string;
     updatedAt?: Date | string;
-    createdWatchSpaces?: Prisma.WatchSpaceCreateNestedManyWithoutHostInput;
-    participations?: Prisma.WatchSpaceParticipantCreateNestedManyWithoutUserInput;
     interactions?: Prisma.InteractionCreateNestedManyWithoutUserInput;
     refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput;
+    variationVotes?: Prisma.VariationVoteCreateNestedManyWithoutUserInput;
+    createdWatchSpaces?: Prisma.WatchSpaceCreateNestedManyWithoutHostInput;
+    participations?: Prisma.WatchSpaceParticipantCreateNestedManyWithoutUserInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogCreateNestedManyWithoutUserInput;
 };
 export type UserUncheckedCreateWithoutChatMessagesInput = {
     id?: string;
@@ -615,10 +679,12 @@ export type UserUncheckedCreateWithoutChatMessagesInput = {
     role?: $Enums.UserRole;
     createdAt?: Date | string;
     updatedAt?: Date | string;
-    createdWatchSpaces?: Prisma.WatchSpaceUncheckedCreateNestedManyWithoutHostInput;
-    participations?: Prisma.WatchSpaceParticipantUncheckedCreateNestedManyWithoutUserInput;
     interactions?: Prisma.InteractionUncheckedCreateNestedManyWithoutUserInput;
     refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput;
+    variationVotes?: Prisma.VariationVoteUncheckedCreateNestedManyWithoutUserInput;
+    createdWatchSpaces?: Prisma.WatchSpaceUncheckedCreateNestedManyWithoutHostInput;
+    participations?: Prisma.WatchSpaceParticipantUncheckedCreateNestedManyWithoutUserInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogUncheckedCreateNestedManyWithoutUserInput;
 };
 export type UserCreateOrConnectWithoutChatMessagesInput = {
     where: Prisma.UserWhereUniqueInput;
@@ -641,10 +707,12 @@ export type UserUpdateWithoutChatMessagesInput = {
     role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-    createdWatchSpaces?: Prisma.WatchSpaceUpdateManyWithoutHostNestedInput;
-    participations?: Prisma.WatchSpaceParticipantUpdateManyWithoutUserNestedInput;
     interactions?: Prisma.InteractionUpdateManyWithoutUserNestedInput;
     refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput;
+    variationVotes?: Prisma.VariationVoteUpdateManyWithoutUserNestedInput;
+    createdWatchSpaces?: Prisma.WatchSpaceUpdateManyWithoutHostNestedInput;
+    participations?: Prisma.WatchSpaceParticipantUpdateManyWithoutUserNestedInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogUpdateManyWithoutUserNestedInput;
 };
 export type UserUncheckedUpdateWithoutChatMessagesInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -654,10 +722,12 @@ export type UserUncheckedUpdateWithoutChatMessagesInput = {
     role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-    createdWatchSpaces?: Prisma.WatchSpaceUncheckedUpdateManyWithoutHostNestedInput;
-    participations?: Prisma.WatchSpaceParticipantUncheckedUpdateManyWithoutUserNestedInput;
     interactions?: Prisma.InteractionUncheckedUpdateManyWithoutUserNestedInput;
     refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput;
+    variationVotes?: Prisma.VariationVoteUncheckedUpdateManyWithoutUserNestedInput;
+    createdWatchSpaces?: Prisma.WatchSpaceUncheckedUpdateManyWithoutHostNestedInput;
+    participations?: Prisma.WatchSpaceParticipantUncheckedUpdateManyWithoutUserNestedInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogUncheckedUpdateManyWithoutUserNestedInput;
 };
 export type UserCreateWithoutInteractionsInput = {
     id?: string;
@@ -667,10 +737,12 @@ export type UserCreateWithoutInteractionsInput = {
     role?: $Enums.UserRole;
     createdAt?: Date | string;
     updatedAt?: Date | string;
-    createdWatchSpaces?: Prisma.WatchSpaceCreateNestedManyWithoutHostInput;
-    participations?: Prisma.WatchSpaceParticipantCreateNestedManyWithoutUserInput;
     chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutUserInput;
     refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput;
+    variationVotes?: Prisma.VariationVoteCreateNestedManyWithoutUserInput;
+    createdWatchSpaces?: Prisma.WatchSpaceCreateNestedManyWithoutHostInput;
+    participations?: Prisma.WatchSpaceParticipantCreateNestedManyWithoutUserInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogCreateNestedManyWithoutUserInput;
 };
 export type UserUncheckedCreateWithoutInteractionsInput = {
     id?: string;
@@ -680,10 +752,12 @@ export type UserUncheckedCreateWithoutInteractionsInput = {
     role?: $Enums.UserRole;
     createdAt?: Date | string;
     updatedAt?: Date | string;
-    createdWatchSpaces?: Prisma.WatchSpaceUncheckedCreateNestedManyWithoutHostInput;
-    participations?: Prisma.WatchSpaceParticipantUncheckedCreateNestedManyWithoutUserInput;
     chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutUserInput;
     refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput;
+    variationVotes?: Prisma.VariationVoteUncheckedCreateNestedManyWithoutUserInput;
+    createdWatchSpaces?: Prisma.WatchSpaceUncheckedCreateNestedManyWithoutHostInput;
+    participations?: Prisma.WatchSpaceParticipantUncheckedCreateNestedManyWithoutUserInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogUncheckedCreateNestedManyWithoutUserInput;
 };
 export type UserCreateOrConnectWithoutInteractionsInput = {
     where: Prisma.UserWhereUniqueInput;
@@ -706,10 +780,12 @@ export type UserUpdateWithoutInteractionsInput = {
     role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-    createdWatchSpaces?: Prisma.WatchSpaceUpdateManyWithoutHostNestedInput;
-    participations?: Prisma.WatchSpaceParticipantUpdateManyWithoutUserNestedInput;
     chatMessages?: Prisma.ChatMessageUpdateManyWithoutUserNestedInput;
     refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput;
+    variationVotes?: Prisma.VariationVoteUpdateManyWithoutUserNestedInput;
+    createdWatchSpaces?: Prisma.WatchSpaceUpdateManyWithoutHostNestedInput;
+    participations?: Prisma.WatchSpaceParticipantUpdateManyWithoutUserNestedInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogUpdateManyWithoutUserNestedInput;
 };
 export type UserUncheckedUpdateWithoutInteractionsInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -719,27 +795,179 @@ export type UserUncheckedUpdateWithoutInteractionsInput = {
     role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-    createdWatchSpaces?: Prisma.WatchSpaceUncheckedUpdateManyWithoutHostNestedInput;
-    participations?: Prisma.WatchSpaceParticipantUncheckedUpdateManyWithoutUserNestedInput;
     chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutUserNestedInput;
     refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput;
+    variationVotes?: Prisma.VariationVoteUncheckedUpdateManyWithoutUserNestedInput;
+    createdWatchSpaces?: Prisma.WatchSpaceUncheckedUpdateManyWithoutHostNestedInput;
+    participations?: Prisma.WatchSpaceParticipantUncheckedUpdateManyWithoutUserNestedInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogUncheckedUpdateManyWithoutUserNestedInput;
+};
+export type UserCreateWithoutVariationVotesInput = {
+    id?: string;
+    name: string;
+    email: string;
+    passwordHash: string;
+    role?: $Enums.UserRole;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutUserInput;
+    interactions?: Prisma.InteractionCreateNestedManyWithoutUserInput;
+    refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput;
+    createdWatchSpaces?: Prisma.WatchSpaceCreateNestedManyWithoutHostInput;
+    participations?: Prisma.WatchSpaceParticipantCreateNestedManyWithoutUserInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogCreateNestedManyWithoutUserInput;
+};
+export type UserUncheckedCreateWithoutVariationVotesInput = {
+    id?: string;
+    name: string;
+    email: string;
+    passwordHash: string;
+    role?: $Enums.UserRole;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutUserInput;
+    interactions?: Prisma.InteractionUncheckedCreateNestedManyWithoutUserInput;
+    refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput;
+    createdWatchSpaces?: Prisma.WatchSpaceUncheckedCreateNestedManyWithoutHostInput;
+    participations?: Prisma.WatchSpaceParticipantUncheckedCreateNestedManyWithoutUserInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogUncheckedCreateNestedManyWithoutUserInput;
+};
+export type UserCreateOrConnectWithoutVariationVotesInput = {
+    where: Prisma.UserWhereUniqueInput;
+    create: Prisma.XOR<Prisma.UserCreateWithoutVariationVotesInput, Prisma.UserUncheckedCreateWithoutVariationVotesInput>;
+};
+export type UserUpsertWithoutVariationVotesInput = {
+    update: Prisma.XOR<Prisma.UserUpdateWithoutVariationVotesInput, Prisma.UserUncheckedUpdateWithoutVariationVotesInput>;
+    create: Prisma.XOR<Prisma.UserCreateWithoutVariationVotesInput, Prisma.UserUncheckedCreateWithoutVariationVotesInput>;
+    where?: Prisma.UserWhereInput;
+};
+export type UserUpdateToOneWithWhereWithoutVariationVotesInput = {
+    where?: Prisma.UserWhereInput;
+    data: Prisma.XOR<Prisma.UserUpdateWithoutVariationVotesInput, Prisma.UserUncheckedUpdateWithoutVariationVotesInput>;
+};
+export type UserUpdateWithoutVariationVotesInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    name?: Prisma.StringFieldUpdateOperationsInput | string;
+    email?: Prisma.StringFieldUpdateOperationsInput | string;
+    passwordHash?: Prisma.StringFieldUpdateOperationsInput | string;
+    role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    chatMessages?: Prisma.ChatMessageUpdateManyWithoutUserNestedInput;
+    interactions?: Prisma.InteractionUpdateManyWithoutUserNestedInput;
+    refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput;
+    createdWatchSpaces?: Prisma.WatchSpaceUpdateManyWithoutHostNestedInput;
+    participations?: Prisma.WatchSpaceParticipantUpdateManyWithoutUserNestedInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogUpdateManyWithoutUserNestedInput;
+};
+export type UserUncheckedUpdateWithoutVariationVotesInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    name?: Prisma.StringFieldUpdateOperationsInput | string;
+    email?: Prisma.StringFieldUpdateOperationsInput | string;
+    passwordHash?: Prisma.StringFieldUpdateOperationsInput | string;
+    role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutUserNestedInput;
+    interactions?: Prisma.InteractionUncheckedUpdateManyWithoutUserNestedInput;
+    refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput;
+    createdWatchSpaces?: Prisma.WatchSpaceUncheckedUpdateManyWithoutHostNestedInput;
+    participations?: Prisma.WatchSpaceParticipantUncheckedUpdateManyWithoutUserNestedInput;
+    aiQuestionLogs?: Prisma.AiQuestionLogUncheckedUpdateManyWithoutUserNestedInput;
+};
+export type UserCreateWithoutAiQuestionLogsInput = {
+    id?: string;
+    name: string;
+    email: string;
+    passwordHash: string;
+    role?: $Enums.UserRole;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    chatMessages?: Prisma.ChatMessageCreateNestedManyWithoutUserInput;
+    interactions?: Prisma.InteractionCreateNestedManyWithoutUserInput;
+    refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutUserInput;
+    variationVotes?: Prisma.VariationVoteCreateNestedManyWithoutUserInput;
+    createdWatchSpaces?: Prisma.WatchSpaceCreateNestedManyWithoutHostInput;
+    participations?: Prisma.WatchSpaceParticipantCreateNestedManyWithoutUserInput;
+};
+export type UserUncheckedCreateWithoutAiQuestionLogsInput = {
+    id?: string;
+    name: string;
+    email: string;
+    passwordHash: string;
+    role?: $Enums.UserRole;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    chatMessages?: Prisma.ChatMessageUncheckedCreateNestedManyWithoutUserInput;
+    interactions?: Prisma.InteractionUncheckedCreateNestedManyWithoutUserInput;
+    refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutUserInput;
+    variationVotes?: Prisma.VariationVoteUncheckedCreateNestedManyWithoutUserInput;
+    createdWatchSpaces?: Prisma.WatchSpaceUncheckedCreateNestedManyWithoutHostInput;
+    participations?: Prisma.WatchSpaceParticipantUncheckedCreateNestedManyWithoutUserInput;
+};
+export type UserCreateOrConnectWithoutAiQuestionLogsInput = {
+    where: Prisma.UserWhereUniqueInput;
+    create: Prisma.XOR<Prisma.UserCreateWithoutAiQuestionLogsInput, Prisma.UserUncheckedCreateWithoutAiQuestionLogsInput>;
+};
+export type UserUpsertWithoutAiQuestionLogsInput = {
+    update: Prisma.XOR<Prisma.UserUpdateWithoutAiQuestionLogsInput, Prisma.UserUncheckedUpdateWithoutAiQuestionLogsInput>;
+    create: Prisma.XOR<Prisma.UserCreateWithoutAiQuestionLogsInput, Prisma.UserUncheckedCreateWithoutAiQuestionLogsInput>;
+    where?: Prisma.UserWhereInput;
+};
+export type UserUpdateToOneWithWhereWithoutAiQuestionLogsInput = {
+    where?: Prisma.UserWhereInput;
+    data: Prisma.XOR<Prisma.UserUpdateWithoutAiQuestionLogsInput, Prisma.UserUncheckedUpdateWithoutAiQuestionLogsInput>;
+};
+export type UserUpdateWithoutAiQuestionLogsInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    name?: Prisma.StringFieldUpdateOperationsInput | string;
+    email?: Prisma.StringFieldUpdateOperationsInput | string;
+    passwordHash?: Prisma.StringFieldUpdateOperationsInput | string;
+    role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    chatMessages?: Prisma.ChatMessageUpdateManyWithoutUserNestedInput;
+    interactions?: Prisma.InteractionUpdateManyWithoutUserNestedInput;
+    refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutUserNestedInput;
+    variationVotes?: Prisma.VariationVoteUpdateManyWithoutUserNestedInput;
+    createdWatchSpaces?: Prisma.WatchSpaceUpdateManyWithoutHostNestedInput;
+    participations?: Prisma.WatchSpaceParticipantUpdateManyWithoutUserNestedInput;
+};
+export type UserUncheckedUpdateWithoutAiQuestionLogsInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    name?: Prisma.StringFieldUpdateOperationsInput | string;
+    email?: Prisma.StringFieldUpdateOperationsInput | string;
+    passwordHash?: Prisma.StringFieldUpdateOperationsInput | string;
+    role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    chatMessages?: Prisma.ChatMessageUncheckedUpdateManyWithoutUserNestedInput;
+    interactions?: Prisma.InteractionUncheckedUpdateManyWithoutUserNestedInput;
+    refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutUserNestedInput;
+    variationVotes?: Prisma.VariationVoteUncheckedUpdateManyWithoutUserNestedInput;
+    createdWatchSpaces?: Prisma.WatchSpaceUncheckedUpdateManyWithoutHostNestedInput;
+    participations?: Prisma.WatchSpaceParticipantUncheckedUpdateManyWithoutUserNestedInput;
 };
 /**
  * Count Type UserCountOutputType
  */
 export type UserCountOutputType = {
+    chatMessages: number;
+    interactions: number;
+    refreshTokens: number;
+    variationVotes: number;
     createdWatchSpaces: number;
     participations: number;
-    interactions: number;
-    chatMessages: number;
-    refreshTokens: number;
+    aiQuestionLogs: number;
 };
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    chatMessages?: boolean | UserCountOutputTypeCountChatMessagesArgs;
+    interactions?: boolean | UserCountOutputTypeCountInteractionsArgs;
+    refreshTokens?: boolean | UserCountOutputTypeCountRefreshTokensArgs;
+    variationVotes?: boolean | UserCountOutputTypeCountVariationVotesArgs;
     createdWatchSpaces?: boolean | UserCountOutputTypeCountCreatedWatchSpacesArgs;
     participations?: boolean | UserCountOutputTypeCountParticipationsArgs;
-    interactions?: boolean | UserCountOutputTypeCountInteractionsArgs;
-    chatMessages?: boolean | UserCountOutputTypeCountChatMessagesArgs;
-    refreshTokens?: boolean | UserCountOutputTypeCountRefreshTokensArgs;
+    aiQuestionLogs?: boolean | UserCountOutputTypeCountAiQuestionLogsArgs;
 };
 /**
  * UserCountOutputType without action
@@ -749,6 +977,30 @@ export type UserCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensi
      * Select specific fields to fetch from the UserCountOutputType
      */
     select?: Prisma.UserCountOutputTypeSelect<ExtArgs> | null;
+};
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountChatMessagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.ChatMessageWhereInput;
+};
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountInteractionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.InteractionWhereInput;
+};
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountRefreshTokensArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.RefreshTokenWhereInput;
+};
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountVariationVotesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.VariationVoteWhereInput;
 };
 /**
  * UserCountOutputType without action
@@ -765,20 +1017,8 @@ export type UserCountOutputTypeCountParticipationsArgs<ExtArgs extends runtime.T
 /**
  * UserCountOutputType without action
  */
-export type UserCountOutputTypeCountInteractionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-    where?: Prisma.InteractionWhereInput;
-};
-/**
- * UserCountOutputType without action
- */
-export type UserCountOutputTypeCountChatMessagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-    where?: Prisma.ChatMessageWhereInput;
-};
-/**
- * UserCountOutputType without action
- */
-export type UserCountOutputTypeCountRefreshTokensArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-    where?: Prisma.RefreshTokenWhereInput;
+export type UserCountOutputTypeCountAiQuestionLogsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.AiQuestionLogWhereInput;
 };
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
     id?: boolean;
@@ -788,11 +1028,13 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
     role?: boolean;
     createdAt?: boolean;
     updatedAt?: boolean;
+    chatMessages?: boolean | Prisma.User$chatMessagesArgs<ExtArgs>;
+    interactions?: boolean | Prisma.User$interactionsArgs<ExtArgs>;
+    refreshTokens?: boolean | Prisma.User$refreshTokensArgs<ExtArgs>;
+    variationVotes?: boolean | Prisma.User$variationVotesArgs<ExtArgs>;
     createdWatchSpaces?: boolean | Prisma.User$createdWatchSpacesArgs<ExtArgs>;
     participations?: boolean | Prisma.User$participationsArgs<ExtArgs>;
-    interactions?: boolean | Prisma.User$interactionsArgs<ExtArgs>;
-    chatMessages?: boolean | Prisma.User$chatMessagesArgs<ExtArgs>;
-    refreshTokens?: boolean | Prisma.User$refreshTokensArgs<ExtArgs>;
+    aiQuestionLogs?: boolean | Prisma.User$aiQuestionLogsArgs<ExtArgs>;
     _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>;
 }, ExtArgs["result"]["user"]>;
 export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -824,11 +1066,13 @@ export type UserSelectScalar = {
 };
 export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "passwordHash" | "role" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>;
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    chatMessages?: boolean | Prisma.User$chatMessagesArgs<ExtArgs>;
+    interactions?: boolean | Prisma.User$interactionsArgs<ExtArgs>;
+    refreshTokens?: boolean | Prisma.User$refreshTokensArgs<ExtArgs>;
+    variationVotes?: boolean | Prisma.User$variationVotesArgs<ExtArgs>;
     createdWatchSpaces?: boolean | Prisma.User$createdWatchSpacesArgs<ExtArgs>;
     participations?: boolean | Prisma.User$participationsArgs<ExtArgs>;
-    interactions?: boolean | Prisma.User$interactionsArgs<ExtArgs>;
-    chatMessages?: boolean | Prisma.User$chatMessagesArgs<ExtArgs>;
-    refreshTokens?: boolean | Prisma.User$refreshTokensArgs<ExtArgs>;
+    aiQuestionLogs?: boolean | Prisma.User$aiQuestionLogsArgs<ExtArgs>;
     _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>;
 };
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {};
@@ -836,11 +1080,13 @@ export type UserIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
 export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     name: "User";
     objects: {
+        chatMessages: Prisma.$ChatMessagePayload<ExtArgs>[];
+        interactions: Prisma.$InteractionPayload<ExtArgs>[];
+        refreshTokens: Prisma.$RefreshTokenPayload<ExtArgs>[];
+        variationVotes: Prisma.$VariationVotePayload<ExtArgs>[];
         createdWatchSpaces: Prisma.$WatchSpacePayload<ExtArgs>[];
         participations: Prisma.$WatchSpaceParticipantPayload<ExtArgs>[];
-        interactions: Prisma.$InteractionPayload<ExtArgs>[];
-        chatMessages: Prisma.$ChatMessagePayload<ExtArgs>[];
-        refreshTokens: Prisma.$RefreshTokenPayload<ExtArgs>[];
+        aiQuestionLogs: Prisma.$AiQuestionLogPayload<ExtArgs>[];
     };
     scalars: runtime.Types.Extensions.GetPayloadResult<{
         id: string;
@@ -1179,11 +1425,13 @@ export interface UserDelegate<ExtArgs extends runtime.Types.Extensions.InternalA
  */
 export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise";
+    chatMessages<T extends Prisma.User$chatMessagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$chatMessagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ChatMessagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
+    interactions<T extends Prisma.User$interactionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$interactionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$InteractionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
+    refreshTokens<T extends Prisma.User$refreshTokensArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$refreshTokensArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RefreshTokenPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
+    variationVotes<T extends Prisma.User$variationVotesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$variationVotesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$VariationVotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
     createdWatchSpaces<T extends Prisma.User$createdWatchSpacesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$createdWatchSpacesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$WatchSpacePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
     participations<T extends Prisma.User$participationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$participationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$WatchSpaceParticipantPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
-    interactions<T extends Prisma.User$interactionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$interactionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$InteractionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
-    chatMessages<T extends Prisma.User$chatMessagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$chatMessagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ChatMessagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
-    refreshTokens<T extends Prisma.User$refreshTokensArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$refreshTokensArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RefreshTokenPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
+    aiQuestionLogs<T extends Prisma.User$aiQuestionLogsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$aiQuestionLogsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AiQuestionLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1592,6 +1840,98 @@ export type UserDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Internal
     limit?: number;
 };
 /**
+ * User.chatMessages
+ */
+export type User$chatMessagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChatMessage
+     */
+    select?: Prisma.ChatMessageSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the ChatMessage
+     */
+    omit?: Prisma.ChatMessageOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.ChatMessageInclude<ExtArgs> | null;
+    where?: Prisma.ChatMessageWhereInput;
+    orderBy?: Prisma.ChatMessageOrderByWithRelationInput | Prisma.ChatMessageOrderByWithRelationInput[];
+    cursor?: Prisma.ChatMessageWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.ChatMessageScalarFieldEnum | Prisma.ChatMessageScalarFieldEnum[];
+};
+/**
+ * User.interactions
+ */
+export type User$interactionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Interaction
+     */
+    select?: Prisma.InteractionSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the Interaction
+     */
+    omit?: Prisma.InteractionOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.InteractionInclude<ExtArgs> | null;
+    where?: Prisma.InteractionWhereInput;
+    orderBy?: Prisma.InteractionOrderByWithRelationInput | Prisma.InteractionOrderByWithRelationInput[];
+    cursor?: Prisma.InteractionWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.InteractionScalarFieldEnum | Prisma.InteractionScalarFieldEnum[];
+};
+/**
+ * User.refreshTokens
+ */
+export type User$refreshTokensArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RefreshToken
+     */
+    select?: Prisma.RefreshTokenSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the RefreshToken
+     */
+    omit?: Prisma.RefreshTokenOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.RefreshTokenInclude<ExtArgs> | null;
+    where?: Prisma.RefreshTokenWhereInput;
+    orderBy?: Prisma.RefreshTokenOrderByWithRelationInput | Prisma.RefreshTokenOrderByWithRelationInput[];
+    cursor?: Prisma.RefreshTokenWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.RefreshTokenScalarFieldEnum | Prisma.RefreshTokenScalarFieldEnum[];
+};
+/**
+ * User.variationVotes
+ */
+export type User$variationVotesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VariationVote
+     */
+    select?: Prisma.VariationVoteSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the VariationVote
+     */
+    omit?: Prisma.VariationVoteOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.VariationVoteInclude<ExtArgs> | null;
+    where?: Prisma.VariationVoteWhereInput;
+    orderBy?: Prisma.VariationVoteOrderByWithRelationInput | Prisma.VariationVoteOrderByWithRelationInput[];
+    cursor?: Prisma.VariationVoteWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.VariationVoteScalarFieldEnum | Prisma.VariationVoteScalarFieldEnum[];
+};
+/**
  * User.createdWatchSpaces
  */
 export type User$createdWatchSpacesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1638,73 +1978,27 @@ export type User$participationsArgs<ExtArgs extends runtime.Types.Extensions.Int
     distinct?: Prisma.WatchSpaceParticipantScalarFieldEnum | Prisma.WatchSpaceParticipantScalarFieldEnum[];
 };
 /**
- * User.interactions
+ * User.aiQuestionLogs
  */
-export type User$interactionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type User$aiQuestionLogsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Interaction
+     * Select specific fields to fetch from the AiQuestionLog
      */
-    select?: Prisma.InteractionSelect<ExtArgs> | null;
+    select?: Prisma.AiQuestionLogSelect<ExtArgs> | null;
     /**
-     * Omit specific fields from the Interaction
+     * Omit specific fields from the AiQuestionLog
      */
-    omit?: Prisma.InteractionOmit<ExtArgs> | null;
+    omit?: Prisma.AiQuestionLogOmit<ExtArgs> | null;
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: Prisma.InteractionInclude<ExtArgs> | null;
-    where?: Prisma.InteractionWhereInput;
-    orderBy?: Prisma.InteractionOrderByWithRelationInput | Prisma.InteractionOrderByWithRelationInput[];
-    cursor?: Prisma.InteractionWhereUniqueInput;
+    include?: Prisma.AiQuestionLogInclude<ExtArgs> | null;
+    where?: Prisma.AiQuestionLogWhereInput;
+    orderBy?: Prisma.AiQuestionLogOrderByWithRelationInput | Prisma.AiQuestionLogOrderByWithRelationInput[];
+    cursor?: Prisma.AiQuestionLogWhereUniqueInput;
     take?: number;
     skip?: number;
-    distinct?: Prisma.InteractionScalarFieldEnum | Prisma.InteractionScalarFieldEnum[];
-};
-/**
- * User.chatMessages
- */
-export type User$chatMessagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ChatMessage
-     */
-    select?: Prisma.ChatMessageSelect<ExtArgs> | null;
-    /**
-     * Omit specific fields from the ChatMessage
-     */
-    omit?: Prisma.ChatMessageOmit<ExtArgs> | null;
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: Prisma.ChatMessageInclude<ExtArgs> | null;
-    where?: Prisma.ChatMessageWhereInput;
-    orderBy?: Prisma.ChatMessageOrderByWithRelationInput | Prisma.ChatMessageOrderByWithRelationInput[];
-    cursor?: Prisma.ChatMessageWhereUniqueInput;
-    take?: number;
-    skip?: number;
-    distinct?: Prisma.ChatMessageScalarFieldEnum | Prisma.ChatMessageScalarFieldEnum[];
-};
-/**
- * User.refreshTokens
- */
-export type User$refreshTokensArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the RefreshToken
-     */
-    select?: Prisma.RefreshTokenSelect<ExtArgs> | null;
-    /**
-     * Omit specific fields from the RefreshToken
-     */
-    omit?: Prisma.RefreshTokenOmit<ExtArgs> | null;
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: Prisma.RefreshTokenInclude<ExtArgs> | null;
-    where?: Prisma.RefreshTokenWhereInput;
-    orderBy?: Prisma.RefreshTokenOrderByWithRelationInput | Prisma.RefreshTokenOrderByWithRelationInput[];
-    cursor?: Prisma.RefreshTokenWhereUniqueInput;
-    take?: number;
-    skip?: number;
-    distinct?: Prisma.RefreshTokenScalarFieldEnum | Prisma.RefreshTokenScalarFieldEnum[];
+    distinct?: Prisma.AiQuestionLogScalarFieldEnum | Prisma.AiQuestionLogScalarFieldEnum[];
 };
 /**
  * User without action

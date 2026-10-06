@@ -77,7 +77,9 @@ export const ModelName = {
     WatchSpaceParticipant: 'WatchSpaceParticipant',
     PlaybackState: 'PlaybackState',
     ChatMessage: 'ChatMessage',
-    Interaction: 'Interaction'
+    Interaction: 'Interaction',
+    VariationVote: 'VariationVote',
+    AiQuestionLog: 'AiQuestionLog'
 };
 /**
  * Enums
@@ -166,8 +168,8 @@ export const PlaybackStateScalarFieldEnum = {
     isPlaying: 'isPlaying',
     playbackRate: 'playbackRate',
     version: 'version',
-    syncedAt: 'syncedAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    syncedAt: 'syncedAt'
 };
 export const ChatMessageScalarFieldEnum = {
     id: 'id',
@@ -184,6 +186,24 @@ export const InteractionScalarFieldEnum = {
     type: 'type',
     position: 'position',
     value: 'value',
+    createdAt: 'createdAt'
+};
+export const VariationVoteScalarFieldEnum = {
+    id: 'id',
+    watchSpaceId: 'watchSpaceId',
+    timelineEventId: 'timelineEventId',
+    variationOptionId: 'variationOptionId',
+    userId: 'userId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+};
+export const AiQuestionLogScalarFieldEnum = {
+    id: 'id',
+    userId: 'userId',
+    titleId: 'titleId',
+    watchSpaceId: 'watchSpaceId',
+    question: 'question',
+    at: 'at',
     createdAt: 'createdAt'
 };
 export const SortOrder = {

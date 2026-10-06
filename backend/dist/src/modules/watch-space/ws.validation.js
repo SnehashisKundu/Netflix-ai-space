@@ -13,4 +13,8 @@ export const joinWatchSpaceSchema = z.object({
 export const watchSpaceIdParamSchema = z.object({
     id: z.string().uuid(),
 });
+export const variationVoteParamSchema = z.object({
+    id: z.string().uuid(),
+    variationId: z.string().uuid(),
+});
 //# sourceMappingURL=ws.validation.js.map

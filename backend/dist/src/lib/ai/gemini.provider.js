@@ -72,10 +72,11 @@ export class GeminiProvider {
         }
         if (status === 400 ||
             status === 401 ||
-            status === 403) {
+            status === 403 ||
+            status === 404) {
             return new AiError("AI_INVALID_REQUEST", "AI provider rejected the request", {
                 retryable: false,
-                ...(status !== undefined ? { status } : {}),
+                status,
             });
         }
         return new AiError("AI_PROVIDER_ERROR", error instanceof Error

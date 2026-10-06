@@ -25,8 +25,8 @@ export declare const createWatchSpace: (userId: string, input: CreateWatchSpaceI
         isPlaying: boolean;
         playbackRate: number;
         version: number;
-        syncedAt: Date;
         updatedAt: Date;
+        syncedAt: Date;
     } | null;
     title: {
         id: string;
@@ -78,8 +78,8 @@ export declare const getWatchSpaceById: (watchSpaceId: string) => Promise<({
         isPlaying: boolean;
         playbackRate: number;
         version: number;
-        syncedAt: Date;
         updatedAt: Date;
+        syncedAt: Date;
     } | null;
     title: {
         id: string;
@@ -131,8 +131,8 @@ export declare const joinWatchSpace: (userId: string, joinCode: string) => Promi
         isPlaying: boolean;
         playbackRate: number;
         version: number;
-        syncedAt: Date;
         updatedAt: Date;
+        syncedAt: Date;
     } | null;
     title: {
         id: string;
@@ -181,11 +181,27 @@ export declare const validateWatchSpaceMembership: (userId: string, watchSpaceId
         hostId: string;
         id: string;
         status: import("../../../generated/prisma/enums.js").WatchSpaceStatus;
+        titleId: string;
     };
     participant: {
         id: string;
         role: import("../../../generated/prisma/enums.js").ParticipantRole;
         userId: string;
     };
+}>;
+export declare const castVariationVote: (userId: string, watchSpaceId: string, variationId: string) => Promise<{
+    watchSpaceId: string;
+    variation: {
+        content: string;
+        id: string;
+        isDefault: boolean;
+        label: string;
+        locale: string | null;
+    };
+    totalVotes: number;
+    results: {
+        variationId: string;
+        votes: number;
+    }[];
 }>;
 //# sourceMappingURL=ws.service.d.ts.map

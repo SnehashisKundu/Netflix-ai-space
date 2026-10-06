@@ -211,6 +211,7 @@ export type TimelineEventWhereInput = {
     updatedAt?: Prisma.DateTimeFilter<"TimelineEvent"> | Date | string;
     title?: Prisma.XOR<Prisma.TitleScalarRelationFilter, Prisma.TitleWhereInput>;
     variations?: Prisma.VariationOptionListRelationFilter;
+    variationVotes?: Prisma.VariationVoteListRelationFilter;
 };
 export type TimelineEventOrderByWithRelationInput = {
     id?: Prisma.SortOrder;
@@ -225,6 +226,7 @@ export type TimelineEventOrderByWithRelationInput = {
     updatedAt?: Prisma.SortOrder;
     title?: Prisma.TitleOrderByWithRelationInput;
     variations?: Prisma.VariationOptionOrderByRelationAggregateInput;
+    variationVotes?: Prisma.VariationVoteOrderByRelationAggregateInput;
 };
 export type TimelineEventWhereUniqueInput = Prisma.AtLeast<{
     id?: string;
@@ -242,6 +244,7 @@ export type TimelineEventWhereUniqueInput = Prisma.AtLeast<{
     updatedAt?: Prisma.DateTimeFilter<"TimelineEvent"> | Date | string;
     title?: Prisma.XOR<Prisma.TitleScalarRelationFilter, Prisma.TitleWhereInput>;
     variations?: Prisma.VariationOptionListRelationFilter;
+    variationVotes?: Prisma.VariationVoteListRelationFilter;
 }, "id">;
 export type TimelineEventOrderByWithAggregationInput = {
     id?: Prisma.SortOrder;
@@ -287,6 +290,7 @@ export type TimelineEventCreateInput = {
     updatedAt?: Date | string;
     title: Prisma.TitleCreateNestedOneWithoutTimelineEventsInput;
     variations?: Prisma.VariationOptionCreateNestedManyWithoutTimelineEventInput;
+    variationVotes?: Prisma.VariationVoteCreateNestedManyWithoutTimelineEventInput;
 };
 export type TimelineEventUncheckedCreateInput = {
     id?: string;
@@ -300,6 +304,7 @@ export type TimelineEventUncheckedCreateInput = {
     createdAt?: Date | string;
     updatedAt?: Date | string;
     variations?: Prisma.VariationOptionUncheckedCreateNestedManyWithoutTimelineEventInput;
+    variationVotes?: Prisma.VariationVoteUncheckedCreateNestedManyWithoutTimelineEventInput;
 };
 export type TimelineEventUpdateInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -313,6 +318,7 @@ export type TimelineEventUpdateInput = {
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     title?: Prisma.TitleUpdateOneRequiredWithoutTimelineEventsNestedInput;
     variations?: Prisma.VariationOptionUpdateManyWithoutTimelineEventNestedInput;
+    variationVotes?: Prisma.VariationVoteUpdateManyWithoutTimelineEventNestedInput;
 };
 export type TimelineEventUncheckedUpdateInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -326,6 +332,7 @@ export type TimelineEventUncheckedUpdateInput = {
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     variations?: Prisma.VariationOptionUncheckedUpdateManyWithoutTimelineEventNestedInput;
+    variationVotes?: Prisma.VariationVoteUncheckedUpdateManyWithoutTimelineEventNestedInput;
 };
 export type TimelineEventCreateManyInput = {
     id?: string;
@@ -483,6 +490,18 @@ export type TimelineEventUpdateOneRequiredWithoutVariationsNestedInput = {
     connect?: Prisma.TimelineEventWhereUniqueInput;
     update?: Prisma.XOR<Prisma.XOR<Prisma.TimelineEventUpdateToOneWithWhereWithoutVariationsInput, Prisma.TimelineEventUpdateWithoutVariationsInput>, Prisma.TimelineEventUncheckedUpdateWithoutVariationsInput>;
 };
+export type TimelineEventCreateNestedOneWithoutVariationVotesInput = {
+    create?: Prisma.XOR<Prisma.TimelineEventCreateWithoutVariationVotesInput, Prisma.TimelineEventUncheckedCreateWithoutVariationVotesInput>;
+    connectOrCreate?: Prisma.TimelineEventCreateOrConnectWithoutVariationVotesInput;
+    connect?: Prisma.TimelineEventWhereUniqueInput;
+};
+export type TimelineEventUpdateOneRequiredWithoutVariationVotesNestedInput = {
+    create?: Prisma.XOR<Prisma.TimelineEventCreateWithoutVariationVotesInput, Prisma.TimelineEventUncheckedCreateWithoutVariationVotesInput>;
+    connectOrCreate?: Prisma.TimelineEventCreateOrConnectWithoutVariationVotesInput;
+    upsert?: Prisma.TimelineEventUpsertWithoutVariationVotesInput;
+    connect?: Prisma.TimelineEventWhereUniqueInput;
+    update?: Prisma.XOR<Prisma.XOR<Prisma.TimelineEventUpdateToOneWithWhereWithoutVariationVotesInput, Prisma.TimelineEventUpdateWithoutVariationVotesInput>, Prisma.TimelineEventUncheckedUpdateWithoutVariationVotesInput>;
+};
 export type TimelineEventCreateWithoutTitleInput = {
     id?: string;
     type: $Enums.TimelineEventType;
@@ -494,6 +513,7 @@ export type TimelineEventCreateWithoutTitleInput = {
     createdAt?: Date | string;
     updatedAt?: Date | string;
     variations?: Prisma.VariationOptionCreateNestedManyWithoutTimelineEventInput;
+    variationVotes?: Prisma.VariationVoteCreateNestedManyWithoutTimelineEventInput;
 };
 export type TimelineEventUncheckedCreateWithoutTitleInput = {
     id?: string;
@@ -506,6 +526,7 @@ export type TimelineEventUncheckedCreateWithoutTitleInput = {
     createdAt?: Date | string;
     updatedAt?: Date | string;
     variations?: Prisma.VariationOptionUncheckedCreateNestedManyWithoutTimelineEventInput;
+    variationVotes?: Prisma.VariationVoteUncheckedCreateNestedManyWithoutTimelineEventInput;
 };
 export type TimelineEventCreateOrConnectWithoutTitleInput = {
     where: Prisma.TimelineEventWhereUniqueInput;
@@ -554,6 +575,7 @@ export type TimelineEventCreateWithoutVariationsInput = {
     createdAt?: Date | string;
     updatedAt?: Date | string;
     title: Prisma.TitleCreateNestedOneWithoutTimelineEventsInput;
+    variationVotes?: Prisma.VariationVoteCreateNestedManyWithoutTimelineEventInput;
 };
 export type TimelineEventUncheckedCreateWithoutVariationsInput = {
     id?: string;
@@ -566,6 +588,7 @@ export type TimelineEventUncheckedCreateWithoutVariationsInput = {
     payload?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
     createdAt?: Date | string;
     updatedAt?: Date | string;
+    variationVotes?: Prisma.VariationVoteUncheckedCreateNestedManyWithoutTimelineEventInput;
 };
 export type TimelineEventCreateOrConnectWithoutVariationsInput = {
     where: Prisma.TimelineEventWhereUniqueInput;
@@ -591,6 +614,7 @@ export type TimelineEventUpdateWithoutVariationsInput = {
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     title?: Prisma.TitleUpdateOneRequiredWithoutTimelineEventsNestedInput;
+    variationVotes?: Prisma.VariationVoteUpdateManyWithoutTimelineEventNestedInput;
 };
 export type TimelineEventUncheckedUpdateWithoutVariationsInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -603,6 +627,72 @@ export type TimelineEventUncheckedUpdateWithoutVariationsInput = {
     payload?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    variationVotes?: Prisma.VariationVoteUncheckedUpdateManyWithoutTimelineEventNestedInput;
+};
+export type TimelineEventCreateWithoutVariationVotesInput = {
+    id?: string;
+    type: $Enums.TimelineEventType;
+    startTime: number;
+    endTime?: number | null;
+    eventTitle?: string | null;
+    description?: string | null;
+    payload?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    title: Prisma.TitleCreateNestedOneWithoutTimelineEventsInput;
+    variations?: Prisma.VariationOptionCreateNestedManyWithoutTimelineEventInput;
+};
+export type TimelineEventUncheckedCreateWithoutVariationVotesInput = {
+    id?: string;
+    titleId: string;
+    type: $Enums.TimelineEventType;
+    startTime: number;
+    endTime?: number | null;
+    eventTitle?: string | null;
+    description?: string | null;
+    payload?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    variations?: Prisma.VariationOptionUncheckedCreateNestedManyWithoutTimelineEventInput;
+};
+export type TimelineEventCreateOrConnectWithoutVariationVotesInput = {
+    where: Prisma.TimelineEventWhereUniqueInput;
+    create: Prisma.XOR<Prisma.TimelineEventCreateWithoutVariationVotesInput, Prisma.TimelineEventUncheckedCreateWithoutVariationVotesInput>;
+};
+export type TimelineEventUpsertWithoutVariationVotesInput = {
+    update: Prisma.XOR<Prisma.TimelineEventUpdateWithoutVariationVotesInput, Prisma.TimelineEventUncheckedUpdateWithoutVariationVotesInput>;
+    create: Prisma.XOR<Prisma.TimelineEventCreateWithoutVariationVotesInput, Prisma.TimelineEventUncheckedCreateWithoutVariationVotesInput>;
+    where?: Prisma.TimelineEventWhereInput;
+};
+export type TimelineEventUpdateToOneWithWhereWithoutVariationVotesInput = {
+    where?: Prisma.TimelineEventWhereInput;
+    data: Prisma.XOR<Prisma.TimelineEventUpdateWithoutVariationVotesInput, Prisma.TimelineEventUncheckedUpdateWithoutVariationVotesInput>;
+};
+export type TimelineEventUpdateWithoutVariationVotesInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    type?: Prisma.EnumTimelineEventTypeFieldUpdateOperationsInput | $Enums.TimelineEventType;
+    startTime?: Prisma.FloatFieldUpdateOperationsInput | number;
+    endTime?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null;
+    eventTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    payload?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    title?: Prisma.TitleUpdateOneRequiredWithoutTimelineEventsNestedInput;
+    variations?: Prisma.VariationOptionUpdateManyWithoutTimelineEventNestedInput;
+};
+export type TimelineEventUncheckedUpdateWithoutVariationVotesInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    titleId?: Prisma.StringFieldUpdateOperationsInput | string;
+    type?: Prisma.EnumTimelineEventTypeFieldUpdateOperationsInput | $Enums.TimelineEventType;
+    startTime?: Prisma.FloatFieldUpdateOperationsInput | number;
+    endTime?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null;
+    eventTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    payload?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    variations?: Prisma.VariationOptionUncheckedUpdateManyWithoutTimelineEventNestedInput;
 };
 export type TimelineEventCreateManyTitleInput = {
     id?: string;
@@ -626,6 +716,7 @@ export type TimelineEventUpdateWithoutTitleInput = {
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     variations?: Prisma.VariationOptionUpdateManyWithoutTimelineEventNestedInput;
+    variationVotes?: Prisma.VariationVoteUpdateManyWithoutTimelineEventNestedInput;
 };
 export type TimelineEventUncheckedUpdateWithoutTitleInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -638,6 +729,7 @@ export type TimelineEventUncheckedUpdateWithoutTitleInput = {
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     variations?: Prisma.VariationOptionUncheckedUpdateManyWithoutTimelineEventNestedInput;
+    variationVotes?: Prisma.VariationVoteUncheckedUpdateManyWithoutTimelineEventNestedInput;
 };
 export type TimelineEventUncheckedUpdateManyWithoutTitleInput = {
     id?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -655,9 +747,11 @@ export type TimelineEventUncheckedUpdateManyWithoutTitleInput = {
  */
 export type TimelineEventCountOutputType = {
     variations: number;
+    variationVotes: number;
 };
 export type TimelineEventCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     variations?: boolean | TimelineEventCountOutputTypeCountVariationsArgs;
+    variationVotes?: boolean | TimelineEventCountOutputTypeCountVariationVotesArgs;
 };
 /**
  * TimelineEventCountOutputType without action
@@ -674,6 +768,12 @@ export type TimelineEventCountOutputTypeDefaultArgs<ExtArgs extends runtime.Type
 export type TimelineEventCountOutputTypeCountVariationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     where?: Prisma.VariationOptionWhereInput;
 };
+/**
+ * TimelineEventCountOutputType without action
+ */
+export type TimelineEventCountOutputTypeCountVariationVotesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.VariationVoteWhereInput;
+};
 export type TimelineEventSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
     id?: boolean;
     titleId?: boolean;
@@ -687,6 +787,7 @@ export type TimelineEventSelect<ExtArgs extends runtime.Types.Extensions.Interna
     updatedAt?: boolean;
     title?: boolean | Prisma.TitleDefaultArgs<ExtArgs>;
     variations?: boolean | Prisma.TimelineEvent$variationsArgs<ExtArgs>;
+    variationVotes?: boolean | Prisma.TimelineEvent$variationVotesArgs<ExtArgs>;
     _count?: boolean | Prisma.TimelineEventCountOutputTypeDefaultArgs<ExtArgs>;
 }, ExtArgs["result"]["timelineEvent"]>;
 export type TimelineEventSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -731,6 +832,7 @@ export type TimelineEventOmit<ExtArgs extends runtime.Types.Extensions.InternalA
 export type TimelineEventInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     title?: boolean | Prisma.TitleDefaultArgs<ExtArgs>;
     variations?: boolean | Prisma.TimelineEvent$variationsArgs<ExtArgs>;
+    variationVotes?: boolean | Prisma.TimelineEvent$variationVotesArgs<ExtArgs>;
     _count?: boolean | Prisma.TimelineEventCountOutputTypeDefaultArgs<ExtArgs>;
 };
 export type TimelineEventIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -744,6 +846,7 @@ export type $TimelineEventPayload<ExtArgs extends runtime.Types.Extensions.Inter
     objects: {
         title: Prisma.$TitlePayload<ExtArgs>;
         variations: Prisma.$VariationOptionPayload<ExtArgs>[];
+        variationVotes: Prisma.$VariationVotePayload<ExtArgs>[];
     };
     scalars: runtime.Types.Extensions.GetPayloadResult<{
         id: string;
@@ -1087,6 +1190,7 @@ export interface Prisma__TimelineEventClient<T, Null = never, ExtArgs extends ru
     readonly [Symbol.toStringTag]: "PrismaPromise";
     title<T extends Prisma.TitleDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.TitleDefaultArgs<ExtArgs>>): Prisma.Prisma__TitleClient<runtime.Types.Result.GetResult<Prisma.$TitlePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>;
     variations<T extends Prisma.TimelineEvent$variationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.TimelineEvent$variationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$VariationOptionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
+    variationVotes<T extends Prisma.TimelineEvent$variationVotesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.TimelineEvent$variationVotesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$VariationVotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1527,6 +1631,29 @@ export type TimelineEvent$variationsArgs<ExtArgs extends runtime.Types.Extension
     take?: number;
     skip?: number;
     distinct?: Prisma.VariationOptionScalarFieldEnum | Prisma.VariationOptionScalarFieldEnum[];
+};
+/**
+ * TimelineEvent.variationVotes
+ */
+export type TimelineEvent$variationVotesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VariationVote
+     */
+    select?: Prisma.VariationVoteSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the VariationVote
+     */
+    omit?: Prisma.VariationVoteOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.VariationVoteInclude<ExtArgs> | null;
+    where?: Prisma.VariationVoteWhereInput;
+    orderBy?: Prisma.VariationVoteOrderByWithRelationInput | Prisma.VariationVoteOrderByWithRelationInput[];
+    cursor?: Prisma.VariationVoteWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.VariationVoteScalarFieldEnum | Prisma.VariationVoteScalarFieldEnum[];
 };
 /**
  * TimelineEvent without action

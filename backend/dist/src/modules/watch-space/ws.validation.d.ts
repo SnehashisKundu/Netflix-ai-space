@@ -10,4 +10,9 @@ export declare const watchSpaceIdParamSchema: z.ZodObject<{
     id: z.ZodString;
 }, z.core.$strip>;
 export type CreateWatchSpaceInput = z.infer<typeof createWatchSpaceSchema>;
+export declare const variationVoteParamSchema: z.ZodObject<{
+    id: z.ZodString;
+    variationId: z.ZodString;
+}, z.core.$strip>;
+export type VariationVoteParam = z.infer<typeof variationVoteParamSchema>;
 //# sourceMappingURL=ws.validation.d.ts.map

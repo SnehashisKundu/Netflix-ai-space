@@ -61,6 +61,7 @@ export type TriviaAtQuery = z.infer<typeof triviaAtQuerySchema>;
 export declare const qaQuerySchema: z.ZodObject<{
     question: z.ZodString;
     at: z.ZodCoercedNumber<unknown>;
+    watchSpaceId: z.ZodOptional<z.ZodUUID>;
 }, z.core.$strip>;
 export type QaQuery = z.infer<typeof qaQuerySchema>;
 //# sourceMappingURL=tl.validation.d.ts.map

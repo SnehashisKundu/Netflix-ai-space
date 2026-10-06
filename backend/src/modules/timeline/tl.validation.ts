@@ -132,6 +132,7 @@ export const timelineContextQuerySchema = z
 export type TimelineContextQuery = z.infer<
   typeof timelineContextQuerySchema
 >;
+
 export type CreateTimelineEventInput = z.infer<
   typeof createTimelineEventSchema
 >;
@@ -148,18 +149,21 @@ export type TriviaAtQuery = z.infer<
   typeof triviaAtQuerySchema
 >;
 
-export const qaQuerySchema = z
-  .object({
-    question: z
-      .string()
-      .trim()
-      .min(1)
-      .max(1000),
+export const qaQuerySchema = z.object({
+  question: z
+    .string()
+    .trim()
+    .min(1)
+    .max(1000),
 
-    at: z.coerce
-      .number()
-      .min(0),
-  });
+  at: z.coerce
+    .number()
+    .min(0),
+
+  watchSpaceId: z
+    .uuid()
+    .optional(),
+});
 
 export type QaQuery = z.infer<
   typeof qaQuerySchema

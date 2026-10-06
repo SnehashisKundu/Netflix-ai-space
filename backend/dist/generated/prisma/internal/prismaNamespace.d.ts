@@ -254,6 +254,8 @@ export declare const ModelName: {
     readonly PlaybackState: 'PlaybackState';
     readonly ChatMessage: 'ChatMessage';
     readonly Interaction: 'Interaction';
+    readonly VariationVote: 'VariationVote';
+    readonly AiQuestionLog: 'AiQuestionLog';
 };
 export type ModelName = (typeof ModelName)[keyof typeof ModelName];
 export interface TypeMapCb<GlobalOmitOptions = {}> extends runtime.Types.Utils.Fn<{
@@ -266,7 +268,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         omit: GlobalOmitOptions;
     };
     meta: {
-        modelProps: "user" | "refreshToken" | "title" | "timelineEvent" | "variationOption" | "watchSpace" | "watchSpaceParticipant" | "playbackState" | "chatMessage" | "interaction";
+        modelProps: "user" | "refreshToken" | "title" | "timelineEvent" | "variationOption" | "watchSpace" | "watchSpaceParticipant" | "playbackState" | "chatMessage" | "interaction" | "variationVote" | "aiQuestionLog";
         txIsolationLevel: TransactionIsolationLevel;
     };
     model: {
@@ -1010,6 +1012,154 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
                 };
             };
         };
+        VariationVote: {
+            payload: Prisma.$VariationVotePayload<ExtArgs>;
+            fields: Prisma.VariationVoteFieldRefs;
+            operations: {
+                findUnique: {
+                    args: Prisma.VariationVoteFindUniqueArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$VariationVotePayload> | null;
+                };
+                findUniqueOrThrow: {
+                    args: Prisma.VariationVoteFindUniqueOrThrowArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$VariationVotePayload>;
+                };
+                findFirst: {
+                    args: Prisma.VariationVoteFindFirstArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$VariationVotePayload> | null;
+                };
+                findFirstOrThrow: {
+                    args: Prisma.VariationVoteFindFirstOrThrowArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$VariationVotePayload>;
+                };
+                findMany: {
+                    args: Prisma.VariationVoteFindManyArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$VariationVotePayload>[];
+                };
+                create: {
+                    args: Prisma.VariationVoteCreateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$VariationVotePayload>;
+                };
+                createMany: {
+                    args: Prisma.VariationVoteCreateManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                createManyAndReturn: {
+                    args: Prisma.VariationVoteCreateManyAndReturnArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$VariationVotePayload>[];
+                };
+                delete: {
+                    args: Prisma.VariationVoteDeleteArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$VariationVotePayload>;
+                };
+                update: {
+                    args: Prisma.VariationVoteUpdateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$VariationVotePayload>;
+                };
+                deleteMany: {
+                    args: Prisma.VariationVoteDeleteManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                updateMany: {
+                    args: Prisma.VariationVoteUpdateManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                updateManyAndReturn: {
+                    args: Prisma.VariationVoteUpdateManyAndReturnArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$VariationVotePayload>[];
+                };
+                upsert: {
+                    args: Prisma.VariationVoteUpsertArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$VariationVotePayload>;
+                };
+                aggregate: {
+                    args: Prisma.VariationVoteAggregateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.AggregateVariationVote>;
+                };
+                groupBy: {
+                    args: Prisma.VariationVoteGroupByArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.VariationVoteGroupByOutputType>[];
+                };
+                count: {
+                    args: Prisma.VariationVoteCountArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.VariationVoteCountAggregateOutputType> | number;
+                };
+            };
+        };
+        AiQuestionLog: {
+            payload: Prisma.$AiQuestionLogPayload<ExtArgs>;
+            fields: Prisma.AiQuestionLogFieldRefs;
+            operations: {
+                findUnique: {
+                    args: Prisma.AiQuestionLogFindUniqueArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$AiQuestionLogPayload> | null;
+                };
+                findUniqueOrThrow: {
+                    args: Prisma.AiQuestionLogFindUniqueOrThrowArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$AiQuestionLogPayload>;
+                };
+                findFirst: {
+                    args: Prisma.AiQuestionLogFindFirstArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$AiQuestionLogPayload> | null;
+                };
+                findFirstOrThrow: {
+                    args: Prisma.AiQuestionLogFindFirstOrThrowArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$AiQuestionLogPayload>;
+                };
+                findMany: {
+                    args: Prisma.AiQuestionLogFindManyArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$AiQuestionLogPayload>[];
+                };
+                create: {
+                    args: Prisma.AiQuestionLogCreateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$AiQuestionLogPayload>;
+                };
+                createMany: {
+                    args: Prisma.AiQuestionLogCreateManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                createManyAndReturn: {
+                    args: Prisma.AiQuestionLogCreateManyAndReturnArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$AiQuestionLogPayload>[];
+                };
+                delete: {
+                    args: Prisma.AiQuestionLogDeleteArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$AiQuestionLogPayload>;
+                };
+                update: {
+                    args: Prisma.AiQuestionLogUpdateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$AiQuestionLogPayload>;
+                };
+                deleteMany: {
+                    args: Prisma.AiQuestionLogDeleteManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                updateMany: {
+                    args: Prisma.AiQuestionLogUpdateManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                updateManyAndReturn: {
+                    args: Prisma.AiQuestionLogUpdateManyAndReturnArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$AiQuestionLogPayload>[];
+                };
+                upsert: {
+                    args: Prisma.AiQuestionLogUpsertArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$AiQuestionLogPayload>;
+                };
+                aggregate: {
+                    args: Prisma.AiQuestionLogAggregateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.AggregateAiQuestionLog>;
+                };
+                groupBy: {
+                    args: Prisma.AiQuestionLogGroupByArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.AiQuestionLogGroupByOutputType>[];
+                };
+                count: {
+                    args: Prisma.AiQuestionLogCountArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.AiQuestionLogCountAggregateOutputType> | number;
+                };
+            };
+        };
     };
 } & {
     other: {
@@ -1129,8 +1279,8 @@ export declare const PlaybackStateScalarFieldEnum: {
     readonly isPlaying: 'isPlaying';
     readonly playbackRate: 'playbackRate';
     readonly version: 'version';
-    readonly syncedAt: 'syncedAt';
     readonly updatedAt: 'updatedAt';
+    readonly syncedAt: 'syncedAt';
 };
 export type PlaybackStateScalarFieldEnum = (typeof PlaybackStateScalarFieldEnum)[keyof typeof PlaybackStateScalarFieldEnum];
 export declare const ChatMessageScalarFieldEnum: {
@@ -1152,6 +1302,26 @@ export declare const InteractionScalarFieldEnum: {
     readonly createdAt: 'createdAt';
 };
 export type InteractionScalarFieldEnum = (typeof InteractionScalarFieldEnum)[keyof typeof InteractionScalarFieldEnum];
+export declare const VariationVoteScalarFieldEnum: {
+    readonly id: 'id';
+    readonly watchSpaceId: 'watchSpaceId';
+    readonly timelineEventId: 'timelineEventId';
+    readonly variationOptionId: 'variationOptionId';
+    readonly userId: 'userId';
+    readonly createdAt: 'createdAt';
+    readonly updatedAt: 'updatedAt';
+};
+export type VariationVoteScalarFieldEnum = (typeof VariationVoteScalarFieldEnum)[keyof typeof VariationVoteScalarFieldEnum];
+export declare const AiQuestionLogScalarFieldEnum: {
+    readonly id: 'id';
+    readonly userId: 'userId';
+    readonly titleId: 'titleId';
+    readonly watchSpaceId: 'watchSpaceId';
+    readonly question: 'question';
+    readonly at: 'at';
+    readonly createdAt: 'createdAt';
+};
+export type AiQuestionLogScalarFieldEnum = (typeof AiQuestionLogScalarFieldEnum)[keyof typeof AiQuestionLogScalarFieldEnum];
 export declare const SortOrder: {
     readonly asc: 'asc';
     readonly desc: 'desc';
@@ -1422,6 +1592,8 @@ export type GlobalOmitConfig = {
     playbackState?: Prisma.PlaybackStateOmit;
     chatMessage?: Prisma.ChatMessageOmit;
     interaction?: Prisma.InteractionOmit;
+    variationVote?: Prisma.VariationVoteOmit;
+    aiQuestionLog?: Prisma.AiQuestionLogOmit;
 };
 export type LogLevel = 'info' | 'query' | 'warn' | 'error';
 export type LogDefinition = {

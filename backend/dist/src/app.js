@@ -9,6 +9,8 @@ import timelineRoutes from "./modules/timeline/tl.routes.js";
 import variationRoutes from "./modules/variation/vr.routes.js";
 import interactionRoutes from "./modules/interaction/int.routes.js";
 import qaRoutes from "./modules/qa/qa.routes.js";
+import recommendationRoutes from "./modules/recommendation/rec.routes.js";
+import dashboardRoutes from "./modules/dashboard/dash.routes.js";
 const app = express();
 app.use(cors({
     origin: true,
@@ -25,6 +27,8 @@ app.use("/titles", timelineRoutes);
 app.use("/", variationRoutes);
 app.use("/", interactionRoutes);
 app.use("/", qaRoutes);
+app.use("/recommendations", recommendationRoutes);
+app.use("/dashboard", dashboardRoutes);
 app.get("/health", (_req, res) => {
     res.status(200).json({
         success: true,

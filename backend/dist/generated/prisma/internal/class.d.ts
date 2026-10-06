@@ -227,6 +227,28 @@ export interface PrismaClient<in LogOpts extends Prisma.LogLevel = never, in out
     get interaction(): Prisma.InteractionDelegate<ExtArgs, {
         omit: OmitOpts;
     }>;
+    /**
+     * `prisma.variationVote`: Exposes CRUD operations for the **VariationVote** model.
+      * Example usage:
+      * ```ts
+      * // Fetch zero or more VariationVotes
+      * const variationVotes = await prisma.variationVote.findMany()
+      * ```
+      */
+    get variationVote(): Prisma.VariationVoteDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    /**
+     * `prisma.aiQuestionLog`: Exposes CRUD operations for the **AiQuestionLog** model.
+      * Example usage:
+      * ```ts
+      * // Fetch zero or more AiQuestionLogs
+      * const aiQuestionLogs = await prisma.aiQuestionLog.findMany()
+      * ```
+      */
+    get aiQuestionLog(): Prisma.AiQuestionLogDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
 }
 export declare function getPrismaClientClass(): PrismaClientConstructor;
 //# sourceMappingURL=class.d.ts.map

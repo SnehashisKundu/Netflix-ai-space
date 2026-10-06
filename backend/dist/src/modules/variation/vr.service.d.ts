@@ -29,6 +29,16 @@ export declare const getVariationById: (timelineEventId: string, variationId: st
     createdAt: Date;
     updatedAt: Date;
 }>;
+export declare const getLocalizedVariation: (timelineEventId: string, locale: string) => Promise<{
+    id: string;
+    timelineEventId: string;
+    label: string;
+    content: string;
+    locale: string | null;
+    isDefault: boolean;
+    createdAt: Date;
+    updatedAt: Date;
+}>;
 export declare const updateVariation: (timelineEventId: string, variationId: string, input: UpdateVariationInput) => Promise<{
     id: string;
     timelineEventId: string;

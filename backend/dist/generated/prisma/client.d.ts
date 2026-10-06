@@ -71,4 +71,14 @@ export type ChatMessage = Prisma.ChatMessageModel;
  *
  */
 export type Interaction = Prisma.InteractionModel;
+/**
+ * Model VariationVote
+ *
+ */
+export type VariationVote = Prisma.VariationVoteModel;
+/**
+ * Model AiQuestionLog
+ *
+ */
+export type AiQuestionLog = Prisma.AiQuestionLogModel;
 //# sourceMappingURL=client.d.ts.map
