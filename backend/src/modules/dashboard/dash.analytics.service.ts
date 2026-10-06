@@ -111,19 +111,30 @@ export const getWatchSpaceAnalytics = async (
       sessionEnd,
     );
 
-  const chatActivity = await prisma.chatMessage.count({
-    where: {
-      watchSpaceId,
-    },
-  });
+  const [
+    chatActivity,
+    triviaCardsAvailable,
+    aiQuestions,
+  ] = await Promise.all([
+    prisma.chatMessage.count({
+      where: {
+        watchSpaceId,
+      },
+    }),
 
-  const triviaCardsAvailable =
-    await prisma.timelineEvent.count({
+    prisma.timelineEvent.count({
       where: {
         titleId: watchSpace.titleId,
         type: "TRIVIA",
       },
-    });
+    }),
+
+    prisma.aiQuestionLog.count({
+      where: {
+        watchSpaceId,
+      },
+    }),
+  ]);
 
   return {
     watchSpace: {
@@ -140,8 +151,6 @@ export const getWatchSpaceAnalytics = async (
     peakConcurrentParticipants,
     chatActivity,
     triviaCardsAvailable,
-    aiQuestions: null,
-    aiQuestionsNote:
-      "AI question events are not persisted yet.",
+    aiQuestions,
   };
 };
