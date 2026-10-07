@@ -16,7 +16,6 @@ export declare const getWatchSpaceAnalytics: (watchSpaceId: string, userId: stri
     peakConcurrentParticipants: number;
     chatActivity: number;
     triviaCardsAvailable: number;
-    aiQuestions: null;
-    aiQuestionsNote: string;
+    aiQuestions: number;
 }>;
 //# sourceMappingURL=dash.analytics.service.d.ts.map

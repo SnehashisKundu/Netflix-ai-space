@@ -64,17 +64,24 @@ export const getWatchSpaceAnalytics = async (watchSpaceId, userId) => {
         watchSpace.createdAt.getTime()) /
         1000));
     const peakConcurrentParticipants = calculatePeakConcurrentParticipants(watchSpace.participants, sessionEnd);
-    const chatActivity = await prisma.chatMessage.count({
-        where: {
-            watchSpaceId,
-        },
-    });
-    const triviaCardsAvailable = await prisma.timelineEvent.count({
-        where: {
-            titleId: watchSpace.titleId,
-            type: "TRIVIA",
-        },
-    });
+    const [chatActivity, triviaCardsAvailable, aiQuestions,] = await Promise.all([
+        prisma.chatMessage.count({
+            where: {
+                watchSpaceId,
+            },
+        }),
+        prisma.timelineEvent.count({
+            where: {
+                titleId: watchSpace.titleId,
+                type: "TRIVIA",
+            },
+        }),
+        prisma.aiQuestionLog.count({
+            where: {
+                watchSpaceId,
+            },
+        }),
+    ]);
     return {
         watchSpace: {
             id: watchSpace.id,
@@ -90,8 +97,7 @@ export const getWatchSpaceAnalytics = async (watchSpaceId, userId) => {
         peakConcurrentParticipants,
         chatActivity,
         triviaCardsAvailable,
-        aiQuestions: null,
-        aiQuestionsNote: "AI question events are not persisted yet.",
+        aiQuestions,
     };
 };
 //# sourceMappingURL=dash.analytics.service.js.map
