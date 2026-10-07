@@ -40,6 +40,303 @@ const swaggerDefinition = {
             },
         },
         schemas: {
+            DashboardTitle: {
+                type: "object",
+                properties: {
+                    id: {
+                        type: "string",
+                        format: "uuid"
+                    },
+                    name: {
+                        type: "string"
+                    }
+                }
+            },
+            DashboardHost: {
+                type: "object",
+                properties: {
+                    id: {
+                        type: "string",
+                        format: "uuid"
+                    },
+                    name: {
+                        type: "string"
+                    }
+                }
+            },
+            DashboardPlayback: {
+                type: "object",
+                nullable: true,
+                additionalProperties: true
+            },
+            RecentlyWatchedItem: {
+                type: "object",
+                required: [
+                    "interactionId",
+                    "type",
+                    "watchedAt",
+                    "title"
+                ],
+                properties: {
+                    interactionId: {
+                        type: "string",
+                        format: "uuid"
+                    },
+                    type: {
+                        type: "string",
+                        enum: [
+                            "WATCH",
+                            "COMPLETE"
+                        ]
+                    },
+                    position: {
+                        type: "number",
+                        nullable: true
+                    },
+                    watchedAt: {
+                        type: "string",
+                        format: "date-time"
+                    },
+                    title: {
+                        type: "object",
+                        additionalProperties: true
+                    }
+                }
+            },
+            ActiveWatchSpaceItem: {
+                type: "object",
+                required: [
+                    "watchSpaceId",
+                    "name",
+                    "joinCode",
+                    "status",
+                    "joinedAt",
+                    "title",
+                    "host",
+                    "playback"
+                ],
+                properties: {
+                    watchSpaceId: {
+                        type: "string",
+                        format: "uuid"
+                    },
+                    name: {
+                        type: "string"
+                    },
+                    joinCode: {
+                        type: "string"
+                    },
+                    status: {
+                        type: "string"
+                    },
+                    joinedAt: {
+                        type: "string",
+                        format: "date-time"
+                    },
+                    title: {
+                        type: "object",
+                        additionalProperties: true
+                    },
+                    host: {
+                        $ref: "#/components/schemas/DashboardHost"
+                    },
+                    playback: {
+                        $ref: "#/components/schemas/DashboardPlayback"
+                    }
+                }
+            },
+            DashboardResponse: {
+                type: "object",
+                required: [
+                    "success",
+                    "data"
+                ],
+                properties: {
+                    success: {
+                        type: "boolean"
+                    },
+                    data: {
+                        type: "object",
+                        required: [
+                            "recentlyWatched",
+                            "activeWatchSpaces",
+                            "quickRejoin"
+                        ],
+                        properties: {
+                            recentlyWatched: {
+                                type: "array",
+                                items: {
+                                    $ref: "#/components/schemas/RecentlyWatchedItem"
+                                }
+                            },
+                            activeWatchSpaces: {
+                                type: "array",
+                                items: {
+                                    $ref: "#/components/schemas/ActiveWatchSpaceItem"
+                                }
+                            },
+                            quickRejoin: {
+                                type: "array",
+                                items: {
+                                    $ref: "#/components/schemas/ActiveWatchSpaceItem"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            WatchSpaceAnalyticsResponse: {
+                type: "object",
+                required: [
+                    "success",
+                    "data"
+                ],
+                properties: {
+                    success: {
+                        type: "boolean"
+                    },
+                    data: {
+                        type: "object",
+                        required: [
+                            "watchSpace",
+                            "session",
+                            "peakConcurrentParticipants",
+                            "chatActivity",
+                            "triviaCardsAvailable",
+                            "aiQuestions"
+                        ],
+                        properties: {
+                            watchSpace: {
+                                type: "object",
+                                required: [
+                                    "id",
+                                    "name",
+                                    "status",
+                                    "title"
+                                ],
+                                properties: {
+                                    id: {
+                                        type: "string",
+                                        format: "uuid"
+                                    },
+                                    name: {
+                                        type: "string"
+                                    },
+                                    status: {
+                                        type: "string"
+                                    },
+                                    title: {
+                                        type: "object",
+                                        additionalProperties: true
+                                    }
+                                }
+                            },
+                            session: {
+                                type: "object",
+                                required: [
+                                    "startedAt",
+                                    "endedAt",
+                                    "durationSeconds"
+                                ],
+                                properties: {
+                                    startedAt: {
+                                        type: "string",
+                                        format: "date-time"
+                                    },
+                                    endedAt: {
+                                        type: "string",
+                                        format: "date-time",
+                                        nullable: true
+                                    },
+                                    durationSeconds: {
+                                        type: "integer"
+                                    }
+                                }
+                            },
+                            peakConcurrentParticipants: {
+                                type: "integer"
+                            },
+                            chatActivity: {
+                                type: "integer"
+                            },
+                            triviaCardsAvailable: {
+                                type: "integer"
+                            },
+                            aiQuestions: {
+                                type: "integer"
+                            }
+                        }
+                    }
+                }
+            },
+            RecommendationItem: {
+                type: "object",
+                required: [
+                    "id",
+                    "name",
+                    "description",
+                    "thumbnailUrl",
+                    "genre",
+                    "duration",
+                    "score",
+                    "reason"
+                ],
+                properties: {
+                    id: {
+                        type: "string",
+                        format: "uuid"
+                    },
+                    name: {
+                        type: "string"
+                    },
+                    description: {
+                        type: "string"
+                    },
+                    thumbnailUrl: {
+                        type: "string",
+                        nullable: true
+                    },
+                    genre: {
+                        type: "string",
+                        nullable: true
+                    },
+                    duration: {
+                        type: "integer"
+                    },
+                    score: {
+                        type: "number"
+                    },
+                    reason: {
+                        type: "string"
+                    }
+                }
+            },
+            RecommendationResponse: {
+                type: "object",
+                required: [
+                    "success",
+                    "data"
+                ],
+                properties: {
+                    success: {
+                        type: "boolean"
+                    },
+                    data: {
+                        type: "object",
+                        required: [
+                            "recommendations"
+                        ],
+                        properties: {
+                            recommendations: {
+                                type: "array",
+                                items: {
+                                    $ref: "#/components/schemas/RecommendationItem"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             User: {
                 type: "object",
                 properties: {
@@ -931,6 +1228,125 @@ const swaggerDefinition = {
         },
     },
     paths: {
+        "/dashboard": {
+            get: {
+                tags: ["Dashboard"],
+                summary: "Get user dashboard",
+                security: [{ bearerAuth: [] }],
+                parameters: [
+                    {
+                        name: "limit",
+                        in: "query",
+                        required: false,
+                        schema: {
+                            type: "integer",
+                            minimum: 1,
+                            maximum: 20,
+                            default: 10
+                        }
+                    }
+                ],
+                responses: {
+                    200: {
+                        description: "Dashboard fetched successfully",
+                        content: {
+                            "application/json": {
+                                schema: {
+                                    $ref: "#/components/schemas/DashboardResponse"
+                                }
+                            }
+                        }
+                    },
+                    400: {
+                        description: "Invalid dashboard query"
+                    },
+                    500: {
+                        description: "Failed to get dashboard"
+                    }
+                }
+            }
+        },
+        "/dashboard/watch-spaces/{watchSpaceId}/analytics": {
+            get: {
+                tags: ["Dashboard"],
+                summary: "Get Watch Space analytics",
+                security: [{ bearerAuth: [] }],
+                parameters: [
+                    {
+                        name: "watchSpaceId",
+                        in: "path",
+                        required: true,
+                        description: "Watch Space ID",
+                        schema: {
+                            type: "string",
+                            format: "uuid"
+                        }
+                    }
+                ],
+                responses: {
+                    200: {
+                        description: "Watch Space analytics fetched successfully",
+                        content: {
+                            "application/json": {
+                                schema: {
+                                    $ref: "#/components/schemas/WatchSpaceAnalyticsResponse"
+                                }
+                            }
+                        }
+                    },
+                    400: {
+                        description: "Invalid Watch Space ID or request"
+                    },
+                    403: {
+                        description: "You are not a participant of this watch space"
+                    },
+                    404: {
+                        description: "Watch space not found"
+                    },
+                    500: {
+                        description: "Failed to get watch space analytics"
+                    }
+                }
+            }
+        },
+        "/recommendations": {
+            get: {
+                tags: ["Recommendations"],
+                summary: "Get personalized recommendations",
+                security: [{ bearerAuth: [] }],
+                parameters: [
+                    {
+                        name: "limit",
+                        in: "query",
+                        required: false,
+                        schema: {
+                            type: "integer",
+                            minimum: 1,
+                            maximum: 20,
+                            default: 10
+                        }
+                    }
+                ],
+                responses: {
+                    200: {
+                        description: "Personalized recommendations fetched successfully",
+                        content: {
+                            "application/json": {
+                                schema: {
+                                    $ref: "#/components/schemas/RecommendationResponse"
+                                }
+                            }
+                        }
+                    },
+                    400: {
+                        description: "Invalid recommendation query"
+                    },
+                    500: {
+                        description: "Failed to get recommendations"
+                    }
+                }
+            }
+        },
         "/health": {
             get: {
                 tags: ["Health"],
