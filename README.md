@@ -6,7 +6,7 @@ A real-time, AI-enabled watch-together backend for shared viewing sessions, sync
 
 ## Project links
 
-- **Live API (when deployed):** https://netflix-ai-space.onrender.com
+- **Live API:** https://netflix-ai-space.onrender.com
 - **Health check:** https://netflix-ai-space.onrender.com/health
 - **Swagger / OpenAPI UI:** https://netflix-ai-space.onrender.com/docs
 - **GitHub repository:** https://github.com/SnehashisKundu/Netflix-ai-space
