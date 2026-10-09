@@ -8,8 +8,12 @@ const swaggerDefinition = {
     },
     servers: [
         {
-            url: "http\://localhost:5000",
+            url: "http://localhost:5000",
             description: "Local development server",
+        },
+        {
+            url: "https://netflix-ai-space.onrender.com",
+            description: "Production server",
         },
     ],
     tags: [
